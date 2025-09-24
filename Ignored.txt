@@ -1,0 +1,21 @@
+--- Requirement 5 ---
+Natural Language: "The device will enter sleep mode, except before 5 minutes of inactivity or when the device is not idle."
+Ground Truth Boolean Logic: SLEEP_MODE IF INACTIVITY_5MIN AND DEVICE_IDLE
+
+LLM-generated Boolean Logic: DEVICE_IN_SLEEP_MODE
+
+-> Here it completely ignored the part from except. Why is that? (Except sure is having many problems to fix (Prob cuz its NOT)).
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 6 ---
+Natural Language: "Notifications will not appear unless do not disturb mode is disabled and the phone is switched on."
+Ground Truth Boolean Logic: NOTIFICATIONS UNLESS DND_MODE_ENABLED OR PHONE_OFF
+
+LLM-generated Boolean Logic: NOT NOTIFICATION_APPEARS
+
+-> This example was never correct LOL. Until now it was giving DOOR_OPEN for do not disturb. This time to probably got too 
+   lazy and just gave Notifications will never appear heh.
+
+---------------------------------------------------------------------------------------------------------------------------------
+

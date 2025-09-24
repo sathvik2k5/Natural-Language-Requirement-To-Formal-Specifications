@@ -1,0 +1,18 @@
+--- Requirement 1 ---
+Natural Language: "The system will install updates, except if there is not enough disk space or the update is not available."
+Ground Truth Boolean Logic: SOFTWARE_INSTALL IF ENOUGH_DISK_SPACE AND UPDATE_AVAILABLE
+
+LLM-generated Boolean Logic: SYSTEM_INSTALLATION IMPLIES (NOT (INSUFFICIENT_DISK_SPACE OR UPDATE_NOT_AVAILABLE))
+
+------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 1 ---
+Natural Language: "The system will install updates, except if there is not enough disk space or the update is not available."
+Ground Truth Boolean Logic: SOFTWARE_INSTALL IF ENOUGH_DISK_SPACE AND UPDATE_AVAILABLE
+
+LLM-generated Boolean Logic: SYSTEM_INSTALLATION IMPLIES (NOT (NOT ENOUGH_DISK_SPACE OR UPDATE_AVAILABLE))
+
+-> Most of the times the LLM gave this boolean logic as the output but today it studdenly gave the above boolean logic
+   which is the correct one. Interesting :]
+
+-------------------------------------------------------------------------------------------------------------------------------

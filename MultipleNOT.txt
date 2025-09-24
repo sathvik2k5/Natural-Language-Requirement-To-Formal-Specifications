@@ -1,0 +1,117 @@
+--- Requirement 2 ---
+Natural Language: "The application will launch, but not if the operating system is outdated or the user is not logged in."
+Ground Truth Boolean Logic: APPLICATION_LAUNCH IF OPERATING_SYSTEM_UPDATED AND USER_LOGGED_IN
+
+LLM Raw Output:
+LAUNCH_APP IMPLIES (NOT OUTDATED_OS OR LOGGED_IN)
+
+LLM-generated Boolean Logic: LAUNCH_APP IMPLIES (NOT OUTDATED_OS OR LOGGED_IN)
+
+->LLM ignores the latter NOTs in some cases if it already has seen a NOT somewhere.
+
+----------------------------------------------------------------------------------------------------------------------------
+
+
+--- Requirement 4 ---
+Natural Language: "The service will start automatically, but not if manual mode is selected or the service is not configured."
+Ground Truth Boolean Logic: SERVICE_START IF AUTO_MODE_SELECTED AND SERVICE_CONFIGURED
+
+LLM Raw Output:
+SERVICE_START IMPLIES (NOT MANUAL_MODE) AND SERVICE_CONFIGURED
+
+LLM-generated Boolean Logic: SERVICE_START IMPLIES (NOT MANUAL_MODE) AND SERVICE_CONFIGURED
+
+
+-> Here the LLM noticed both the NOTs and gave the Formal Specification correctly.
+
+-> So what is the reason it ignored it in the above example but not here? :]
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 8 ---
+Natural Language: "The system will reboot, but not if critical processes are running or reboot is not requested."
+Ground Truth Boolean Logic: SYSTEM_REBOOT IF PROCESSES_COMPLETED AND REBOOT_REQUESTED
+
+LLM Raw Output:
+SYSTEM_REBOOT IMPLIES (NOT CRITICAL_PROCESSES_RUNNING OR REBOOT_REQUESTED)
+
+LLM-generated Boolean Logic: SYSTEM_REBOOT IMPLIES (NOT CRITICAL_PROCESSES_RUNNING OR REBOOT_REQUESTED)
+
+-> The LLM took NOT(A OR B) as NOT A OR B. Why is that?
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 1 ---
+Natural Language: "The system will install updates, except if there is not enough disk space or the update is not available."
+Ground Truth Boolean Logic: SOFTWARE_INSTALL IF ENOUGH_DISK_SPACE AND UPDATE_AVAILABLE
+
+LLM-generated Boolean Logic: SYSTEM_INSTALLATION IMPLIES (NOT (NOT ENOUGH_DISK_SPACE OR UPDATE_AVAILABLE))
+
+-> Made it too complex and ignored the second NOT.
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 2 ---
+Natural Language: "The application will launch, except if the operating system is outdated or the user is not logged in."
+Ground Truth Boolean Logic: APPLICATION_LAUNCH IF OPERATING_SYSTEM_UPDATED AND USER_LOGGED_IN
+
+LLM-generated Boolean Logic: LAUNCH_APP IMPLIES (NOT OUTDATED_OS OR LOGGED_IN)
+
+-> The LLM took NOT(A OR B) as NOT A OR B again. Is this a common format we're finding out???
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 3 ---
+Natural Language: "The feature will be enabled, except when the user is not authenticated or the feature is not available."
+Ground Truth Boolean Logic: FEATURE_ENABLED IF USER_AUTHENTICATED AND FEATURE_AVAILABLE
+
+LLM-generated Boolean Logic: (FEATURE_ENABLED IMPLIES (USER_AUTHENTICATED OR FEATURE_AVAILABLE))
+
+-> This time it took NOT (NOT A OR NOT B) as (A OR B) instead of (A AND B). WHY?
+
+------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 4 ---
+Natural Language: "The service will start automatically, except if manual mode is selected or the service is not configured."
+Ground Truth Boolean Logic: SERVICE_START IF AUTO_MODE_SELECTED AND SERVICE_CONFIGURED
+
+LLM-generated Boolean Logic: SERVICE_START IMPLIES (NOT MANUAL_MODE) AND (SERVICE_CONFIGURED)
+
+-> This time its correct. Maybe its cause it wasn't NOT ((NOT A) OR (NOT B)) but NOT (A OR (NOT B))?
+
+------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 7 ---
+Natural Language: "The backup will proceed, except if the storage device is not connected or backup is not enabled."
+Ground Truth Boolean Logic: BACKUP_PROCEED IF STORAGE_CONNECTED AND BACKUP_ENABLED
+
+LLM-generated Boolean Logic: (BACKUP_PROCEEDS IMPLIES (NOT STORAGE_DEVICE_CONNECTED OR NOT BACKUP_ENABLED))
+
+-> Here it ignored the except so it took NOT ((NOT A) OR (NOT B)) as (NOT A) OR (NOT B). WHY?
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 8 ---
+Natural Language: "The system will reboot, except if critical processes are running or reboot is not requested."
+Ground Truth Boolean Logic: SYSTEM_REBOOT IF PROCESSES_COMPLETED AND REBOOT_REQUESTED
+
+LLM-generated Boolean Logic: SYSTEM_REBOOT IMPLIES (NOT CRITICAL_PROCESSES_RUNNING OR NOT REBOOT_REQUESTED)
+
+-> Here it took NOT (A OR (NOT B)) as (NOT A) OR (NOT B). Its getting too vague at this point.
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 9 ---
+Natural Language: "The settings will be saved, except when the form is not validated or the user has not confirmed."
+Ground Truth Boolean Logic: SETTINGS_SAVED IF FORM_VALIDATED AND USER_CONFIRMED
+
+LLM-generated Boolean Logic: (SAVE_SETTINGS) IMPLIES ((NOT VALIDATE_FORM) OR (NOT CONFIRMED))
+
+-> Again Except got ignored.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Interesting (maybe not) fact: The LLM is facing issue if its 2 conditions but not for one. Is the sentence framing bad?
+
+-------------------------------------------------------------------------------------------------------------------------------
+

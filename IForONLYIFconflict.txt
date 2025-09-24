@@ -1,0 +1,14 @@
+--- Requirement 6 ---
+Natural Language: "Notifications will appear, provided that do not disturb mode is disabled and the phone is switched on."
+Ground Truth Boolean Logic: NOTIFICATIONS PROVIDED THAT DND_MODE_DISABLED AND PHONE_ON
+
+LLM-generated Boolean Logic: (NOT DO_NOT_DISTURB) AND (PHONE_SWITCHED_ON) IMPLIES NOTIFICATIONS_APPEAR
+
+-> We got out first case so late. I expected it will come way earlier. Anyways so here it is. Lets figure out why :)
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+But damn the above one was the only conflict for the provided that clause in the 10 examples. Loved it!
+
+-----------------------------------------------------------------------------------------------------------------------------
+

@@ -1,0 +1,11 @@
+natural_language,ground_truth,llm_output
+"The system will install updates, except if there is not enough disk space or the update is not available.",SOFTWARE_INSTALL IF ENOUGH_DISK_SPACE AND UPDATE_AVAILABLE,SYSTEM_INSTALLATION IMPLIES (NOT (NOT ENOUGH_DISK_SPACE OR UPDATE_AVAILABLE))
+"The application will launch, except if the operating system is outdated or the user is not logged in.",APPLICATION_LAUNCH IF OPERATING_SYSTEM_UPDATED AND USER_LOGGED_IN,LAUNCH_APP IMPLIES (NOT OUTDATED_OS OR LOGGED_IN)
+"The feature will be enabled, except when the user is not authenticated or the feature is not available.",FEATURE_ENABLED IF USER_AUTHENTICATED AND FEATURE_AVAILABLE,(FEATURE_ENABLED IMPLIES (USER_AUTHENTICATED OR FEATURE_AVAILABLE))
+"The service will start automatically, except if manual mode is selected or the service is not configured.",SERVICE_START IF AUTO_MODE_SELECTED AND SERVICE_CONFIGURED,SERVICE_START IMPLIES (NOT MANUAL_MODE) AND (SERVICE_CONFIGURED)
+"The device will enter sleep mode, except before 5 minutes of inactivity or when the device is not idle.",SLEEP_MODE IF INACTIVITY_5MIN AND DEVICE_IDLE,DEVICE_IN_SLEEP_MODE
+"Notifications will appear, except when do not disturb mode is active or when the phone is switched off.",NOTIFICATIONS IF DND_MODE_DISABLED AND PHONE_ON,NOT (NOT DOOR_OPEN OR NOT PHONE_ON) IMPLIES NOTIFICATIONS_APPEAR
+"The backup will proceed, except if the storage device is not connected or backup is not enabled.",BACKUP_PROCEED IF STORAGE_CONNECTED AND BACKUP_ENABLED,(BACKUP_PROCEEDS IMPLIES (NOT STORAGE_DEVICE_CONNECTED OR NOT BACKUP_ENABLED))
+"The system will reboot, except if critical processes are running or reboot is not requested.",SYSTEM_REBOOT IF PROCESSES_COMPLETED AND REBOOT_REQUESTED,SYSTEM_REBOOT IMPLIES (NOT CRITICAL_PROCESSES_RUNNING OR NOT REBOOT_REQUESTED)
+"The settings will be saved, except when the form is not validated or the user has not confirmed.",SETTINGS_SAVED IF FORM_VALIDATED AND USER_CONFIRMED,(SAVE_SETTINGS) IMPLIES ((NOT VALIDATE_FORM) OR (NOT CONFIRMED))
+"The connection will be established, except without network availability.",CONNECTION_ESTABLISHED IF NETWORK_AVAILABLE AND CONNECTION_REQUESTED,CONNECTION_ESTABLISHED IMPLIES NETWORK_AVAILABILITY

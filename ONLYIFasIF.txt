@@ -1,0 +1,26 @@
+--- Requirement 9 ---
+Natural Language: "The settings will be saved, but only when the form is validated and the user has confirmed."
+Ground Truth Boolean Logic: SETTINGS_SAVED IF FORM_VALIDATED AND USER_CONFIRMED
+
+LLM Raw Output:
+FORM_VALIDATED AND USER_CONFIRMED IMPLIES SETTINGS_SAVED
+
+LLM-generated Boolean Logic: FORM_VALIDATED AND USER_CONFIRMED IMPLIES SETTINGS_SAVED
+
+-> The LLM sometimes misunderstands the sentence and takes ONLY IF as IF.
+
+----------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 10 ---
+Natural Language: "The connection will be established, but not without network availability."
+Ground Truth Boolean Logic: CONNECTION_ESTABLISHED IF NETWORK_AVAILABLE AND CONNECTION_REQUESTED
+
+LLM Raw Output:
+CONNECTION_ESTABLISHED IMPLIES NETWORK_AVAILABILITY
+
+LLM-generated Boolean Logic: CONNECTION_ESTABLISHED IMPLIES NETWORK_AVAILABILITY
+
+-> But it understood this situation correctly. What's the reason?
+
+------------------------------------------------------------------------------------------------------------------------------
+

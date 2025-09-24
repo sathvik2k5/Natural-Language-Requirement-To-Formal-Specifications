@@ -1,0 +1,2235 @@
+--- Requirement 8 ---
+Natural Language: "The heating system turns on if the temperature drops below the set point, but only if the time is after 5 PM."
+Ground Truth Boolean Logic: (TEMP_BELOW_SETPOINT IMPLIES HEATING_ON) AND (HEATING_ON IMPLIES TIME_AFTER_5PM)
+
+LLM Raw Output:
+(TEMPERATURE < SET_POINT) ∧ (TIME > 17:00) IMPLIES HEATING_SYSTEM_ON
+
+LLM-generated Boolean Logic: (TEMPERATURE < SET_POINT) ∧ (TIME > 17:00) IMPLIES HEATING_SYSTEM_ON
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+--- Requirement 9 ---
+Natural Language: "The camera records while motion is detected, whereas the lights turn on."
+Ground Truth Boolean Logic: (CAMERA_RECORDS IFF MOTION_DETECTED) AND LIGHTS_ON
+
+LLM Raw Output:
+(CAMERA_RECORDS IMPLIES MOTION_DETECTED) AND (LIGHTS_TURN_ON IMPLIES MOTION_DETECTED)
+
+LLM-generated Boolean Logic: (CAMERA_RECORDS IMPLIES MOTION_DETECTED) AND (LIGHTS_TURN_ON IMPLIES MOTION_DETECTED)
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+--- Requirement 1 ---
+Natural Language: "The software will not install if the operating system is outdated, but only if there isn't enough disk space."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+NOT (OUTDATED_OS) AND NOT (INSUFFICIENT_DISK_SPACE) IMPLIES NOT (SOFTWARE_INSTALLED)
+
+LLM-generated Boolean Logic: NOT (OUTDATED_OS) AND NOT (INSUFFICIENT_DISK_SPACE) IMPLIES NOT (SOFTWARE_INSTALLED)
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+--- Requirement 3 ---
+Natural Language: "The software will install if the operating system is not outdated, but only if there is enough disk space."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+(NOT OS_OUTDATED) AND (ENOUGH_DISK_SPACE IMPLIES SOFTWARE_INSTALL)
+
+LLM-generated Boolean Logic: (NOT OS_OUTDATED) AND (ENOUGH_DISK_SPACE IMPLIES SOFTWARE_INSTALL)
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+--- Requirement 4 ---
+Natural Language: "The software will install if the operating system is not outdated, but also if there is enough disk space."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+NOT(OUTDATED_OS) AND (ENOUGH_DISK_SPACE)
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Test - 1 :-
+
+
+--- Requirement 1 ---
+Natural Language: "The software will not install if the operating system is outdated, but only if there isn't enough disk space."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+SOFTWARE_INSTALLATION IMPLIES (NOT OPERATING_SYSTEM_UP_TO_DATE OR NOT ENOUGH_DISK_SPACE)
+
+LLM-generated Boolean Logic: SOFTWARE_INSTALLATION IMPLIES (NOT OPERATING_SYSTEM_UP_TO_DATE OR NOT ENOUGH_DISK_SPACE)
+--- Pyparsing ParseResults Object (Raw) ---
+[['SOFTWARE_INSTALLATION'], 'IMPLIES', [['NOT', ['OPERATING_SYSTEM_UP_TO_DATE']], 'OR', ['NOT', ['ENOUGH_DISK_SPACE']]]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SOFTWARE_INSTALLATION
+  Right: OR
+    Left: NOT
+      Operand: OPERATING_SYSTEM_UP_TO_DATE
+    Right: NOT
+      Operand: ENOUGH_DISK_SPACE
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SOFTWARE_INSTALLATION
+  OR
+    NOT
+      OPERATING_SYSTEM_UP_TO_DATE
+    NOT
+      ENOUGH_DISK_SPACE
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SOFTWARE_INSTALLATION
+  OR
+    NOT
+      OPERATING_SYSTEM_UP_TO_DATE
+    NOT
+      ENOUGH_DISK_SPACE
+
+======================================================================
+
+
+--- Requirement 2 ---
+Natural Language: "The software will not install if the operating system is outdated, but only if there is enough disk space."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+SOFTWARE_INSTALLATION IMPLIES (NOT OPERATING_SYSTEM_UP_TO_DATE OR NOT ENOUGH_DISK_SPACE)
+
+LLM-generated Boolean Logic: SOFTWARE_INSTALLATION IMPLIES (NOT OPERATING_SYSTEM_UP_TO_DATE OR NOT ENOUGH_DISK_SPACE)
+--- Pyparsing ParseResults Object (Raw) ---
+[['SOFTWARE_INSTALLATION'], 'IMPLIES', [['NOT', ['OPERATING_SYSTEM_UP_TO_DATE']], 'OR', ['NOT', ['ENOUGH_DISK_SPACE']]]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SOFTWARE_INSTALLATION
+  Right: OR
+    Left: NOT
+      Operand: OPERATING_SYSTEM_UP_TO_DATE
+    Right: NOT
+      Operand: ENOUGH_DISK_SPACE
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SOFTWARE_INSTALLATION
+  OR
+    NOT
+      OPERATING_SYSTEM_UP_TO_DATE
+    NOT
+      ENOUGH_DISK_SPACE
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SOFTWARE_INSTALLATION
+  OR
+    NOT
+      OPERATING_SYSTEM_UP_TO_DATE
+    NOT
+      ENOUGH_DISK_SPACE
+
+======================================================================
+
+
+--- Requirement 3 ---
+Natural Language: "The software will not install if the operating system is not outdated, but only if there isn't enough disk space."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+SOFTWARE_INSTALLATION IMPLIES (NOT OUTDATED_OS OR NOT_ENOUGH_DISK_SPACE)
+
+LLM-generated Boolean Logic: SOFTWARE_INSTALLATION IMPLIES (NOT OUTDATED_OS OR NOT_ENOUGH_DISK_SPACE)
+--- Pyparsing ParseResults Object (Raw) ---
+[['SOFTWARE_INSTALLATION'], 'IMPLIES', [['NOT', ['OUTDATED_OS']], 'OR', ['NOT_ENOUGH_DISK_SPACE']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SOFTWARE_INSTALLATION
+  Right: OR
+    Left: NOT
+      Operand: OUTDATED_OS
+    Right: NOT_ENOUGH_DISK_SPACE
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SOFTWARE_INSTALLATION
+  OR
+    NOT
+      OUTDATED_OS
+    NOT_ENOUGH_DISK_SPACE
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SOFTWARE_INSTALLATION
+  OR
+    NOT
+      OUTDATED_OS
+    NOT_ENOUGH_DISK_SPACE
+
+======================================================================
+
+
+--- Requirement 4 ---
+Natural Language: "The software will not install if the operating system is not outdated, but also if there is enough disk space."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+SOFTWARE_INSTALLATION IMPLIES (NOT OUTDATED_OS OR ENOUGH_DISK_SPACE)
+
+LLM-generated Boolean Logic: SOFTWARE_INSTALLATION IMPLIES (NOT OUTDATED_OS OR ENOUGH_DISK_SPACE)
+--- Pyparsing ParseResults Object (Raw) ---
+[['SOFTWARE_INSTALLATION'], 'IMPLIES', [['NOT', ['OUTDATED_OS']], 'OR', ['ENOUGH_DISK_SPACE']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SOFTWARE_INSTALLATION
+  Right: OR
+    Left: NOT
+      Operand: OUTDATED_OS
+    Right: ENOUGH_DISK_SPACE
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SOFTWARE_INSTALLATION
+  OR
+    NOT
+      OUTDATED_OS
+    ENOUGH_DISK_SPACE
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SOFTWARE_INSTALLATION
+  OR
+    NOT
+      OUTDATED_OS
+    ENOUGH_DISK_SPACE
+
+======================================================================
+
+
+--- Requirement 5 ---
+Natural Language: "The software will install if the operating system is outdated, but only if there isn't enough disk space."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+SOFTWARE_INSTALLATION IMPLIES (OPERATING_SYSTEM_OUTDATED AND NOT ENOUGH_DISK_SPACE)
+
+LLM-generated Boolean Logic: SOFTWARE_INSTALLATION IMPLIES (OPERATING_SYSTEM_OUTDATED AND NOT ENOUGH_DISK_SPACE)
+--- Pyparsing ParseResults Object (Raw) ---
+[['SOFTWARE_INSTALLATION'], 'IMPLIES', [['OPERATING_SYSTEM_OUTDATED'], 'AND', ['NOT', ['ENOUGH_DISK_SPACE']]]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SOFTWARE_INSTALLATION
+  Right: AND
+    Left: OPERATING_SYSTEM_OUTDATED
+    Right: NOT
+      Operand: ENOUGH_DISK_SPACE
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SOFTWARE_INSTALLATION
+  AND
+    OPERATING_SYSTEM_OUTDATED
+    NOT
+      ENOUGH_DISK_SPACE
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SOFTWARE_INSTALLATION
+  AND
+    OPERATING_SYSTEM_OUTDATED
+    NOT
+      ENOUGH_DISK_SPACE
+
+======================================================================
+
+
+--- Requirement 6 ---
+Natural Language: "The software will install if the operating system is outdated, but only if there is enough disk space."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+SOFTWARE_INSTALLATION IMPLIES (OPERATING_SYSTEM_OUTDATED AND DISK_SPACE_AVAILABLE)
+
+LLM-generated Boolean Logic: SOFTWARE_INSTALLATION IMPLIES (OPERATING_SYSTEM_OUTDATED AND DISK_SPACE_AVAILABLE)
+--- Pyparsing ParseResults Object (Raw) ---
+[['SOFTWARE_INSTALLATION'], 'IMPLIES', [['OPERATING_SYSTEM_OUTDATED'], 'AND', ['DISK_SPACE_AVAILABLE']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SOFTWARE_INSTALLATION
+  Right: AND
+    Left: OPERATING_SYSTEM_OUTDATED
+    Right: DISK_SPACE_AVAILABLE
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SOFTWARE_INSTALLATION
+  AND
+    OPERATING_SYSTEM_OUTDATED
+    DISK_SPACE_AVAILABLE
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SOFTWARE_INSTALLATION
+  AND
+    OPERATING_SYSTEM_OUTDATED
+    DISK_SPACE_AVAILABLE
+
+======================================================================
+
+
+--- Requirement 7 ---
+Natural Language: "The software will install if the operating system is not outdated, but only if there isn't enough disk space."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+SOFTWARE_INSTALLATION IMPLIES (NOT OPERATING_SYSTEM_OUTDATED AND NOT DISK_SPACE_INSUFFICIENT)
+
+LLM-generated Boolean Logic: SOFTWARE_INSTALLATION IMPLIES (NOT OPERATING_SYSTEM_OUTDATED AND NOT DISK_SPACE_INSUFFICIENT)
+--- Pyparsing ParseResults Object (Raw) ---
+[['SOFTWARE_INSTALLATION'], 'IMPLIES', [['NOT', ['OPERATING_SYSTEM_OUTDATED']], 'AND', ['NOT', ['DISK_SPACE_INSUFFICIENT']]]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SOFTWARE_INSTALLATION
+  Right: AND
+    Left: NOT
+      Operand: OPERATING_SYSTEM_OUTDATED
+    Right: NOT
+      Operand: DISK_SPACE_INSUFFICIENT
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SOFTWARE_INSTALLATION
+  AND
+    NOT
+      OPERATING_SYSTEM_OUTDATED
+    NOT
+      DISK_SPACE_INSUFFICIENT
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SOFTWARE_INSTALLATION
+  AND
+    NOT
+      OPERATING_SYSTEM_OUTDATED
+    NOT
+      DISK_SPACE_INSUFFICIENT
+
+======================================================================
+
+
+--- Requirement 8 ---
+Natural Language: "The software will install if the operating system is not outdated, but also if there is enough disk space."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+SOFTWARE_INSTALLATION IMPLIES (NOT OPERATING_SYSTEM_OUTDATED OR ENOUGH_DISK_SPACE)
+
+LLM-generated Boolean Logic: SOFTWARE_INSTALLATION IMPLIES (NOT OPERATING_SYSTEM_OUTDATED OR ENOUGH_DISK_SPACE)
+--- Pyparsing ParseResults Object (Raw) ---
+[['SOFTWARE_INSTALLATION'], 'IMPLIES', [['NOT', ['OPERATING_SYSTEM_OUTDATED']], 'OR', ['ENOUGH_DISK_SPACE']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SOFTWARE_INSTALLATION
+  Right: OR
+    Left: NOT
+      Operand: OPERATING_SYSTEM_OUTDATED
+    Right: ENOUGH_DISK_SPACE
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SOFTWARE_INSTALLATION
+  OR
+    NOT
+      OPERATING_SYSTEM_OUTDATED
+    ENOUGH_DISK_SPACE
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SOFTWARE_INSTALLATION
+  OR
+    NOT
+      OPERATING_SYSTEM_OUTDATED
+    ENOUGH_DISK_SPACE
+
+======================================================================
+
+
+--- Requirement 9 ---
+Natural Language: "The software will not install if there isn't enough disk space."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+SOFTWARE_INSTALLATION IMPLIES DISK_SPACE_AVAILABLE
+
+LLM-generated Boolean Logic: SOFTWARE_INSTALLATION IMPLIES DISK_SPACE_AVAILABLE
+--- Pyparsing ParseResults Object (Raw) ---
+[['SOFTWARE_INSTALLATION'], 'IMPLIES', ['DISK_SPACE_AVAILABLE']]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SOFTWARE_INSTALLATION
+  Right: DISK_SPACE_AVAILABLE
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SOFTWARE_INSTALLATION
+  DISK_SPACE_AVAILABLE
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SOFTWARE_INSTALLATION
+  DISK_SPACE_AVAILABLE
+
+======================================================================
+
+
+--- Requirement 10 ---
+Natural Language: "The software will not install if the operating system is outdated."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+SOFTWARE_INSTALLATION IMPLIES NOT OPERATING_SYSTEM_OUTDATED
+
+LLM-generated Boolean Logic: SOFTWARE_INSTALLATION IMPLIES NOT OPERATING_SYSTEM_OUTDATED
+--- Pyparsing ParseResults Object (Raw) ---
+[['SOFTWARE_INSTALLATION'], 'IMPLIES', ['NOT', ['OPERATING_SYSTEM_OUTDATED']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SOFTWARE_INSTALLATION
+  Right: NOT
+    Operand: OPERATING_SYSTEM_OUTDATED
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SOFTWARE_INSTALLATION
+  NOT
+    OPERATING_SYSTEM_OUTDATED
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SOFTWARE_INSTALLATION
+  NOT
+    OPERATING_SYSTEM_OUTDATED
+
+======================================================================
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Test - 2 :-
+
+
+
+--- Requirement 1 ---
+Natural Language: "The system's status will remain active except when a critical error is detected and the power supply is stable."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+SYSTEM_ACTIVE IMPLIES (NOT CRITICAL_ERROR_DETECTED OR POWER_SUPPLY_STABLE)
+
+LLM-generated Boolean Logic: SYSTEM_ACTIVE IMPLIES (NOT CRITICAL_ERROR_DETECTED OR POWER_SUPPLY_STABLE)
+--- Pyparsing ParseResults Object (Raw) ---
+[['SYSTEM_ACTIVE'], 'IMPLIES', [['NOT', ['CRITICAL_ERROR_DETECTED']], 'OR', ['POWER_SUPPLY_STABLE']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SYSTEM_ACTIVE
+  Right: OR
+    Left: NOT
+      Operand: CRITICAL_ERROR_DETECTED
+    Right: POWER_SUPPLY_STABLE
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SYSTEM_ACTIVE
+  OR
+    NOT
+      CRITICAL_ERROR_DETECTED
+    POWER_SUPPLY_STABLE
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SYSTEM_ACTIVE
+  OR
+    NOT
+      CRITICAL_ERROR_DETECTED
+    POWER_SUPPLY_STABLE
+
+======================================================================
+
+
+--- Requirement 2 ---
+Natural Language: "The system's status will remain active except when a critical error is detected and the power supply is not stable."       
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+SYSTEM_ACTIVE IMPLIES (NOT CRITICAL_ERROR_DETECTED OR POWER_SUPPLY_STABLE)
+
+LLM-generated Boolean Logic: SYSTEM_ACTIVE IMPLIES (NOT CRITICAL_ERROR_DETECTED OR POWER_SUPPLY_STABLE)
+--- Pyparsing ParseResults Object (Raw) ---
+[['SYSTEM_ACTIVE'], 'IMPLIES', [['NOT', ['CRITICAL_ERROR_DETECTED']], 'OR', ['POWER_SUPPLY_STABLE']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SYSTEM_ACTIVE
+  Right: OR
+    Left: NOT
+      Operand: CRITICAL_ERROR_DETECTED
+    Right: POWER_SUPPLY_STABLE
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SYSTEM_ACTIVE
+  OR
+    NOT
+      CRITICAL_ERROR_DETECTED
+    POWER_SUPPLY_STABLE
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SYSTEM_ACTIVE
+  OR
+    NOT
+      CRITICAL_ERROR_DETECTED
+    POWER_SUPPLY_STABLE
+
+======================================================================
+
+
+--- Requirement 3 ---
+Natural Language: "The system's status will remain active except when a critical error is not detected and the power supply is stable."       
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+SYSTEM_ACTIVE IMPLIES (NOT CRITICAL_ERROR_DETECTED OR POWER_SUPPLY_STABLE)
+
+LLM-generated Boolean Logic: SYSTEM_ACTIVE IMPLIES (NOT CRITICAL_ERROR_DETECTED OR POWER_SUPPLY_STABLE)
+--- Pyparsing ParseResults Object (Raw) ---
+[['SYSTEM_ACTIVE'], 'IMPLIES', [['NOT', ['CRITICAL_ERROR_DETECTED']], 'OR', ['POWER_SUPPLY_STABLE']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SYSTEM_ACTIVE
+  Right: OR
+    Left: NOT
+      Operand: CRITICAL_ERROR_DETECTED
+    Right: POWER_SUPPLY_STABLE
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SYSTEM_ACTIVE
+  OR
+    NOT
+      CRITICAL_ERROR_DETECTED
+    POWER_SUPPLY_STABLE
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SYSTEM_ACTIVE
+  OR
+    NOT
+      CRITICAL_ERROR_DETECTED
+    POWER_SUPPLY_STABLE
+
+======================================================================
+
+
+--- Requirement 4 ---
+Natural Language: "The system's status will remain active except when a critical error is not detected or the power supply is not stable."    
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+SYSTEM_ACTIVE IMPLIES (NOT CRITICAL_ERROR_DETECTED OR POWER_SUPPLY_STABLE)
+
+LLM-generated Boolean Logic: SYSTEM_ACTIVE IMPLIES (NOT CRITICAL_ERROR_DETECTED OR POWER_SUPPLY_STABLE)
+--- Pyparsing ParseResults Object (Raw) ---
+[['SYSTEM_ACTIVE'], 'IMPLIES', [['NOT', ['CRITICAL_ERROR_DETECTED']], 'OR', ['POWER_SUPPLY_STABLE']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SYSTEM_ACTIVE
+  Right: OR
+    Left: NOT
+      Operand: CRITICAL_ERROR_DETECTED
+    Right: POWER_SUPPLY_STABLE
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SYSTEM_ACTIVE
+  OR
+    NOT
+      CRITICAL_ERROR_DETECTED
+    POWER_SUPPLY_STABLE
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SYSTEM_ACTIVE
+  OR
+    NOT
+      CRITICAL_ERROR_DETECTED
+    POWER_SUPPLY_STABLE
+
+======================================================================
+
+
+--- Requirement 5 ---
+Natural Language: "The system's status will not remain active except when a critical error is detected and the power supply is stable."       
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+SYSTEM_ACTIVE IMPLIES (CRITICAL_ERROR_DETECTED AND POWER_SUPPLY_STABLE)
+
+LLM-generated Boolean Logic: SYSTEM_ACTIVE IMPLIES (CRITICAL_ERROR_DETECTED AND POWER_SUPPLY_STABLE)
+--- Pyparsing ParseResults Object (Raw) ---
+[['SYSTEM_ACTIVE'], 'IMPLIES', [['CRITICAL_ERROR_DETECTED'], 'AND', ['POWER_SUPPLY_STABLE']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SYSTEM_ACTIVE
+  Right: AND
+    Left: CRITICAL_ERROR_DETECTED
+    Right: POWER_SUPPLY_STABLE
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SYSTEM_ACTIVE
+  AND
+    CRITICAL_ERROR_DETECTED
+    POWER_SUPPLY_STABLE
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SYSTEM_ACTIVE
+  AND
+    CRITICAL_ERROR_DETECTED
+    POWER_SUPPLY_STABLE
+
+======================================================================
+
+
+--- Requirement 6 ---
+Natural Language: "The system's status will not remain active except when a critical error is detected and the power supply is not stable."   
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+SYSTEM_ACTIVE IMPLIES (CRITICAL_ERROR_DETECTED AND NOT POWER_SUPPLY_STABLE)
+
+LLM-generated Boolean Logic: SYSTEM_ACTIVE IMPLIES (CRITICAL_ERROR_DETECTED AND NOT POWER_SUPPLY_STABLE)
+--- Pyparsing ParseResults Object (Raw) ---
+[['SYSTEM_ACTIVE'], 'IMPLIES', [['CRITICAL_ERROR_DETECTED'], 'AND', ['NOT', ['POWER_SUPPLY_STABLE']]]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SYSTEM_ACTIVE
+  Right: AND
+    Left: CRITICAL_ERROR_DETECTED
+    Right: NOT
+      Operand: POWER_SUPPLY_STABLE
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SYSTEM_ACTIVE
+  AND
+    CRITICAL_ERROR_DETECTED
+    NOT
+      POWER_SUPPLY_STABLE
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SYSTEM_ACTIVE
+  AND
+    CRITICAL_ERROR_DETECTED
+    NOT
+      POWER_SUPPLY_STABLE
+
+======================================================================
+
+
+--- Requirement 7 ---
+Natural Language: "The system's status will not remain active except when a critical error is not detected and the power supply is stable."   
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+SYSTEM_ACTIVE IMPLIES (NOT CRITICAL_ERROR_DETECTED AND POWER_SUPPLY_STABLE)
+
+LLM-generated Boolean Logic: SYSTEM_ACTIVE IMPLIES (NOT CRITICAL_ERROR_DETECTED AND POWER_SUPPLY_STABLE)
+--- Pyparsing ParseResults Object (Raw) ---
+[['SYSTEM_ACTIVE'], 'IMPLIES', [['NOT', ['CRITICAL_ERROR_DETECTED']], 'AND', ['POWER_SUPPLY_STABLE']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SYSTEM_ACTIVE
+  Right: AND
+    Left: NOT
+      Operand: CRITICAL_ERROR_DETECTED
+    Right: POWER_SUPPLY_STABLE
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SYSTEM_ACTIVE
+  AND
+    NOT
+      CRITICAL_ERROR_DETECTED
+    POWER_SUPPLY_STABLE
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SYSTEM_ACTIVE
+  AND
+    NOT
+      CRITICAL_ERROR_DETECTED
+    POWER_SUPPLY_STABLE
+
+======================================================================
+
+
+--- Requirement 8 ---
+Natural Language: "The system's status will not remain active except when a critical error is not detected or the power supply is not stable."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+SYSTEM_ACTIVE IMPLIES (NOT CRITICAL_ERROR_DETECTED OR NOT POWER_SUPPLY_STABLE)
+
+LLM-generated Boolean Logic: SYSTEM_ACTIVE IMPLIES (NOT CRITICAL_ERROR_DETECTED OR NOT POWER_SUPPLY_STABLE)
+--- Pyparsing ParseResults Object (Raw) ---
+[['SYSTEM_ACTIVE'], 'IMPLIES', [['NOT', ['CRITICAL_ERROR_DETECTED']], 'OR', ['NOT', ['POWER_SUPPLY_STABLE']]]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SYSTEM_ACTIVE
+  Right: OR
+    Left: NOT
+      Operand: CRITICAL_ERROR_DETECTED
+    Right: NOT
+      Operand: POWER_SUPPLY_STABLE
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SYSTEM_ACTIVE
+  OR
+    NOT
+      CRITICAL_ERROR_DETECTED
+    NOT
+      POWER_SUPPLY_STABLE
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SYSTEM_ACTIVE
+  OR
+    NOT
+      CRITICAL_ERROR_DETECTED
+    NOT
+      POWER_SUPPLY_STABLE
+
+======================================================================
+
+
+--- Requirement 9 ---
+Natural Language: "The system's status will remain active except when a critical error is detected."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+SYSTEM_ACTIVE IMPLIES NOT CRITICAL_ERROR_DETECTED
+
+LLM-generated Boolean Logic: SYSTEM_ACTIVE IMPLIES NOT CRITICAL_ERROR_DETECTED
+--- Pyparsing ParseResults Object (Raw) ---
+[['SYSTEM_ACTIVE'], 'IMPLIES', ['NOT', ['CRITICAL_ERROR_DETECTED']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SYSTEM_ACTIVE
+  Right: NOT
+    Operand: CRITICAL_ERROR_DETECTED
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SYSTEM_ACTIVE
+  NOT
+    CRITICAL_ERROR_DETECTED
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SYSTEM_ACTIVE
+  NOT
+    CRITICAL_ERROR_DETECTED
+
+======================================================================
+
+
+--- Requirement 10 ---
+Natural Language: "The system's status will remain active except when the power supply is stable."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+SYSTEM_ACTIVE IMPLIES NOT POWER_SUPPLY_STABLE
+
+LLM-generated Boolean Logic: SYSTEM_ACTIVE IMPLIES NOT POWER_SUPPLY_STABLE
+--- Pyparsing ParseResults Object (Raw) ---
+[['SYSTEM_ACTIVE'], 'IMPLIES', ['NOT', ['POWER_SUPPLY_STABLE']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SYSTEM_ACTIVE
+  Right: NOT
+    Operand: POWER_SUPPLY_STABLE
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SYSTEM_ACTIVE
+  NOT
+    POWER_SUPPLY_STABLE
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SYSTEM_ACTIVE
+  NOT
+    POWER_SUPPLY_STABLE
+
+======================================================================
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+Test - 3 (Unless) :-
+
+
+
+
+--- Requirement 1 ---
+Natural Language: "The alarm will not sound unless motion is detected and the door is unlocked."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+(ALARM_SOUND) IMPLIES ((MOTION_DETECTED) AND (DOOR_UNLOCKED))
+
+LLM-generated Boolean Logic: (ALARM_SOUND) IMPLIES ((MOTION_DETECTED) AND (DOOR_UNLOCKED))
+--- Pyparsing ParseResults Object (Raw) ---
+[['ALARM_SOUND'], 'IMPLIES', [['MOTION_DETECTED'], 'AND', ['DOOR_UNLOCKED']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: ALARM_SOUND
+  Right: AND
+    Left: MOTION_DETECTED
+    Right: DOOR_UNLOCKED
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  ALARM_SOUND
+  AND
+    MOTION_DETECTED
+    DOOR_UNLOCKED
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    ALARM_SOUND
+  AND
+    MOTION_DETECTED
+    DOOR_UNLOCKED
+
+======================================================================
+
+
+--- Requirement 2 ---
+Natural Language: "The alarm will not sound unless motion is not detected and the door is unlocked."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+(NOT ALARM_SOUND) IMPLIES ((NOT MOTION_DETECTED) AND (DOOR_UNLOCKED))
+
+LLM-generated Boolean Logic: (NOT ALARM_SOUND) IMPLIES ((NOT MOTION_DETECTED) AND (DOOR_UNLOCKED))
+--- Pyparsing ParseResults Object (Raw) ---
+[['NOT', ['ALARM_SOUND']], 'IMPLIES', [['NOT', ['MOTION_DETECTED']], 'AND', ['DOOR_UNLOCKED']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: NOT
+    Operand: ALARM_SOUND
+  Right: AND
+    Left: NOT
+      Operand: MOTION_DETECTED
+    Right: DOOR_UNLOCKED
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  NOT
+    ALARM_SOUND
+  AND
+    NOT
+      MOTION_DETECTED
+    DOOR_UNLOCKED
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    NOT
+      ALARM_SOUND
+  AND
+    NOT
+      MOTION_DETECTED
+    DOOR_UNLOCKED
+
+======================================================================
+
+
+--- Requirement 3 ---
+Natural Language: "The alarm will not sound unless motion is detected and the door is not unlocked."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+(ALARM_SOUND) IMPLIES ((MOTION_DETECTED) AND (NOT DOOR_UNLOCKED))
+
+LLM-generated Boolean Logic: (ALARM_SOUND) IMPLIES ((MOTION_DETECTED) AND (NOT DOOR_UNLOCKED))
+--- Pyparsing ParseResults Object (Raw) ---
+[['ALARM_SOUND'], 'IMPLIES', [['MOTION_DETECTED'], 'AND', ['NOT', ['DOOR_UNLOCKED']]]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: ALARM_SOUND
+  Right: AND
+    Left: MOTION_DETECTED
+    Right: NOT
+      Operand: DOOR_UNLOCKED
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  ALARM_SOUND
+  AND
+    MOTION_DETECTED
+    NOT
+      DOOR_UNLOCKED
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    ALARM_SOUND
+  AND
+    MOTION_DETECTED
+    NOT
+      DOOR_UNLOCKED
+
+======================================================================
+
+
+--- Requirement 4 ---
+Natural Language: "The alarm will not sound unless motion is not detected or the door is not unlocked."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+(ALARM_SOUND) IMPLIES ((NOT MOTION_DETECTED) OR (NOT DOOR_UNLOCKED))
+
+LLM-generated Boolean Logic: (ALARM_SOUND) IMPLIES ((NOT MOTION_DETECTED) OR (NOT DOOR_UNLOCKED))
+--- Pyparsing ParseResults Object (Raw) ---
+[['ALARM_SOUND'], 'IMPLIES', [['NOT', ['MOTION_DETECTED']], 'OR', ['NOT', ['DOOR_UNLOCKED']]]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: ALARM_SOUND
+  Right: OR
+    Left: NOT
+      Operand: MOTION_DETECTED
+    Right: NOT
+      Operand: DOOR_UNLOCKED
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  ALARM_SOUND
+  OR
+    NOT
+      MOTION_DETECTED
+    NOT
+      DOOR_UNLOCKED
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    ALARM_SOUND
+  OR
+    NOT
+      MOTION_DETECTED
+    NOT
+      DOOR_UNLOCKED
+
+======================================================================
+
+
+--- Requirement 5 ---
+Natural Language: "The alarm will sound unless motion is detected and the door is unlocked."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+(ALARM_SOUND) IMPLIES ((MOTION_DETECTED) AND (DOOR_UNLOCKED))
+
+LLM-generated Boolean Logic: (ALARM_SOUND) IMPLIES ((MOTION_DETECTED) AND (DOOR_UNLOCKED))
+--- Pyparsing ParseResults Object (Raw) ---
+[['ALARM_SOUND'], 'IMPLIES', [['MOTION_DETECTED'], 'AND', ['DOOR_UNLOCKED']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: ALARM_SOUND
+  Right: AND
+    Left: MOTION_DETECTED
+    Right: DOOR_UNLOCKED
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  ALARM_SOUND
+  AND
+    MOTION_DETECTED
+    DOOR_UNLOCKED
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    ALARM_SOUND
+  AND
+    MOTION_DETECTED
+    DOOR_UNLOCKED
+
+======================================================================
+
+
+--- Requirement 6 ---
+Natural Language: "The alarm will sound unless motion is not detected and the door is unlocked."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+(ALARM_SOUND) IMPLIES ((NOT MOTION_DETECTED) AND (NOT DOOR_UNLOCKED))
+
+LLM-generated Boolean Logic: (ALARM_SOUND) IMPLIES ((NOT MOTION_DETECTED) AND (NOT DOOR_UNLOCKED))
+--- Pyparsing ParseResults Object (Raw) ---
+[['ALARM_SOUND'], 'IMPLIES', [['NOT', ['MOTION_DETECTED']], 'AND', ['NOT', ['DOOR_UNLOCKED']]]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: ALARM_SOUND
+  Right: AND
+    Left: NOT
+      Operand: MOTION_DETECTED
+    Right: NOT
+      Operand: DOOR_UNLOCKED
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  ALARM_SOUND
+  AND
+    NOT
+      MOTION_DETECTED
+    NOT
+      DOOR_UNLOCKED
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    ALARM_SOUND
+  AND
+    NOT
+      MOTION_DETECTED
+    NOT
+      DOOR_UNLOCKED
+
+======================================================================
+
+
+--- Requirement 7 ---
+Natural Language: "The alarm will sound unless motion is detected and the door is not unlocked."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+(ALARM_SOUND) IMPLIES ((MOTION_DETECTED) AND (NOT DOOR_UNLOCKED))
+
+LLM-generated Boolean Logic: (ALARM_SOUND) IMPLIES ((MOTION_DETECTED) AND (NOT DOOR_UNLOCKED))
+--- Pyparsing ParseResults Object (Raw) ---
+[['ALARM_SOUND'], 'IMPLIES', [['MOTION_DETECTED'], 'AND', ['NOT', ['DOOR_UNLOCKED']]]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: ALARM_SOUND
+  Right: AND
+    Left: MOTION_DETECTED
+    Right: NOT
+      Operand: DOOR_UNLOCKED
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  ALARM_SOUND
+  AND
+    MOTION_DETECTED
+    NOT
+      DOOR_UNLOCKED
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    ALARM_SOUND
+  AND
+    MOTION_DETECTED
+    NOT
+      DOOR_UNLOCKED
+
+======================================================================
+
+
+--- Requirement 8 ---
+Natural Language: "The alarm will sound unless motion is not detected or the door is not unlocked."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+(ALARM_SOUND) IMPLIES ((NOT MOTION_DETECTED) OR (NOT DOOR_UNLOCKED))
+
+LLM-generated Boolean Logic: (ALARM_SOUND) IMPLIES ((NOT MOTION_DETECTED) OR (NOT DOOR_UNLOCKED))
+--- Pyparsing ParseResults Object (Raw) ---
+[['ALARM_SOUND'], 'IMPLIES', [['NOT', ['MOTION_DETECTED']], 'OR', ['NOT', ['DOOR_UNLOCKED']]]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: ALARM_SOUND
+  Right: OR
+    Left: NOT
+      Operand: MOTION_DETECTED
+    Right: NOT
+      Operand: DOOR_UNLOCKED
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  ALARM_SOUND
+  OR
+    NOT
+      MOTION_DETECTED
+    NOT
+      DOOR_UNLOCKED
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    ALARM_SOUND
+  OR
+    NOT
+      MOTION_DETECTED
+    NOT
+      DOOR_UNLOCKED
+
+======================================================================
+
+
+--- Requirement 9 ---
+Natural Language: "The alarm will not sound unless motion is detected."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+ALARM_SOUND IMPLIES MOTION_DETECTED
+
+LLM-generated Boolean Logic: ALARM_SOUND IMPLIES MOTION_DETECTED
+--- Pyparsing ParseResults Object (Raw) ---
+[['ALARM_SOUND'], 'IMPLIES', ['MOTION_DETECTED']]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: ALARM_SOUND
+  Right: MOTION_DETECTED
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  ALARM_SOUND
+  MOTION_DETECTED
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    ALARM_SOUND
+  MOTION_DETECTED
+
+======================================================================
+
+
+--- Requirement 10 ---
+Natural Language: "The alarm will not sound unless the door is unlocked."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+(DOOR_UNLOCKED IMPLIES NOT ALARM_SOUNDING)
+
+LLM-generated Boolean Logic: (DOOR_UNLOCKED IMPLIES NOT ALARM_SOUNDING)
+--- Pyparsing ParseResults Object (Raw) ---
+[['DOOR_UNLOCKED'], 'IMPLIES', ['NOT', ['ALARM_SOUNDING']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: DOOR_UNLOCKED
+  Right: NOT
+    Operand: ALARM_SOUNDING
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  DOOR_UNLOCKED
+  NOT
+    ALARM_SOUNDING
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    DOOR_UNLOCKED
+  NOT
+    ALARM_SOUNDING
+
+======================================================================
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Test - 4 (Provided that) :-
+
+
+
+--- Requirement 1 ---
+Natural Language: "The sprinkler system will not activate provided that the temperature is below 50 degrees and the humidity is below 60%."   
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+(SPRINKLER_ACTIVATED IMPLIES (TEMPERATURE > 50) OR HUMIDITY > 60))
+
+LLM-generated Boolean Logic: (SPRINKLER_ACTIVATED IMPLIES (TEMPERATURE > 50) OR HUMIDITY > 60))
+Error parsing expression: Expected 'IMPLIES' term, found 'IMPLIES'  (at char 21), (line:1, col:22)
+Skipping processing due to parsing error.
+
+======================================================================
+
+
+--- Requirement 2 ---
+Natural Language: "The sprinkler system will not activate provided that the temperature is not below 50 degrees and the humidity is below 60%."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+(SPRINKLER_ACTIVATED IMPLIES (TEMPERATURE >= 50) AND HUMIDITY < 0.6)
+
+LLM-generated Boolean Logic: (SPRINKLER_ACTIVATED IMPLIES (TEMPERATURE >= 50) AND HUMIDITY < 0.6)
+Error parsing expression: Expected 'IMPLIES' term, found 'IMPLIES'  (at char 21), (line:1, col:22)
+Skipping processing due to parsing error.
+
+======================================================================
+
+
+--- Requirement 3 ---
+Natural Language: "The sprinkler system will not activate provided that the temperature is below 50 degrees and the humidity is not below 60%."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+(SPRINKLER_ACTIVATED IMPLIES (TEMPERATURE >= 50) AND (HUMIDITY >= 0.6))
+
+LLM-generated Boolean Logic: (SPRINKLER_ACTIVATED IMPLIES (TEMPERATURE >= 50) AND (HUMIDITY >= 0.6))
+Error parsing expression: Expected 'IMPLIES' term, found 'IMPLIES'  (at char 21), (line:1, col:22)
+Skipping processing due to parsing error.
+
+======================================================================
+
+
+--- Requirement 4 ---
+Natural Language: "The sprinkler system will not activate provided that the temperature is not below 50 degrees or the humidity is not below 60%."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+(SPRINKLER_ACTIVATED IMPLIES (TEMPERATURE >= 50) OR (HUMIDITY >= 0.6))
+
+LLM-generated Boolean Logic: (SPRINKLER_ACTIVATED IMPLIES (TEMPERATURE >= 50) OR (HUMIDITY >= 0.6))
+Error parsing expression: Expected 'IMPLIES' term, found 'IMPLIES'  (at char 21), (line:1, col:22)
+Skipping processing due to parsing error.
+
+======================================================================
+
+
+--- Requirement 5 ---
+Natural Language: "The sprinkler system will activate provided that the temperature is below 50 degrees and the humidity is below 60%."       
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+TEMPERATURE BELOW_50 AND HUMIDITY BELOW_60 IMPLIES SPRINKLER_ACTIVATED
+
+LLM-generated Boolean Logic: TEMPERATURE BELOW_50 AND HUMIDITY BELOW_60 IMPLIES SPRINKLER_ACTIVATED
+Error parsing expression: Expected end of text, found 'BELOW'  (at char 12), (line:1, col:13)
+Skipping processing due to parsing error.
+
+======================================================================
+
+
+--- Requirement 6 ---
+Natural Language: "The sprinkler system will activate provided that the temperature is not below 50 degrees and the humidity is below 60%."   
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+(SPRINKLER_ACTIVATED IMPLIES (TEMPERATURE >= 50) AND HUMIDITY < 0.6)
+
+LLM-generated Boolean Logic: (SPRINKLER_ACTIVATED IMPLIES (TEMPERATURE >= 50) AND HUMIDITY < 0.6)
+Error parsing expression: Expected 'IMPLIES' term, found 'IMPLIES'  (at char 21), (line:1, col:22)
+Skipping processing due to parsing error.
+
+======================================================================
+
+
+--- Requirement 7 ---
+Natural Language: "The sprinkler system will activate provided that the temperature is below 50 degrees and the humidity is not below 60%."   
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+(SPRINKLER_ACTIVATED IMPLIES (TEMPERATURE < 50) AND (HUMIDITY >= 60))
+
+LLM-generated Boolean Logic: (SPRINKLER_ACTIVATED IMPLIES (TEMPERATURE < 50) AND (HUMIDITY >= 60))
+Error parsing expression: Expected 'IMPLIES' term, found 'IMPLIES'  (at char 21), (line:1, col:22)
+Skipping processing due to parsing error.
+
+======================================================================
+
+
+--- Requirement 8 ---
+Natural Language: "The sprinkler system will activate provided that the temperature is not below 50 degrees or the humidity is not below 60%."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+(SPRINKLER_ACTIVATED IMPLIES (TEMPERATURE >= 50) OR (HUMIDITY >= 0.6))
+
+LLM-generated Boolean Logic: (SPRINKLER_ACTIVATED IMPLIES (TEMPERATURE >= 50) OR (HUMIDITY >= 0.6))
+Error parsing expression: Expected 'IMPLIES' term, found 'IMPLIES'  (at char 21), (line:1, col:22)
+Skipping processing due to parsing error.
+
+======================================================================
+
+
+--- Requirement 9 ---
+Natural Language: "The sprinkler system will not activate provided that the temperature is below 50 degrees."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+TEMPERATURE_BELOW_50 IMPLIES NOT SPRINKLER_ACTIVATED
+
+LLM-generated Boolean Logic: TEMPERATURE_BELOW_50 IMPLIES NOT SPRINKLER_ACTIVATED
+Error parsing expression: Expected end of text, found '50'  (at char 18), (line:1, col:19)
+Skipping processing due to parsing error.
+
+======================================================================
+
+
+--- Requirement 10 ---
+Natural Language: "The sprinkler system will not activate provided that the humidity is below 60%."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+(HUMIDITY < 60) IMPLIES (SPRINKLER_SYSTEM_ACTIVATED = FALSE)
+
+LLM-generated Boolean Logic: (HUMIDITY < 60) IMPLIES (SPRINKLER_SYSTEM_ACTIVATED = FALSE)
+Error parsing expression: Expected 'IMPLIES' term, found '<'  (at char 10), (line:1, col:11)
+Skipping processing due to parsing error.
+
+======================================================================
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+Test - 5 (IFF) :-
+
+
+
+
+--- Requirement 1 ---
+Natural Language: "The alarm will sound if and only if motion is detected and the security system is armed."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+(ALARM_SOUND) IMPLIES ((MOTION_DETECTED) AND (SECURITY_SYSTEM_ARMED))
+
+LLM-generated Boolean Logic: (ALARM_SOUND) IMPLIES ((MOTION_DETECTED) AND (SECURITY_SYSTEM_ARMED))
+--- Pyparsing ParseResults Object (Raw) ---
+[['ALARM_SOUND'], 'IMPLIES', [['MOTION_DETECTED'], 'AND', ['SECURITY_SYSTEM_ARMED']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: ALARM_SOUND
+  Right: AND
+    Left: MOTION_DETECTED
+    Right: SECURITY_SYSTEM_ARMED
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  ALARM_SOUND
+  AND
+    MOTION_DETECTED
+    SECURITY_SYSTEM_ARMED
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    ALARM_SOUND
+  AND
+    MOTION_DETECTED
+    SECURITY_SYSTEM_ARMED
+
+======================================================================
+
+
+--- Requirement 2 ---
+Natural Language: "The alarm will sound if and only if motion is detected and the security system is not armed."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+ALARM_SOUND IMPLIES (MOTION_DETECTED AND NOT SECURITY_SYSTEM_ARMED)
+
+LLM-generated Boolean Logic: ALARM_SOUND IMPLIES (MOTION_DETECTED AND NOT SECURITY_SYSTEM_ARMED)
+--- Pyparsing ParseResults Object (Raw) ---
+[['ALARM_SOUND'], 'IMPLIES', [['MOTION_DETECTED'], 'AND', ['NOT', ['SECURITY_SYSTEM_ARMED']]]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: ALARM_SOUND
+  Right: AND
+    Left: MOTION_DETECTED
+    Right: NOT
+      Operand: SECURITY_SYSTEM_ARMED
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  ALARM_SOUND
+  AND
+    MOTION_DETECTED
+    NOT
+      SECURITY_SYSTEM_ARMED
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    ALARM_SOUND
+  AND
+    MOTION_DETECTED
+    NOT
+      SECURITY_SYSTEM_ARMED
+
+======================================================================
+
+
+--- Requirement 3 ---
+Natural Language: "The alarm will sound if and only if motion is not detected and the security system is armed."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+ALARM_SOUND IMPLIES (NOT MOTION_DETECTED AND SECURITY_SYSTEM_ARMED)
+
+LLM-generated Boolean Logic: ALARM_SOUND IMPLIES (NOT MOTION_DETECTED AND SECURITY_SYSTEM_ARMED)
+--- Pyparsing ParseResults Object (Raw) ---
+[['ALARM_SOUND'], 'IMPLIES', [['NOT', ['MOTION_DETECTED']], 'AND', ['SECURITY_SYSTEM_ARMED']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: ALARM_SOUND
+  Right: AND
+    Left: NOT
+      Operand: MOTION_DETECTED
+    Right: SECURITY_SYSTEM_ARMED
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  ALARM_SOUND
+  AND
+    NOT
+      MOTION_DETECTED
+    SECURITY_SYSTEM_ARMED
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    ALARM_SOUND
+  AND
+    NOT
+      MOTION_DETECTED
+    SECURITY_SYSTEM_ARMED
+
+======================================================================
+
+
+--- Requirement 4 ---
+Natural Language: "The alarm will sound if and only if motion is not detected or the security system is not armed."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+ALARM_SOUND IMPLIES (NOT MOTION_DETECTED OR NOT SECURITY_SYSTEM_ARMED)
+
+LLM-generated Boolean Logic: ALARM_SOUND IMPLIES (NOT MOTION_DETECTED OR NOT SECURITY_SYSTEM_ARMED)
+--- Pyparsing ParseResults Object (Raw) ---
+[['ALARM_SOUND'], 'IMPLIES', [['NOT', ['MOTION_DETECTED']], 'OR', ['NOT', ['SECURITY_SYSTEM_ARMED']]]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: ALARM_SOUND
+  Right: OR
+    Left: NOT
+      Operand: MOTION_DETECTED
+    Right: NOT
+      Operand: SECURITY_SYSTEM_ARMED
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  ALARM_SOUND
+  OR
+    NOT
+      MOTION_DETECTED
+    NOT
+      SECURITY_SYSTEM_ARMED
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    ALARM_SOUND
+  OR
+    NOT
+      MOTION_DETECTED
+    NOT
+      SECURITY_SYSTEM_ARMED
+
+======================================================================
+
+
+--- Requirement 5 ---
+Natural Language: "The alarm will not sound if and only if motion is detected and the security system is armed."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+ALARM_SOUND IMPLIES (NOT MOTION_DETECTED OR NOT SECURITY_SYSTEM_ARMED)
+
+LLM-generated Boolean Logic: ALARM_SOUND IMPLIES (NOT MOTION_DETECTED OR NOT SECURITY_SYSTEM_ARMED)
+--- Pyparsing ParseResults Object (Raw) ---
+[['ALARM_SOUND'], 'IMPLIES', [['NOT', ['MOTION_DETECTED']], 'OR', ['NOT', ['SECURITY_SYSTEM_ARMED']]]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: ALARM_SOUND
+  Right: OR
+    Left: NOT
+      Operand: MOTION_DETECTED
+    Right: NOT
+      Operand: SECURITY_SYSTEM_ARMED
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  ALARM_SOUND
+  OR
+    NOT
+      MOTION_DETECTED
+    NOT
+      SECURITY_SYSTEM_ARMED
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    ALARM_SOUND
+  OR
+    NOT
+      MOTION_DETECTED
+    NOT
+      SECURITY_SYSTEM_ARMED
+
+======================================================================
+
+
+--- Requirement 6 ---
+Natural Language: "The alarm will not sound if and only if motion is detected and the security system is not armed."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+ALARM_SOUND IMPLIES (NOT MOTION_DETECTED OR SECURITY_SYSTEM_ARMED)
+
+LLM-generated Boolean Logic: ALARM_SOUND IMPLIES (NOT MOTION_DETECTED OR SECURITY_SYSTEM_ARMED)
+--- Pyparsing ParseResults Object (Raw) ---
+[['ALARM_SOUND'], 'IMPLIES', [['NOT', ['MOTION_DETECTED']], 'OR', ['SECURITY_SYSTEM_ARMED']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: ALARM_SOUND
+  Right: OR
+    Left: NOT
+      Operand: MOTION_DETECTED
+    Right: SECURITY_SYSTEM_ARMED
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  ALARM_SOUND
+  OR
+    NOT
+      MOTION_DETECTED
+    SECURITY_SYSTEM_ARMED
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    ALARM_SOUND
+  OR
+    NOT
+      MOTION_DETECTED
+    SECURITY_SYSTEM_ARMED
+
+======================================================================
+
+
+--- Requirement 7 ---
+Natural Language: "The alarm will not sound if and only if motion is not detected and the security system is armed."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+ALARM_SOUND IMPLIES (NOT MOTION_DETECTED AND SECURITY_SYSTEM_ARMED)
+
+LLM-generated Boolean Logic: ALARM_SOUND IMPLIES (NOT MOTION_DETECTED AND SECURITY_SYSTEM_ARMED)
+--- Pyparsing ParseResults Object (Raw) ---
+[['ALARM_SOUND'], 'IMPLIES', [['NOT', ['MOTION_DETECTED']], 'AND', ['SECURITY_SYSTEM_ARMED']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: ALARM_SOUND
+  Right: AND
+    Left: NOT
+      Operand: MOTION_DETECTED
+    Right: SECURITY_SYSTEM_ARMED
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  ALARM_SOUND
+  AND
+    NOT
+      MOTION_DETECTED
+    SECURITY_SYSTEM_ARMED
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    ALARM_SOUND
+  AND
+    NOT
+      MOTION_DETECTED
+    SECURITY_SYSTEM_ARMED
+
+======================================================================
+
+
+--- Requirement 8 ---
+Natural Language: "The alarm will not sound if and only if motion is not detected or the security system is not armed."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+(ALARM_SOUND IMPLIES (NOT MOTION_DETECTED) AND (NOT SECURITY_SYSTEM_ARMED))
+
+LLM-generated Boolean Logic: (ALARM_SOUND IMPLIES (NOT MOTION_DETECTED) AND (NOT SECURITY_SYSTEM_ARMED))
+--- Pyparsing ParseResults Object (Raw) ---
+[['ALARM_SOUND'], 'IMPLIES', [['NOT', ['MOTION_DETECTED']], 'AND', ['NOT', ['SECURITY_SYSTEM_ARMED']]]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: ALARM_SOUND
+  Right: AND
+    Left: NOT
+      Operand: MOTION_DETECTED
+    Right: NOT
+      Operand: SECURITY_SYSTEM_ARMED
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  ALARM_SOUND
+  AND
+    NOT
+      MOTION_DETECTED
+    NOT
+      SECURITY_SYSTEM_ARMED
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    ALARM_SOUND
+  AND
+    NOT
+      MOTION_DETECTED
+    NOT
+      SECURITY_SYSTEM_ARMED
+
+======================================================================
+
+
+--- Requirement 9 ---
+Natural Language: "The alarm will sound if and only if motion is detected."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+ALARM_SOUND IMPLIES (MOTION_DETECTED) AND (MOTION_DETECTED IMPLIES ALARM_SOUND)
+
+LLM-generated Boolean Logic: ALARM_SOUND IMPLIES (MOTION_DETECTED) AND (MOTION_DETECTED IMPLIES ALARM_SOUND)
+--- Pyparsing ParseResults Object (Raw) ---
+[['ALARM_SOUND'], 'IMPLIES', [['MOTION_DETECTED'], 'AND', [['MOTION_DETECTED'], 'IMPLIES', ['ALARM_SOUND']]]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: ALARM_SOUND
+  Right: AND
+    Left: MOTION_DETECTED
+    Right: IMPLIES
+      Left: MOTION_DETECTED
+      Right: ALARM_SOUND
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  ALARM_SOUND
+  AND
+    MOTION_DETECTED
+    IMPLIES
+      MOTION_DETECTED
+      ALARM_SOUND
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    ALARM_SOUND
+  AND
+    MOTION_DETECTED
+    OR
+      NOT
+        MOTION_DETECTED
+      ALARM_SOUND
+
+======================================================================
+
+
+--- Requirement 10 ---
+Natural Language: "The alarm will sound if and only if the security system is armed."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+ALARM_SOUND IMPLIES (SECURITY_SYSTEM_ARMED) AND (SECURITY_SYSTEM_ARMED IMPLIES ALARM_SOUND)
+
+LLM-generated Boolean Logic: ALARM_SOUND IMPLIES (SECURITY_SYSTEM_ARMED) AND (SECURITY_SYSTEM_ARMED IMPLIES ALARM_SOUND)
+--- Pyparsing ParseResults Object (Raw) ---
+[['ALARM_SOUND'], 'IMPLIES', [['SECURITY_SYSTEM_ARMED'], 'AND', [['SECURITY_SYSTEM_ARMED'], 'IMPLIES', ['ALARM_SOUND']]]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: ALARM_SOUND
+  Right: AND
+    Left: SECURITY_SYSTEM_ARMED
+    Right: IMPLIES
+      Left: SECURITY_SYSTEM_ARMED
+      Right: ALARM_SOUND
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  ALARM_SOUND
+  AND
+    SECURITY_SYSTEM_ARMED
+    IMPLIES
+      SECURITY_SYSTEM_ARMED
+      ALARM_SOUND
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    ALARM_SOUND
+  AND
+    SECURITY_SYSTEM_ARMED
+    OR
+      NOT
+        SECURITY_SYSTEM_ARMED
+      ALARM_SOUND
+
+======================================================================
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+Test - 6 (But) :-
+
+
+
+--- Requirement 1 ---
+Natural Language: "The primary display will show status alerts, but only if the system is active and there are no critical errors." 
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS IMPLIES (SYSTEM_ACTIVE AND NOT CRITICAL_ERRORS)
+
+LLM-generated Boolean Logic: PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS IMPLIES (SYSTEM_ACTIVE AND NOT CRITICAL_ERRORS)
+--- Pyparsing ParseResults Object (Raw) ---
+[['PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS'], 'IMPLIES', [['SYSTEM_ACTIVE'], 'AND', ['NOT', ['CRITICAL_ERRORS']]]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  Right: AND
+    Left: SYSTEM_ACTIVE
+    Right: NOT
+      Operand: CRITICAL_ERRORS
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  AND
+    SYSTEM_ACTIVE
+    NOT
+      CRITICAL_ERRORS
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  AND
+    SYSTEM_ACTIVE
+    NOT
+      CRITICAL_ERRORS
+
+======================================================================
+
+
+--- Requirement 2 ---
+Natural Language: "The primary display will show status alerts, but only if the system is active and there are critical errors."    
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS IMPLIES (SYSTEM_ACTIVE AND CRITICAL_ERRORS)
+
+LLM-generated Boolean Logic: PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS IMPLIES (SYSTEM_ACTIVE AND CRITICAL_ERRORS)
+--- Pyparsing ParseResults Object (Raw) ---
+[['PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS'], 'IMPLIES', [['SYSTEM_ACTIVE'], 'AND', ['CRITICAL_ERRORS']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  Right: AND
+    Left: SYSTEM_ACTIVE
+    Right: CRITICAL_ERRORS
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  AND
+    SYSTEM_ACTIVE
+    CRITICAL_ERRORS
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  AND
+    SYSTEM_ACTIVE
+    CRITICAL_ERRORS
+
+======================================================================
+
+
+--- Requirement 3 ---
+Natural Language: "The primary display will show status alerts, but only if the system is not active and there are no critical errors."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS IMPLIES (NOT SYSTEM_ACTIVE) AND (NO_CRITICAL_ERRORS)
+
+LLM-generated Boolean Logic: PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS IMPLIES (NOT SYSTEM_ACTIVE) AND (NO_CRITICAL_ERRORS)
+--- Pyparsing ParseResults Object (Raw) ---
+[['PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS'], 'IMPLIES', [['NOT', ['SYSTEM_ACTIVE']], 'AND', ['NO_CRITICAL_ERRORS']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  Right: AND
+    Left: NOT
+      Operand: SYSTEM_ACTIVE
+    Right: NO_CRITICAL_ERRORS
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  AND
+    NOT
+      SYSTEM_ACTIVE
+    NO_CRITICAL_ERRORS
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  AND
+    NOT
+      SYSTEM_ACTIVE
+    NO_CRITICAL_ERRORS
+
+======================================================================
+
+
+--- Requirement 4 ---
+Natural Language: "The primary display will show status alerts, but only if the system is not active or there are critical errors." 
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS IMPLIES (NOT SYSTEM_ACTIVE OR CRITICAL_ERRORS)
+
+LLM-generated Boolean Logic: PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS IMPLIES (NOT SYSTEM_ACTIVE OR CRITICAL_ERRORS)
+--- Pyparsing ParseResults Object (Raw) ---
+[['PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS'], 'IMPLIES', [['NOT', ['SYSTEM_ACTIVE']], 'OR', ['CRITICAL_ERRORS']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  Right: OR
+    Left: NOT
+      Operand: SYSTEM_ACTIVE
+    Right: CRITICAL_ERRORS
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  OR
+    NOT
+      SYSTEM_ACTIVE
+    CRITICAL_ERRORS
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  OR
+    NOT
+      SYSTEM_ACTIVE
+    CRITICAL_ERRORS
+
+======================================================================
+
+
+--- Requirement 5 ---
+Natural Language: "The primary display will not show status alerts, but only if the system is active and there are no critical errors."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS IMPLIES (NOT SYSTEM_ACTIVE OR CRITICAL_ERRORS)
+
+LLM-generated Boolean Logic: PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS IMPLIES (NOT SYSTEM_ACTIVE OR CRITICAL_ERRORS)
+--- Pyparsing ParseResults Object (Raw) ---
+[['PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS'], 'IMPLIES', [['NOT', ['SYSTEM_ACTIVE']], 'OR', ['CRITICAL_ERRORS']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  Right: OR
+    Left: NOT
+      Operand: SYSTEM_ACTIVE
+    Right: CRITICAL_ERRORS
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  OR
+    NOT
+      SYSTEM_ACTIVE
+    CRITICAL_ERRORS
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  OR
+    NOT
+      SYSTEM_ACTIVE
+    CRITICAL_ERRORS
+
+======================================================================
+
+
+--- Requirement 6 ---
+Natural Language: "The primary display will not show status alerts, but only if the system is active and there are critical errors."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS IMPLIES (NOT SYSTEM_ACTIVE OR NOT CRITICAL_ERRORS)
+
+LLM-generated Boolean Logic: PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS IMPLIES (NOT SYSTEM_ACTIVE OR NOT CRITICAL_ERRORS)
+--- Pyparsing ParseResults Object (Raw) ---
+[['PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS'], 'IMPLIES', [['NOT', ['SYSTEM_ACTIVE']], 'OR', ['NOT', ['CRITICAL_ERRORS']]]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  Right: OR
+    Left: NOT
+      Operand: SYSTEM_ACTIVE
+    Right: NOT
+      Operand: CRITICAL_ERRORS
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  OR
+    NOT
+      SYSTEM_ACTIVE
+    NOT
+      CRITICAL_ERRORS
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  OR
+    NOT
+      SYSTEM_ACTIVE
+    NOT
+      CRITICAL_ERRORS
+
+======================================================================
+
+
+--- Requirement 7 ---
+Natural Language: "The primary display will not show status alerts, but only if the system is not active and there are no critical errors."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS IMPLIES (NOT SYSTEM_ACTIVE OR NOT CRITICAL_ERRORS)
+
+LLM-generated Boolean Logic: PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS IMPLIES (NOT SYSTEM_ACTIVE OR NOT CRITICAL_ERRORS)
+--- Pyparsing ParseResults Object (Raw) ---
+[['PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS'], 'IMPLIES', [['NOT', ['SYSTEM_ACTIVE']], 'OR', ['NOT', ['CRITICAL_ERRORS']]]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  Right: OR
+    Left: NOT
+      Operand: SYSTEM_ACTIVE
+    Right: NOT
+      Operand: CRITICAL_ERRORS
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  OR
+    NOT
+      SYSTEM_ACTIVE
+    NOT
+      CRITICAL_ERRORS
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  OR
+    NOT
+      SYSTEM_ACTIVE
+    NOT
+      CRITICAL_ERRORS
+
+======================================================================
+
+
+--- Requirement 8 ---
+Natural Language: "The primary display will not show status alerts, but only if the system is not active or there are critical errors."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS IMPLIES (NOT SYSTEM_ACTIVE OR CRITICAL_ERRORS)
+
+LLM-generated Boolean Logic: PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS IMPLIES (NOT SYSTEM_ACTIVE OR CRITICAL_ERRORS)
+--- Pyparsing ParseResults Object (Raw) ---
+[['PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS'], 'IMPLIES', [['NOT', ['SYSTEM_ACTIVE']], 'OR', ['CRITICAL_ERRORS']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  Right: OR
+    Left: NOT
+      Operand: SYSTEM_ACTIVE
+    Right: CRITICAL_ERRORS
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  OR
+    NOT
+      SYSTEM_ACTIVE
+    CRITICAL_ERRORS
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  OR
+    NOT
+      SYSTEM_ACTIVE
+    CRITICAL_ERRORS
+
+======================================================================
+
+
+--- Requirement 9 ---
+Natural Language: "The primary display will show status alerts, but only if the system is active."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS IMPLIES SYSTEM_IS_ACTIVE
+
+LLM-generated Boolean Logic: PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS IMPLIES SYSTEM_IS_ACTIVE
+--- Pyparsing ParseResults Object (Raw) ---
+[['PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS'], 'IMPLIES', ['SYSTEM_IS_ACTIVE']]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  Right: SYSTEM_IS_ACTIVE
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  SYSTEM_IS_ACTIVE
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  SYSTEM_IS_ACTIVE
+
+======================================================================
+
+
+--- Requirement 10 ---
+Natural Language: "The primary display will show status alerts, but only if there are no critical errors."
+Ground Truth Boolean Logic: NOT SOFTWARE_INSTALL IFF (OPERATING_SYSTEM_OUTDATED AND NOT_ENOUGH_DISK_SPACE)
+
+LLM Raw Output:
+PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS IMPLIES NOT CRITICAL_ERRORS
+
+LLM-generated Boolean Logic: PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS IMPLIES NOT CRITICAL_ERRORS
+--- Pyparsing ParseResults Object (Raw) ---
+[['PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS'], 'IMPLIES', ['NOT', ['CRITICAL_ERRORS']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  Right: NOT
+    Operand: CRITICAL_ERRORS
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  NOT
+    CRITICAL_ERRORS
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    PRIMARY_DISPLAY_SHOWS_STATUS_ALERTS
+  NOT
+    CRITICAL_ERRORS
+
+======================================================================
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+

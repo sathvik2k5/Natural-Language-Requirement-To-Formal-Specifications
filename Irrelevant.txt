@@ -1,0 +1,51 @@
+--- Requirement 6 ---
+Natural Language: "Notifications will appear, but not when do not disturb mode is active or when the phone is switched off."
+Ground Truth Boolean Logic: NOTIFICATIONS IF DND_MODE_DISABLED AND PHONE_ON
+
+LLM Raw Output:
+NOT (NOT DOOR_OPEN OR NOT POWER_ON) IMPLIES NOTIFICATIONS_APPEAR
+
+LLM-generated Boolean Logic: NOT (NOT DOOR_OPEN OR NOT POWER_ON) IMPLIES NOTIFICATIONS_APPEAR
+
+-> Sometimes the LLM generates completely irrelevant logics. Why is that? :(
+
+------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 6 ---
+Natural Language: "Notifications will appear, except when do not disturb mode is active or when the phone is switched off."
+Ground Truth Boolean Logic: NOTIFICATIONS IF DND_MODE_DISABLED AND PHONE_ON
+
+LLM-generated Boolean Logic: NOT (NOT DOOR_OPEN OR NOT PHONE_ON) IMPLIES NOTIFICATIONS_APPEAR
+
+-> It gave the irrelevant logic for the same kind of sentence but not others. (The Sentence to LLM: WHAT HAVE I DONE TO YOU????)
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+Interesting finding:
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+-> DOOR_OPEN was one of the Boolean Variables I gave as an example for it to understand the format.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 6 ---
+Natural Language: "Notifications will not appear unless do not disturb mode is disabled and the phone is switched on."
+Ground Truth Boolean Logic: NOTIFICATIONS UNLESS DND_MODE_ENABLED OR PHONE_OFF
+
+LLM-generated Boolean Logic: NOT NOTIFICATION_APPEARS
+
+-> This example was never correct LOL. Until now it was giving DOOR_OPEN for do not disturb. This time to probably got too 
+   lazy and just gave Notifications will never appear heh.
+
+---------------------------------------------------------------------------------------------------------------------------------

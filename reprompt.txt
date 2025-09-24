@@ -1,0 +1,292 @@
+
+--- Requirement 1 ---
+Natural Language: "The system will install updates, except if there is not enough disk space or the update is not available."
+Ground Truth Boolean Logic: SOFTWARE_INSTALL IF ENOUGH_DISK_SPACE AND UPDATE_AVAILABLE
+
+LLM-generated Boolean Logic: SYSTEM_INSTALLATION IMPLIES (NOT (NOT ENOUGH_DISK_SPACE OR UPDATE_AVAILABLE))
+Manual Prompt Testing Mode - Type your prompts directly
+Type 'quit' to exit
+
+
+Attempt 1:
+Your prompt: 'Natural Language: "The system will install updates, except if there is not enough disk space or the update is not available."   for this natural language requirement, the LLM generated boolean logic was LLM-generated Boolean Logic: SYSTEM_INSTALLATION IMPLIES (NOT (NOT ENOUGH_DISK_SPACE OR UPDATE_AVAILABLE)) but here its wrong after IMPLIES it should install software when update IS available. so give me th new corrected boolean logic'
+LLM response: I see what you mean!
+
+The original LLM-generated Boolean Logic is indeed incorrect. Here's the corrected version:
+
+LLM-Generated Boolean Logic: SYSTEM_INSTALLATION IMPLIES (UPDATE_AVAILABLE OR ENOUGH_DISK_SPACE)
+
+In plain English, this means:
+
+* If the system installation is possible, it will install updates...
+	+ ...only if there is enough disk space AND an update is available.
+	+ ...or only if there is not enough disk space (but no update is needed).
+
+This corrected Boolean Logic reflects the correct natural language requirement: "The system will install updates, except if there is not enough disk space or the
+
+
+Attempt 2:
+Your prompt: 'Natural Language: "The system will install updates, except if there is not enough disk space or the update is not available." for this natural language requirement the LLM generated output is LLM-Generated Boolean Logic: SYSTEM_INSTALLATION IMPLIES (UPDATE_AVAILABLE OR ENOUGH_DISK_SPACE) but iboth updates should be available AND disk space should be enough for software installation'
+LLM response: I see what's going on here!
+
+The LLM-generated Boolean logic `SYSTEM_INSTALLATION IMPLIES (UPDATE_AVAILABLE OR ENOUGH_DISK_SPACE)` is indeed a correct representation of the natural language statement, but it's not entirely accurate. The issue is that the original statement implies both conditions must be true for software installation to occur.
+
+To correctly represent this requirement in Boolean logic, we need to use the AND operator (`AND`) instead of the OR operator (`OR`). Here's the corrected LLM-generated Boolean logic:
+
+`SYSTEM_INSTALLATION IMPLIES (UPDATE_AVAILABLE AND ENOUGH_DISK_SPACE)`
+
+This logic states that system installation is
+
+
+Testing completed. Total attempts: 2
+
+------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 1 ---
+Natural Language: "The system will install updates, except if there is not enough disk space or the update is not available."
+Ground Truth Boolean Logic: SOFTWARE_INSTALL IF ENOUGH_DISK_SPACE AND UPDATE_AVAILABLE
+
+LLM-generated Boolean Logic: SYSTEM_INSTALLATION IMPLIES (NOT (NOT ENOUGH_DISK_SPACE OR UPDATE_AVAILABLE))
+Manual Prompt Testing Mode - Type your prompts directly
+Type 'quit' to exit
+
+
+Attempt 1:
+Your prompt: 'Here, update must also be available for software installation understand the requirement properly.'
+LLM response: SYSTEM_INSTALLATION IMPLIES (NOT (NOT ENOUGH_DISK_SPACE OR UPDATE_AVAILABLE) AND UPDATE_AVAILABLE)
+
+
+Attempt 2:
+Your prompt: 'No the requirement means it needs enough disk space AND update should be available.'
+LLM response: SYSTEM_INSTALLATION → (ENOUGH_DISK_SPACE ∧ UPDATE_AVAILABLE)
+
+
+Testing completed. Total attempts: 2
+
+------------------------------------------------------------------------------------------------------------------------------
+
+-> I tested reprompting to find out how many attempts its taking for the except cases since we had many errors for that dataset.
+
+--- Requirement 1 ---
+Natural Language: "The system will install updates, except if there is not enough disk space or the update is not available."
+Ground Truth Boolean Logic: SOFTWARE_INSTALL IF ENOUGH_DISK_SPACE AND UPDATE_AVAILABLE
+
+LLM-generated Boolean Logic: SYSTEM_INSTALLATION IMPLIES (NOT (NOT ENOUGH_DISK_SPACE OR UPDATE_AVAILABLE))
+Manual Prompt Testing Mode - Type your prompts directly
+Type 'quit' to exit
+
+
+Attempt 1:
+Your prompt: 'Here, it nees enough disk space and the update must be available for software installation'
+LLM response: UPDATE_AVAILABLE ∧ SUFFICIENT_DISK_SPACE → SYSTEM_INSTALLATION
+
+
+Attempt 2:
+Your prompt: 'no you changed the requirement point see the original requirement, you reversed the expected logic'
+LLM response: ¬(UPDATE_AVAILABLE ∨ SUFFICIENT_DISK_SPACE) → ¬SYSTEM_INSTALLATION
+
+
+Testing completed. Total attempts: 2
+
+--- Requirement 2 ---
+Natural Language: "The application will launch, except if the operating system is outdated or the user is not logged in."
+Ground Truth Boolean Logic: APPLICATION_LAUNCH IF OPERATING_SYSTEM_UPDATED AND USER_LOGGED_IN
+
+LLM-generated Boolean Logic: LAUNCH_APP IMPLIES (NOT OUTDATED_OS OR LOGGED_IN)
+Manual Prompt Testing Mode - Type your prompts directly
+Type 'quit' to exit
+
+
+Attempt 1:
+Your prompt: 'It should be AND not OR bwteen (NOT OUTDATED_OS) and LOGGED_IN'
+LLM response: LAUNCH_APP IMPLIES ((NOT OUTDATED_OS) AND LOGGED_IN)
+
+
+Testing completed. Total attempts: 1
+
+--- Requirement 3 ---
+Natural Language: "The feature will be enabled, except when the user is not authenticated or the feature is not available."
+Ground Truth Boolean Logic: FEATURE_ENABLED IF USER_AUTHENTICATED AND FEATURE_AVAILABLE
+
+LLM-generated Boolean Logic: (FEATURE_ENABLED IMPLIES (USER_AUTHENTICATED OR FEATURE_AVAILABLE))
+Manual Prompt Testing Mode - Type your prompts directly
+Type 'quit' to exit
+
+
+Attempt 1:
+Your prompt: 'It should be AND between USER_AUTHENTICATED and FEATURE_AVAILABLE'
+LLM response: (FEATURE_ENABLED IMPLIES (USER_AUTHENTICATED AND FEATURE_AVAILABLE))
+
+
+Testing completed. Total attempts: 1
+
+--- Requirement 4 ---
+Natural Language: "The service will start automatically, except if manual mode is selected or the service is not configured."
+Ground Truth Boolean Logic: SERVICE_START IF AUTO_MODE_SELECTED AND SERVICE_CONFIGURED
+
+LLM-generated Boolean Logic: SERVICE_START_AUTO IMPLIES (NOT MANUAL_MODE_SELECTED OR NOT SERVICE_CONFIGURED)
+Manual Prompt Testing Mode - Type your prompts directly
+Type 'quit' to exit
+
+
+Attempt 1:
+Your prompt: 'Its not (NOT SERVICE_CONFIGURED) it is (SERVICE_CONFIGURED)'
+LLM response: SERVICE_START_AUTO IMPLIES (NOT MANUAL_MODE_SELECTED OR SERVICE_CONFIGURED)
+
+
+Attempt 2:
+Your prompt: 'It should be AND not OR between (NOT MANUAL_MODE_SELECTED) and (SERVICE_CONFIGURED)'
+LLM response: SERVICE_START_AUTO IMPLIES ((NOT MANUAL_MODE_SELECTED) AND SERVICE_CONFIGURED)
+
+
+Testing completed. Total attempts: 2
+
+--- Requirement 5 ---
+Natural Language: "The device will enter sleep mode, except before 5 minutes of inactivity or when the device is not idle."
+Ground Truth Boolean Logic: SLEEP_MODE IF INACTIVITY_5MIN AND DEVICE_IDLE
+
+LLM-generated Boolean Logic: DEVICE_IN_SLEEP_MODE
+Manual Prompt Testing Mode - Type your prompts directly
+Type 'quit' to exit
+
+
+Attempt 1:
+Your prompt: 'give the boolean logic again'
+LLM response: ¬(TIME_SINCE_LAST_INPUT > 5) ∧ DEVICE_IS_IDLE
+
+
+Attempt 2:
+Your prompt: 'No give it including all the variables'
+LLM response: ¬(TIME_SINCE_LAST_INPUT ≥ 5 ∨ ¬DEVICE_IS_IDLE)
+
+
+Attempt 3:
+Your prompt: 'device will enter cleep mode has no variable include that'
+LLM response: ¬(TIME_SINCE_LAST_INPUT < 5 ∧ DEVICE_IS_IDLE)
+
+
+Attempt 4:
+Your prompt: 'ADD THE BOOLEAN VARIABLE for Device in sleep mode and give me the new boolean logic'
+LLM response: ¬(TIME_SINCE_LAST_INPUT ≥ 5 ∨ ¬DEVICE_IS_IDLE) ∧ DEVICE_IN_SLEEP_MODE
+
+
+Attempt 5:
+Your prompt: 'It should be DEVICE_IN_SLEEP_MODE IMPLIES (the rest of boolean logic)'
+LLM response: ¬(DEVICE_IS_IDLE ∨ TIME_SINCE_LAST_INPUT ≥ 5) → DEVICE_IN_SLEEP_MODE
+
+
+Attempt 6:
+Your prompt: 'The IMPLIES is in reverse direction'
+LLM response: ¬(TIME_SINCE_LAST_INPUT < 5 ∧ DEVICE_IS_IDLE) ∨ DEVICE_IN_SLEEP_MODE
+
+
+Attempt 7:
+Your prompt: 'The implication should be from DEVICE_IN_SLEEP_MODE to the remaining part of boolean logic'
+LLM response: ¬(DEVICE_IS_IDLE ∧ ¬(TIME_SINCE_LAST_INPUT < 5)) ∨ DEVICE_IN_SLEEP_MODE
+
+
+Testing completed. Total attempts: 7
+
+--- Requirement 6 ---
+Natural Language: "Notifications will appear, except when do not disturb mode is active or when the phone is switched off."
+Ground Truth Boolean Logic: NOTIFICATIONS IF DND_MODE_DISABLED AND PHONE_ON
+
+LLM-generated Boolean Logic: NOT (NOT DOOR_OPEN OR NOT ALARM_ACTIVE) IMPLIES NOTIFICATIONS_APPEAR
+Manual Prompt Testing Mode - Type your prompts directly
+Type 'quit' to exit
+
+
+Attempt 1:
+Your prompt: 'DOOR_OPEN is NOT a boolean variable for this requirement'
+LLM response: ¬(DO_NOT_DISTURB ∧ ¬PHONE_OFF) → NOTIFICATIONS_APPEAR
+
+
+Attempt 2:
+Your prompt: 'The implictaion is in reverse direction. reverse it back to the correct direction'
+LLM response: ¬(PHONE_OFF ∨ DO_NOT_DISTURB) → NOTIFICATIONS_APPEAR
+
+
+Attempt 3:
+Your prompt: 'I can't see the output of the previous attempt'
+LLM response: ¬(DO_NOT_DISTURB ∧ PHONE_OFF) ∨ ¬PHONE_OFF → NOTIFICATIONS_APPEAR
+
+
+Testing completed. Total attempts: 3
+
+--- Requirement 7 ---
+Natural Language: "The backup will proceed, except if the storage device is not connected or backup is not enabled."
+Ground Truth Boolean Logic: BACKUP_PROCEED IF STORAGE_CONNECTED AND BACKUP_ENABLED
+
+LLM-generated Boolean Logic: (BACKUP_PROCEEDS IMPLIES (NOT STORAGE_DEVICE_CONNECTED OR BACKUP_ENABLED))
+Manual Prompt Testing Mode - Type your prompts directly
+Type 'quit' to exit
+
+
+Attempt 1:
+Your prompt: 'It should be (STORAGE_DEVICE_CONNECTED) instead of (NOT STORAGE_DEVICE_CONNECTED)'
+LLM response: (BACKUP_PROCEEDS IMPLIES (NOT BACKUP_ENABLED OR STORAGE_DEVICE_CONNECTED))
+
+
+Attempt 2:
+Your prompt: 'IT SHOULD BE (BACKUP_ENABLED) instead of (NOT BACKUP_ENABLED) and It should be AND between BACKUP_ENABLED and STORAGE_DEVICE_CONNECTED not OR'
+LLM response: (BACKUP_PROCEEDS IMPLIES (BACKUP_ENABLED AND STORAGE_DEVICE_CONNECTED))
+
+
+Testing completed. Total attempts: 2
+
+--- Requirement 8 ---
+Natural Language: "The system will reboot, except if critical processes are running or reboot is not requested."
+Ground Truth Boolean Logic: SYSTEM_REBOOT IF PROCESSES_COMPLETED AND REBOOT_REQUESTED
+
+LLM-generated Boolean Logic: SYSTEM_REBOOT IMPLIES (NOT CRITICAL_PROCESSES_RUNNING OR NOT REBOOT_REQUESTED)
+Manual Prompt Testing Mode - Type your prompts directly
+Type 'quit' to exit
+
+
+Attempt 1:
+Your prompt: 'IT should be (REBOOT_REQUESTED) instead of (NOT REBOOT_REQUESTED)'
+LLM response: SYSTEM_REBOOT IMPLIES (CRITICAL_PROCESSES_RUNNING OR REBOOT_REQUESTED)
+
+
+Attempt 2:
+Your prompt: 'IT SHOULD BE AND between (NOT CRITICAL_PROCESSES_RUNNING) and (REBOOT_REQUESTED) not OR'
+LLM response: SYSTEM_REBOOT IMPLIES ((~CRITICAL_PROCESSES_RUNNING) & REBOOT_REQUESTED)
+
+
+Testing completed. Total attempts: 2
+
+--- Requirement 9 ---
+Natural Language: "The settings will be saved, except when the form is not validated or the user has not confirmed."
+Ground Truth Boolean Logic: SETTINGS_SAVED IF FORM_VALIDATED AND USER_CONFIRMED
+
+LLM-generated Boolean Logic: SAVE_SETTINGS IMPLIES (FORM_VALIDATED OR USER_CONFIRMED)
+Manual Prompt Testing Mode - Type your prompts directly
+Type 'quit' to exit
+
+
+Attempt 1:
+Your prompt: 'It should be AND between FORM_VALIDATED and USER_CONFIRMED not OR'
+LLM response: SAVE_SETTINGS IMPLIES (FORM_VALIDATED AND USER_CONFIRMED)
+
+
+Testing completed. Total attempts: 1
+
+--- Requirement 10 ---
+Natural Language: "The connection will be established, except without network availability."
+Ground Truth Boolean Logic: CONNECTION_ESTABLISHED IF NETWORK_AVAILABLE AND CONNECTION_REQUESTED
+
+LLM-generated Boolean Logic: CONNECTION_ESTABLISHED IMPLIES NETWORK_AVAILABILITY
+Manual Prompt Testing Mode - Type your prompts directly
+Type 'quit' to exit
+
+
+Testing completed. Total attempts: 0
+
+All requirements processed. Total requirements: 10, Total attempts: 21
+Averahe attempts per requirement: 2.1
+
+-> Here I had a problem with requirement 5 and 6 where I've been trying to explain but the LLM didnt understand my explanations so it
+   needs a rather more specific reprompting. (the attempts are 7 and 3 because I lost patience abd gave up after trying
+   those many attempts LOL.)
+
+--------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,1438 @@
+--- Requirement 1 ---
+Natural Language: "The system will install updates, except if there is not enough disk space or the update is not available."
+Ground Truth Boolean Logic: SOFTWARE_INSTALL IF ENOUGH_DISK_SPACE AND UPDATE_AVAILABLE
+
+LLM-generated Boolean Logic: SYSTEM_INSTALLATION IMPLIES (NOT (NOT ENOUGH_DISK_SPACE OR UPDATE_AVAILABLE))
+Manual Prompt Testing Mode - Type your prompts directly
+Type 'quit' to exit
+
+
+Attempt 1:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The system will install updates, except if there is not enough disk space or the update is not available."
+
+                    LLM Boolean Logic Output: "SYSTEM_INSTALLATION IMPLIES (NOT (NOT ENOUGH_DISK_SPACE OR UPDATE_AVAILABLE))"
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: SYSTEM_INSTALLATION IMPLIES (UPDATE_AVAILABLE AND NOT ENOUGH_DISK_SPACE)
+
+
+Attempt 2:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The system will install updates, except if there is not enough disk space or the update is not available."
+
+                    LLM Boolean Logic Output: "SYSTEM_INSTALLATION IMPLIES (UPDATE_AVAILABLE AND NOT ENOUGH_DISK_SPACE)"
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: SYSTEM_INSTALLATION IMPLIES (NOT (ENOUGH_DISK_SPACE OR UPDATE_AVAILABLE))
+
+
+Attempt 3:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The system will install updates, except if there is not enough disk space or the update is not available."
+
+                    LLM Boolean Logic Output: "SYSTEM_INSTALLATION IMPLIES (NOT (ENOUGH_DISK_SPACE OR UPDATE_AVAILABLE))"
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: SYSTEM_INSTALLATION IMPLIES (UPDATE_AVAILABLE AND ENOUGH_DISK_SPACE)
+
+
+Testing completed. Total attempts: 3
+--- Pyparsing ParseResults Object (Raw) ---
+[['SYSTEM_INSTALLATION'], 'IMPLIES', ['NOT', [['NOT', ['ENOUGH_DISK_SPACE']], 'OR', ['UPDATE_AVAILABLE']]]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SYSTEM_INSTALLATION
+  Right: NOT
+    Operand: OR
+      Left: NOT
+        Operand: ENOUGH_DISK_SPACE
+      Right: UPDATE_AVAILABLE
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SYSTEM_INSTALLATION
+  NOT
+    OR
+      NOT
+        ENOUGH_DISK_SPACE
+      UPDATE_AVAILABLE
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SYSTEM_INSTALLATION
+  NOT
+    OR
+      NOT
+        ENOUGH_DISK_SPACE
+      UPDATE_AVAILABLE
+
+======================================================================
+
+
+--- Processing LLM Output ---
+Extracted Variables from LLM: {'ENOUGH_DISK_SPACE', 'SYSTEM_INSTALLATION', 'UPDATE_AVAILABLE'}
+ -> Found equivalents for 'ENOUGH_DISK_SPACE': ['SUFFICIENT_STORAGE_CAPACITY', 'SUFFICIENT_DISK_SPACE', 'DISK_SPACE_AVAILABLE', 'ENOUGH_STORAGE_SPACE']
+ -> Found equivalents for 'SYSTEM_INSTALLATION': ['SYSTEM_DEPLOYMENT', 'SOFTWARE_INSTANTIATION', 'INSTALLATION_PROCESS', 'SETUP_EXECUTION']
+ -> Found equivalents for 'UPDATE_AVAILABLE': ['SOFTWARE_UPDATES_AVAILABLE', 'FIRMWARE_UPDATE_REQUIRED', 'NEW_VERSION_AVAILABLE', 'PROGRAM_UPDATE_POSSIBLE']
+
+--- Final Semantic Mapping Dictionary ---
+{'ENOUGH_DISK_SPACE': ['ENOUGH_DISK_SPACE', 'SUFFICIENT_STORAGE_CAPACITY', 'SUFFICIENT_DISK_SPACE', 'DISK_SPACE_AVAILABLE', 'ENOUGH_STORAGE_SPACE'], 'SYSTEM_INSTALLATION': ['SYSTEM_INSTALLATION', 'SYSTEM_DEPLOYMENT', 'SOFTWARE_INSTANTIATION', 'INSTALLATION_PROCESS', 'SETUP_EXECUTION'], 'UPDATE_AVAILABLE': ['UPDATE_AVAILABLE', 'SOFTWARE_UPDATES_AVAILABLE', 'FIRMWARE_UPDATE_REQUIRED', 'NEW_VERSION_AVAILABLE', 'PROGRAM_UPDATE_POSSIBLE']}
+Error parsing expression: Expected end of text, found 'IF'  (at char 17), (line:1, col:18)
+
+--- Measuring Completeness via Sentence Deletion ---
+  Skipping completeness check: Requirement is a single sentence.
+
+======================================================================
+
+
+--- Requirement 2 ---
+Natural Language: "The application will launch, except if the operating system is outdated or the user is not logged in."
+Ground Truth Boolean Logic: APPLICATION_LAUNCH IF OPERATING_SYSTEM_UPDATED AND USER_LOGGED_IN
+
+LLM-generated Boolean Logic: LAUNCH_APP IMPLIES (NOT OUTDATED_OS OR LOGGED_IN)
+Manual Prompt Testing Mode - Type your prompts directly
+Type 'quit' to exit
+
+
+Attempt 1:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The application will launch, except if the operating system is outdated or the user is not logged in."
+
+                    LLM Boolean Logic Output: "LAUNCH_APP IMPLIES (NOT OUTDATED_OS OR LOGGED_IN)"
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: LAUNCH_APP IMPLIES (NOT (OUTDATED_OS AND NOT LOGGED_IN))
+
+
+Attempt 2:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The application will launch, except if the operating system is outdated or the user is not logged in."
+
+                    LLM Boolean Logic Output: "LAUNCH_APP IMPLIES (NOT (OUTDATED_OS AND NOT LOGGED_IN))"
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: LAUNCH_APP IMPLIES (NOT (LOGGED_IN OR OUTDATED_OS))
+
+
+Attempt 3:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The application will launch, except if the operating system is outdated or the user is not logged in."
+
+                    LLM Boolean Logic Output: "LAUNCH_APP IMPLIES (NOT (LOGGED_IN OR OUTDATED_OS))"
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: LAUNCH_APP IMPLIES (NOT LOGGED_IN) AND (NOT OUTDATED_OS)
+
+
+Attempt 4:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The application will launch, except if the operating system is outdated or the user is not logged in."
+
+                    LLM Boolean Logic Output: "LAUNCH_APP IMPLIES (NOT LOGGED_IN) AND (NOT OUTDATED_OS)"
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: LAUNCH_APP IMPLIES ((LOGGED_IN OR NOT OUTDATED_OS))
+
+
+Attempt 5:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The application will launch, except if the operating system is outdated or the user is not logged in."
+
+                    LLM Boolean Logic Output: "LAUNCH_APP IMPLIES ((LOGGED_IN OR NOT OUTDATED_OS))"
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: LAUNCH_APP IMPLIES (NOT (OUTDATED_OS AND NOT LOGGED_IN))
+
+
+Attempt 6:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The application will launch, except if the operating system is outdated or the user is not logged in."
+
+                    LLM Boolean Logic Output: "LAUNCH_APP IMPLIES (NOT (OUTDATED_OS AND NOT LOGGED_IN))"
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: LAUNCH_APP IMPLIES (NOT (LOGGED_IN OR OUTDATED_OS))
+
+
+Attempt 7:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The application will launch, except if the operating system is outdated or the user is not logged in."
+
+                    LLM Boolean Logic Output: "LAUNCH_APP IMPLIES (NOT (LOGGED_IN OR OUTDATED_OS))"
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: LAUNCH_APP IMPLIES (NOT LOGGED_IN) AND (NOT OUTDATED_OS)
+
+
+Attempt 8:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The application will launch, except if the operating system is outdated or the user is not logged in."
+
+                    LLM Boolean Logic Output: "LAUNCH_APP IMPLIES (NOT LOGGED_IN) AND (NOT OUTDATED_OS)"
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: LAUNCH_APP IMPLIES ((LOGGED_IN OR NOT OUTDATED_OS))
+
+
+Testing completed. Total attempts: 8
+--- Pyparsing ParseResults Object (Raw) ---
+[['LAUNCH_APP'], 'IMPLIES', [['NOT', ['OUTDATED_OS']], 'OR', ['LOGGED_IN']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: LAUNCH_APP
+  Right: OR
+    Left: NOT
+      Operand: OUTDATED_OS
+    Right: LOGGED_IN
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  LAUNCH_APP
+  OR
+    NOT
+      OUTDATED_OS
+    LOGGED_IN
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    LAUNCH_APP
+  OR
+    NOT
+      OUTDATED_OS
+    LOGGED_IN
+
+======================================================================
+
+
+--- Processing LLM Output ---
+Extracted Variables from LLM: {'LOGGED_IN', 'OUTDATED_OS', 'LAUNCH_APP'}
+ -> Found equivalents for 'LOGGED_IN': ['AUTHENTICATED_USER', 'USER_LOGGED_IN', 'SESSION_ESTABLISHED', 'ACTIVE_SESSION']
+ -> Found equivalents for 'OUTDATED_OS': ['OLD_SOFTWARE_VERSION', 'DEPRECATED_OPERATING_SYSTEM', 'LEGACY_OS_VERSION']
+ -> Found equivalents for 'LAUNCH_APP': ['OPEN_APPLICATION', 'START_PROGRAM', 'INITIATE_SOFTWARE', 'DEPLOY_MOBILE_APP']
+
+--- Final Semantic Mapping Dictionary ---
+{'LOGGED_IN': ['LOGGED_IN', 'AUTHENTICATED_USER', 'USER_LOGGED_IN', 'SESSION_ESTABLISHED', 'ACTIVE_SESSION'], 'OUTDATED_OS': ['OUTDATED_OS', 'OLD_SOFTWARE_VERSION', 'DEPRECATED_OPERATING_SYSTEM', 'LEGACY_OS_VERSION'], 'LAUNCH_APP': ['LAUNCH_APP', 'OPEN_APPLICATION', 'START_PROGRAM', 'INITIATE_SOFTWARE', 'DEPLOY_MOBILE_APP']}
+Error parsing expression: Expected end of text, found 'IF'  (at char 19), (line:1, col:20)
+
+--- Measuring Completeness via Sentence Deletion ---
+  Skipping completeness check: Requirement is a single sentence.
+
+======================================================================
+
+
+--- Requirement 3 ---
+Natural Language: "The feature will be enabled, except when the user is not authenticated or the feature is not available."
+Ground Truth Boolean Logic: FEATURE_ENABLED IF USER_AUTHENTICATED AND FEATURE_AVAILABLE
+
+LLM-generated Boolean Logic: (FEATURE_ENABLED IMPLIES (USER_AUTHENTICATED OR FEATURE_AVAILABLE))
+Manual Prompt Testing Mode - Type your prompts directly
+Type 'quit' to exit
+
+
+Attempt 1:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The feature will be enabled, except when the user is not authenticated or the feature is not available."
+
+                    LLM Boolean Logic Output: "(FEATURE_ENABLED IMPLIES (USER_AUTHENTICATED OR FEATURE_AVAILABLE))"
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: (FEATURE_ENABLED IMPLIES (NOT USER_AUTHENTICATED OR NOT FEATURE_AVAILABLE))
+
+
+Attempt 2:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The feature will be enabled, except when the user is not authenticated or the feature is not available."
+
+                    LLM Boolean Logic Output: "(FEATURE_ENABLED IMPLIES (NOT USER_AUTHENTICATED OR NOT FEATURE_AVAILABLE))"
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: (FEATURE_ENABLED IMPLIES (USER_AUTHENTICATED AND FEATURE_AVAILABLE))
+
+
+Attempt 3:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The feature will be enabled, except when the user is not authenticated or the feature is not available."
+
+                    LLM Boolean Logic Output: "(FEATURE_ENABLED IMPLIES (USER_AUTHENTICATED AND FEATURE_AVAILABLE))"
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: (FEATURE_ENABLED IMPLIES (NOT USER_AUTHENTICATED OR NOT FEATURE_AVAILABLE))
+
+
+Testing completed. Total attempts: 3
+--- Pyparsing ParseResults Object (Raw) ---
+[['FEATURE_ENABLED'], 'IMPLIES', [['USER_AUTHENTICATED'], 'OR', ['FEATURE_AVAILABLE']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: FEATURE_ENABLED
+  Right: OR
+    Left: USER_AUTHENTICATED
+    Right: FEATURE_AVAILABLE
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  FEATURE_ENABLED
+  OR
+    USER_AUTHENTICATED
+    FEATURE_AVAILABLE
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    FEATURE_ENABLED
+  OR
+    USER_AUTHENTICATED
+    FEATURE_AVAILABLE
+
+======================================================================
+
+
+--- Processing LLM Output ---
+Extracted Variables from LLM: {'FEATURE_ENABLED', 'FEATURE_AVAILABLE', 'USER_AUTHENTICATED'}
+ -> Found equivalents for 'FEATURE_ENABLED': ['FEATURE_ENABLED -> FEATURE_ACTIVATED', 'FUNCTION_AVAILABLE', 'OPTION_ONLINE']
+ -> Found equivalents for 'FEATURE_AVAILABLE': ['FEATURE_AVAILABLE -> FEATURE_ENABLED', 'FUNCTIONALITY_ACCESSIBLE', 'OPTION_AVAILABILITY']
+ -> Found equivalents for 'USER_AUTHENTICATED': ['AUTHENTICATED_USER', 'LOGGED_IN_USER', 'USER_LOGGED_IN', 'AUTHENTICATION_SUCCESSFUL']
+
+--- Final Semantic Mapping Dictionary ---
+{'FEATURE_ENABLED': ['FEATURE_ENABLED', 'FEATURE_ENABLED -> FEATURE_ACTIVATED', 'FUNCTION_AVAILABLE', 'OPTION_ONLINE'], 'FEATURE_AVAILABLE': ['FEATURE_AVAILABLE', 'FEATURE_AVAILABLE -> FEATURE_ENABLED', 'FUNCTIONALITY_ACCESSIBLE', 'OPTION_AVAILABILITY'], 'USER_AUTHENTICATED': ['USER_AUTHENTICATED', 'AUTHENTICATED_USER', 'LOGGED_IN_USER', 'USER_LOGGED_IN', 'AUTHENTICATION_SUCCESSFUL']}
+Error parsing expression: Expected end of text, found 'IF'  (at char 16), (line:1, col:17)
+
+--- Measuring Completeness via Sentence Deletion ---
+  Skipping completeness check: Requirement is a single sentence.
+
+======================================================================
+
+
+--- Requirement 4 ---
+Natural Language: "The service will start automatically, except if manual mode is selected or the service is not configured."
+Ground Truth Boolean Logic: SERVICE_START IF AUTO_MODE_SELECTED AND SERVICE_CONFIGURED
+
+LLM-generated Boolean Logic: SERVICE_START IMPLIES (NOT MANUAL_MODE) AND SERVICE_CONFIGURED
+Manual Prompt Testing Mode - Type your prompts directly
+Type 'quit' to exit
+
+
+Testing completed. Total attempts: 0
+--- Pyparsing ParseResults Object (Raw) ---
+[['SERVICE_START'], 'IMPLIES', [['NOT', ['MANUAL_MODE']], 'AND', ['SERVICE_CONFIGURED']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SERVICE_START
+  Right: AND
+    Left: NOT
+      Operand: MANUAL_MODE
+    Right: SERVICE_CONFIGURED
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SERVICE_START
+  AND
+    NOT
+      MANUAL_MODE
+    SERVICE_CONFIGURED
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SERVICE_START
+  AND
+    NOT
+      MANUAL_MODE
+    SERVICE_CONFIGURED
+
+======================================================================
+
+
+--- Processing LLM Output ---
+Extracted Variables from LLM: {'SERVICE_CONFIGURED', 'MANUAL_MODE', 'SERVICE_START'}
+ -> Found equivalents for 'SERVICE_CONFIGURED': ['SERVICE_CONFIGURED -> CONFIGURED_SERVICE', 'SERVICE_SETUP_COMPLETE', 'CONFIGURATION_PROCESSED']
+ -> Found equivalents for 'MANUAL_MODE': ['OPERATION_MANUAL', 'MODE_SELECTIVE', 'HAND_CONTROLLED', 'USER_INTERFACED', 'DRIVER_ASSISTED']
+ -> Found equivalents for 'SERVICE_START': ['SERVICE_INITIATION', 'SYSTEM_BOOTUP', 'STARTUP_SEQUENCE', 'INITIALIZATION_PROCESS']
+
+--- Final Semantic Mapping Dictionary ---
+{'SERVICE_CONFIGURED': ['SERVICE_CONFIGURED', 'SERVICE_CONFIGURED -> CONFIGURED_SERVICE', 'SERVICE_SETUP_COMPLETE', 'CONFIGURATION_PROCESSED'], 'MANUAL_MODE': ['MANUAL_MODE', 'OPERATION_MANUAL', 'MODE_SELECTIVE', 'HAND_CONTROLLED', 'USER_INTERFACED', 'DRIVER_ASSISTED'], 'SERVICE_START': ['SERVICE_START', 'SERVICE_INITIATION', 'SYSTEM_BOOTUP', 'STARTUP_SEQUENCE', 'INITIALIZATION_PROCESS']}
+Error parsing expression: Expected end of text, found 'IF'  (at char 14), (line:1, col:15)
+
+--- Measuring Completeness via Sentence Deletion ---
+  Skipping completeness check: Requirement is a single sentence.
+
+======================================================================
+
+
+--- Requirement 5 ---
+Natural Language: "The device will enter sleep mode, except before 5 minutes of inactivity or when the device is not idle."
+Ground Truth Boolean Logic: SLEEP_MODE IF INACTIVITY_5MIN AND DEVICE_IDLE
+
+LLM-generated Boolean Logic: DEVICE_IN_SLEEP_MODE IMPLIES (NOT (BEFORE_5_MINUTES_OF_INACTIVITY OR NOT_DEVICE_IDLE))
+Manual Prompt Testing Mode - Type your prompts directly
+Type 'quit' to exit
+
+
+Testing completed. Total attempts: 0
+Error parsing expression: Expected end of text, found 'IMPLIES'  (at char 21), (line:1, col:22)
+Skipping processing due to parsing error.
+
+======================================================================
+
+
+--- Requirement 6 ---
+Natural Language: "Notifications will appear, except when do not disturb mode is active or when the phone is switched off."
+Ground Truth Boolean Logic: NOTIFICATIONS IF DND_MODE_DISABLED AND PHONE_ON
+
+LLM-generated Boolean Logic: NOT (NOT DOOR_OPEN OR NOT PHONE_ON) IMPLIES NOTIFICATIONS_APPEAR
+Manual Prompt Testing Mode - Type your prompts directly
+Type 'quit' to exit
+
+
+Attempt 1:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "Notifications will appear, except when do not disturb mode is active or when the phone is switched off."
+
+                    LLM Boolean Logic Output: "NOT (NOT DOOR_OPEN OR NOT PHONE_ON) IMPLIES NOTIFICATIONS_APPEAR"
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: "NOT (DOOR_OPEN AND PHONE_ON) OR NOTIFICATIONS_APPEAR"
+
+
+Attempt 2:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "Notifications will appear, except when do not disturb mode is active or when the phone is switched off."
+
+                    LLM Boolean Logic Output: ""NOT (DOOR_OPEN AND PHONE_ON) OR NOTIFICATIONS_APPEAR""
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: "NOT (DO_NOT_DISTURB_MODE AND NOT PHONE_ON) OR NOTIFICATIONS_APPEAR"
+
+
+Attempt 3:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "Notifications will appear, except when do not disturb mode is active or when the phone is switched off."
+
+                    LLM Boolean Logic Output: ""NOT (DO_NOT_DISTURB_MODE AND NOT PHONE_ON) OR NOTIFICATIONS_APPEAR""
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: "NOT (PHONE_OFF OR DO_NOT_DISTURB_MODE) IMPLIES NOTIFICATIONS_APPEAR"
+
+
+Attempt 4:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "Notifications will appear, except when do not disturb mode is active or when the phone is switched off."
+
+                    LLM Boolean Logic Output: ""NOT (PHONE_OFF OR DO_NOT_DISTURB_MODE) IMPLIES NOTIFICATIONS_APPEAR""
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: "NOT (DO_NOT_DISTURB_MODE OR PHONE_OFF) IMPLIES NOTIFICATIONS_APPEAR"
+
+
+Testing completed. Total attempts: 4
+--- Pyparsing ParseResults Object (Raw) ---
+[['NOT', [['NOT', ['DOOR_OPEN']], 'OR', ['NOT', ['PHONE_ON']]]], 'IMPLIES', ['NOTIFICATIONS_APPEAR']]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: NOT
+    Operand: OR
+      Left: NOT
+        Operand: DOOR_OPEN
+      Right: NOT
+        Operand: PHONE_ON
+  Right: NOTIFICATIONS_APPEAR
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  NOT
+    OR
+      NOT
+        DOOR_OPEN
+      NOT
+        PHONE_ON
+  NOTIFICATIONS_APPEAR
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    NOT
+      OR
+        NOT
+          DOOR_OPEN
+        NOT
+          PHONE_ON
+  NOTIFICATIONS_APPEAR
+
+======================================================================
+
+
+--- Processing LLM Output ---
+Extracted Variables from LLM: {'NOTIFICATIONS_APPEAR', 'PHONE_ON', 'DOOR_OPEN'}
+ -> Found equivalents for 'NOTIFICATIONS_APPEAR': ['NOTIFICATIONS_DISPLAYED', 'NOTIF_SHOWING_UP', 'NOTIFS_VISIBLE']
+ -> Found equivalents for 'PHONE_ON': ['PHONE_ACTIVE', 'PHONE_TURNED_ON', 'PHONE_POWERED_UP']
+ -> Found equivalents for 'DOOR_OPEN': ['DOOR_ACCESSIBLE', 'DOOR_UNLOCKED', 'ENTRY_PERMITTED', 'PORTAL_AVAILABLE']
+
+--- Final Semantic Mapping Dictionary ---
+{'NOTIFICATIONS_APPEAR': ['NOTIFICATIONS_APPEAR', 'NOTIFICATIONS_DISPLAYED', 'NOTIF_SHOWING_UP', 'NOTIFS_VISIBLE'], 'PHONE_ON': ['PHONE_ON', 'PHONE_ACTIVE', 'PHONE_TURNED_ON', 'PHONE_POWERED_UP'], 'DOOR_OPEN': ['DOOR_OPEN', 'DOOR_ACCESSIBLE', 'DOOR_UNLOCKED', 'ENTRY_PERMITTED', 'PORTAL_AVAILABLE']}
+Error parsing expression: Expected end of text, found 'IF'  (at char 14), (line:1, col:15)
+
+--- Measuring Completeness via Sentence Deletion ---
+  Skipping completeness check: Requirement is a single sentence.
+
+======================================================================
+
+
+--- Requirement 7 ---
+Natural Language: "The backup will proceed, except if the storage device is not connected or backup is not enabled."
+Ground Truth Boolean Logic: BACKUP_PROCEED IF STORAGE_CONNECTED AND BACKUP_ENABLED
+
+LLM-generated Boolean Logic: (BACKUP_PROCEEDS IMPLIES (NOT STORAGE_DEVICE_CONNECTED OR NOT BACKUP_ENABLED))
+Manual Prompt Testing Mode - Type your prompts directly
+Type 'quit' to exit
+
+
+Attempt 1:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The backup will proceed, except if the storage device is not connected or backup is not enabled."
+
+                    LLM Boolean Logic Output: "(BACKUP_PROCEEDS IMPLIES (NOT STORAGE_DEVICE_CONNECTED OR NOT BACKUP_ENABLED))"
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: (BACKUP_PROCEEDS IMPLIES (STORAGE_DEVICE_CONNECTED AND BACKUP_ENABLED))
+
+
+Testing completed. Total attempts: 1
+--- Pyparsing ParseResults Object (Raw) ---
+[['BACKUP_PROCEEDS'], 'IMPLIES', [['NOT', ['STORAGE_DEVICE_CONNECTED']], 'OR', ['NOT', ['BACKUP_ENABLED']]]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: BACKUP_PROCEEDS
+  Right: OR
+    Left: NOT
+      Operand: STORAGE_DEVICE_CONNECTED
+    Right: NOT
+      Operand: BACKUP_ENABLED
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  BACKUP_PROCEEDS
+  OR
+    NOT
+      STORAGE_DEVICE_CONNECTED
+    NOT
+      BACKUP_ENABLED
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    BACKUP_PROCEEDS
+  OR
+    NOT
+      STORAGE_DEVICE_CONNECTED
+    NOT
+      BACKUP_ENABLED
+
+======================================================================
+
+
+--- Processing LLM Output ---
+Extracted Variables from LLM: {'STORAGE_DEVICE_CONNECTED', 'BACKUP_ENABLED', 'BACKUP_PROCEEDS'}
+ -> Found equivalents for 'STORAGE_DEVICE_CONNECTED': ['DEVICE_CONNECTED_TO_STORAGE', 'STORAGE_LINKED_UP', 'DEVICE_ATTACHED_TO_STORAGE', 'STORAGE_ACCESS_ESTABLISHED']
+ -> Found equivalents for 'BACKUP_ENABLED': ['DATA_PROTECTION_ACTIVATED', 'RECOVERY_MODE_ENABLED', 'FILE_SAFETY_GUARANTEED']
+ -> Found equivalents for 'BACKUP_PROCEEDS': ['DATA_BACKUP_SUCCESSFUL', 'PROCESSED_BACKUP', 'BACKUP_OPERATION_COMPLETED']
+
+--- Final Semantic Mapping Dictionary ---
+{'STORAGE_DEVICE_CONNECTED': ['STORAGE_DEVICE_CONNECTED', 'DEVICE_CONNECTED_TO_STORAGE', 'STORAGE_LINKED_UP', 'DEVICE_ATTACHED_TO_STORAGE', 'STORAGE_ACCESS_ESTABLISHED'], 'BACKUP_ENABLED': ['BACKUP_ENABLED', 'DATA_PROTECTION_ACTIVATED', 'RECOVERY_MODE_ENABLED', 'FILE_SAFETY_GUARANTEED'], 'BACKUP_PROCEEDS': ['BACKUP_PROCEEDS', 'DATA_BACKUP_SUCCESSFUL', 'PROCESSED_BACKUP', 'BACKUP_OPERATION_COMPLETED']}
+Error parsing expression: Expected end of text, found 'IF'  (at char 15), (line:1, col:16)
+
+--- Measuring Completeness via Sentence Deletion ---
+  Skipping completeness check: Requirement is a single sentence.
+
+======================================================================
+
+
+--- Requirement 8 ---
+Natural Language: "The system will reboot, except if critical processes are running or reboot is not requested."
+Ground Truth Boolean Logic: SYSTEM_REBOOT IF PROCESSES_COMPLETED AND REBOOT_REQUESTED
+
+LLM-generated Boolean Logic: SYSTEM_REBOOT IMPLIES (NOT CRITICAL_PROCESSES_RUNNING OR NOT REBOOT_REQUESTED)
+Manual Prompt Testing Mode - Type your prompts directly
+Type 'quit' to exit
+
+
+Attempt 1:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The system will reboot, except if critical processes are running or reboot is not requested."
+
+                    LLM Boolean Logic Output: "SYSTEM_REBOOT IMPLIES (NOT CRITICAL_PROCESSES_RUNNING OR NOT REBOOT_REQUESTED)"
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: SYSTEM_REBOOT IMPLIES (CRITICAL_PROCESSES_RUNNING OR REBOOT_REQUESTED)
+
+
+Attempt 2:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The system will reboot, except if critical processes are running or reboot is not requested."
+
+                    LLM Boolean Logic Output: "SYSTEM_REBOOT IMPLIES (CRITICAL_PROCESSES_RUNNING OR REBOOT_REQUESTED)"
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: SYSTEM_REBOOT IMPLIES NOT (CRITICAL_PROCESSES_RUNNING OR NOT REBOOT_REQUESTED)
+
+
+Attempt 3:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The system will reboot, except if critical processes are running or reboot is not requested."
+
+                    LLM Boolean Logic Output: "SYSTEM_REBOOT IMPLIES NOT (CRITICAL_PROCESSES_RUNNING OR NOT REBOOT_REQUESTED)"
+                    The issue: qui
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: SYSTEM_REBOOT IMPLIES (NOT CRITICAL_PROCESSES_RUNNING AND REBOOT_REQUESTED)
+
+
+Testing completed. Total attempts: 3
+--- Pyparsing ParseResults Object (Raw) ---
+[['SYSTEM_REBOOT'], 'IMPLIES', [['NOT', ['CRITICAL_PROCESSES_RUNNING']], 'OR', ['NOT', ['REBOOT_REQUESTED']]]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SYSTEM_REBOOT
+  Right: OR
+    Left: NOT
+      Operand: CRITICAL_PROCESSES_RUNNING
+    Right: NOT
+      Operand: REBOOT_REQUESTED
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SYSTEM_REBOOT
+  OR
+    NOT
+      CRITICAL_PROCESSES_RUNNING
+    NOT
+      REBOOT_REQUESTED
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SYSTEM_REBOOT
+  OR
+    NOT
+      CRITICAL_PROCESSES_RUNNING
+    NOT
+      REBOOT_REQUESTED
+
+======================================================================
+
+
+--- Processing LLM Output ---
+Extracted Variables from LLM: {'SYSTEM_REBOOT', 'CRITICAL_PROCESSES_RUNNING', 'REBOOT_REQUESTED'}
+ -> Found equivalents for 'SYSTEM_REBOOT': ['SYSTEM_REBOOT', 'REBOOT_REQUIRED', 'System_Reboot_Necessary', 'NEED_SYSTEM_RESET']
+ -> Found equivalents for 'CRITICAL_PROCESSES_RUNNING': ['HIGH_PRIORITY_TASKS_ACTIVE', 'CORE_FUNCTIONS_OPERATIONAL', 'MISSION_CRITICAL_JOBS_EXECUTING']
+ -> Found equivalents for 'REBOOT_REQUESTED': ['SYSTEM_REBOOT_INITIATED', 'REBOOT_ACTION_REQUIRED', 'REQUEST_FOR_SYSTEM_RESET']
+
+--- Final Semantic Mapping Dictionary ---
+{'SYSTEM_REBOOT': ['SYSTEM_REBOOT', 'SYSTEM_REBOOT', 'REBOOT_REQUIRED', 'System_Reboot_Necessary', 'NEED_SYSTEM_RESET'], 'CRITICAL_PROCESSES_RUNNING': ['CRITICAL_PROCESSES_RUNNING', 'HIGH_PRIORITY_TASKS_ACTIVE', 'CORE_FUNCTIONS_OPERATIONAL', 'MISSION_CRITICAL_JOBS_EXECUTING'], 'REBOOT_REQUESTED': ['REBOOT_REQUESTED', 'SYSTEM_REBOOT_INITIATED', 'REBOOT_ACTION_REQUIRED', 'REQUEST_FOR_SYSTEM_RESET']}
+Error parsing expression: Expected end of text, found 'IF'  (at char 14), (line:1, col:15)
+
+--- Measuring Completeness via Sentence Deletion ---
+  Skipping completeness check: Requirement is a single sentence.
+
+======================================================================
+
+
+--- Requirement 9 ---
+Natural Language: "The settings will be saved, except when the form is not validated or the user has not confirmed."
+Ground Truth Boolean Logic: SETTINGS_SAVED IF FORM_VALIDATED AND USER_CONFIRMED
+
+LLM-generated Boolean Logic: SAVE_SETTINGS IMPLIES (FORM_VALIDATED OR USER_CONFIRMED)
+Manual Prompt Testing Mode - Type your prompts directly
+Type 'quit' to exit
+
+
+Attempt 1:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The settings will be saved, except when the form is not validated or the user has not confirmed."
+
+                    LLM Boolean Logic Output: "SAVE_SETTINGS IMPLIES (FORM_VALIDATED OR USER_CONFIRMED)"
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: "NOT SAVE_SETTINGS IMPLIES (NOT FORM_VALIDATED AND NOT USER_CONFIRMED)"
+
+
+Attempt 2:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The settings will be saved, except when the form is not validated or the user has not confirmed."
+
+                    LLM Boolean Logic Output: ""NOT SAVE_SETTINGS IMPLIES (NOT FORM_VALIDATED AND NOT USER_CONFIRMED)""
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: "SAVE_SETTINGS IMPLIES (FORM_VALIDATED OR USER_CONFIRMED)"
+
+
+Attempt 3:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The settings will be saved, except when the form is not validated or the user has not confirmed."
+
+                    LLM Boolean Logic Output: ""SAVE_SETTINGS IMPLIES (FORM_VALIDATED OR USER_CONFIRMED)""
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: "NOT SAVE_SETTINGS IMPLIES (NOT FORM_VALIDATED AND NOT USER_CONFIRMED)"
+
+
+Attempt 4:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The settings will be saved, except when the form is not validated or the user has not confirmed."
+
+                    LLM Boolean Logic Output: ""NOT SAVE_SETTINGS IMPLIES (NOT FORM_VALIDATED AND NOT USER_CONFIRMED)""
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: "SAVE_SETTINGS IMPLIES (FORM_VALIDATED OR USER_CONFIRMED)"
+
+
+Attempt 5:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The settings will be saved, except when the form is not validated or the user has not confirmed."
+
+                    LLM Boolean Logic Output: ""SAVE_SETTINGS IMPLIES (FORM_VALIDATED OR USER_CONFIRMED)""
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: "NOT SAVE_SETTINGS IMPLIES (NOT FORM_VALIDATED AND NOT USER_CONFIRMED)"
+
+
+Attempt 6:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The settings will be saved, except when the form is not validated or the user has not confirmed."
+
+                    LLM Boolean Logic Output: ""NOT SAVE_SETTINGS IMPLIES (NOT FORM_VALIDATED AND NOT USER_CONFIRMED)""
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: "SAVE_SETTINGS IMPLIES (FORM_VALIDATED OR USER_CONFIRMED)"
+
+
+Attempt 7:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The settings will be saved, except when the form is not validated or the user has not confirmed."
+
+                    LLM Boolean Logic Output: ""SAVE_SETTINGS IMPLIES (FORM_VALIDATED OR USER_CONFIRMED)""
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: "NOT SAVE_SETTINGS IMPLIES (NOT FORM_VALIDATED AND NOT USER_CONFIRMED)"
+
+
+Attempt 8:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The settings will be saved, except when the form is not validated or the user has not confirmed."
+
+                    LLM Boolean Logic Output: ""NOT SAVE_SETTINGS IMPLIES (NOT FORM_VALIDATED AND NOT USER_CONFIRMED)""
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: "SAVE_SETTINGS IMPLIES (FORM_VALIDATED OR USER_CONFIRMED)"
+
+
+Attempt 9:
+Your prompt: '
+                    You are an expert in formal logic and system specifications.
+                    Your task is to translate natural language design requirements into Boolean logic expressions.
+
+    Rules for Boolean Logic:
+    - Use 'AND' for logical conjunction.
+    - Use 'OR' for logical disjunction.
+    - Use 'NOT' for logical negation.
+    - Use 'IMPLIES' for logical implication (A IMPLIES B).
+    - Use parentheses for grouping everywhere so that its neatly understandable.
+    - Identify the clauses properly with more precision in the sentence and convert them into boolean specifications properly.
+    - Variables should be capitalized single words (e.g., 'DOOR_OPEN', 'ALARM_ACTIVE').
+    - Identify the main subject (e.g., 'software installation', 'system activation', 'alarm sounding') and include it as a variable in the final Boolean logic expression.
+    - Do not include any explanations, preamble, or additional text. Only output the Boolean logic expression.
+    - When you see 'only if' (not 'if') in the requirement like A only if B it is 'A implies B' not 'B implies A'
+    - When you see 'if and only if' (not 'only if') in the requirement like A if and only if B it is 'A implies B AND B implies A'
+
+                    Natural Language Requirement: "The settings will be saved, except when the form is not validated or the user has not confirmed."
+
+                    LLM Boolean Logic Output: ""SAVE_SETTINGS IMPLIES (FORM_VALIDATED OR USER_CONFIRMED)""
+                    The issue: The logic is wrong give it again
+                    
+                    Generate the appropriate boolean logic expression for the above problem.
+                    Give only the boolean logic expression as output.
+                    '
+LLM response: "NOT SAVE_SETTINGS IMPLIES (NOT FORM_VALIDATED AND NOT USER_CONFIRMED)"
+
+
+Testing completed. Total attempts: 9
+--- Pyparsing ParseResults Object (Raw) ---
+[['SAVE_SETTINGS'], 'IMPLIES', [['FORM_VALIDATED'], 'OR', ['USER_CONFIRMED']]]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: SAVE_SETTINGS
+  Right: OR
+    Left: FORM_VALIDATED
+    Right: USER_CONFIRMED
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  SAVE_SETTINGS
+  OR
+    FORM_VALIDATED
+    USER_CONFIRMED
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    SAVE_SETTINGS
+  OR
+    FORM_VALIDATED
+    USER_CONFIRMED
+
+======================================================================
+
+
+--- Processing LLM Output ---
+Extracted Variables from LLM: {'SAVE_SETTINGS', 'USER_CONFIRMED', 'FORM_VALIDATED'}
+ -> Found equivalents for 'SAVE_SETTINGS': ['SAVE_SETTINGS -> SETTINGS_SAVED', 'CONFIGURATION_PERSISTED', 'DATA_STORED', 'SETTINGS_ENFORCED']
+ -> Found equivalents for 'USER_CONFIRMED': ['CONFIRMATION_COMPLETE', 'USER_VERIFIED', 'USER_APPROVED', 'USER_AGREED']
+ -> Found equivalents for 'FORM_VALIDATED': ['FORM_VALIDATED -> FORM_IS_VALID', 'VALIDATION_SUCCESSFUL', 'DATA_CORRECTLY_SUBMITTED']
+
+--- Final Semantic Mapping Dictionary ---
+{'SAVE_SETTINGS': ['SAVE_SETTINGS', 'SAVE_SETTINGS -> SETTINGS_SAVED', 'CONFIGURATION_PERSISTED', 'DATA_STORED', 'SETTINGS_ENFORCED'], 'USER_CONFIRMED': ['USER_CONFIRMED', 'CONFIRMATION_COMPLETE', 'USER_VERIFIED', 'USER_APPROVED', 'USER_AGREED'], 'FORM_VALIDATED': ['FORM_VALIDATED', 'FORM_VALIDATED -> FORM_IS_VALID', 'VALIDATION_SUCCESSFUL', 'DATA_CORRECTLY_SUBMITTED']}
+Error parsing expression: Expected end of text, found 'IF'  (at char 15), (line:1, col:16)
+
+--- Measuring Completeness via Sentence Deletion ---
+  Skipping completeness check: Requirement is a single sentence.
+
+======================================================================
+
+
+--- Requirement 10 ---
+Natural Language: "The connection will be established, except without network availability."
+Ground Truth Boolean Logic: CONNECTION_ESTABLISHED IF NETWORK_AVAILABLE AND CONNECTION_REQUESTED
+
+LLM-generated Boolean Logic: CONNECTION_ESTABLISHED IMPLIES NETWORK_AVAILABILITY
+Manual Prompt Testing Mode - Type your prompts directly
+Type 'quit' to exit
+
+
+Testing completed. Total attempts: 0
+--- Pyparsing ParseResults Object (Raw) ---
+[['CONNECTION_ESTABLISHED'], 'IMPLIES', ['NETWORK_AVAILABILITY']]
+
+--- Visualizing the Parse Tree (Simplified Method) ---
+Node: IMPLIES
+  Left: CONNECTION_ESTABLISHED
+  Right: NETWORK_AVAILABILITY
+
+--- Pretty Printing the Parse Tree (More Structured Method) ---
+IMPLIES
+  CONNECTION_ESTABLISHED
+  NETWORK_AVAILABILITY
+
+--- Transforming 'IMPLIES' to 'OR NOT' (Conceptual) ---
+Transformed tree for 'IMPLIES' (Conceptual):
+OR
+  NOT
+    CONNECTION_ESTABLISHED
+  NETWORK_AVAILABILITY
+
+======================================================================
+
+
+--- Processing LLM Output ---
+Extracted Variables from LLM: {'CONNECTION_ESTABLISHED', 'NETWORK_AVAILABILITY'}
+ -> Found equivalents for 'CONNECTION_ESTABLISHED': ['NETWORK_LINKED', 'LINK_UP', 'SUCCESSFUL_CONNECTION Established']
+ -> Found equivalents for 'NETWORK_AVAILABILITY': ['NETWORK_AVAILABILITY -> SYSTEM_UP_TIME', 'SERVICE_AVAILABLE', 'INFRASTRUCTURE_ONLINE']
+
+--- Final Semantic Mapping Dictionary ---
+{'CONNECTION_ESTABLISHED': ['CONNECTION_ESTABLISHED', 'NETWORK_LINKED', 'LINK_UP', 'SUCCESSFUL_CONNECTION Established'], 'NETWORK_AVAILABILITY': ['NETWORK_AVAILABILITY', 'NETWORK_AVAILABILITY -> SYSTEM_UP_TIME', 'SERVICE_AVAILABLE', 'INFRASTRUCTURE_ONLINE']}
+Error parsing expression: Expected end of text, found 'IF'  (at char 23), (line:1, col:24)
+
+--- Measuring Completeness via Sentence Deletion ---
+  Skipping completeness check: Requirement is a single sentence.
+
+======================================================================
+
+
+All requirements processed. Total requirements: 10, Total attempts: 31
+Averahe attempts per requirement: 3.1

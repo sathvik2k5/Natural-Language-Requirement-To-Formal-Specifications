@@ -1,0 +1,31 @@
+--- Requirement 1 ---
+Natural Language: "The system will not install updates unless there is enough disk space and the update is available."
+Ground Truth Boolean Logic: SOFTWARE_INSTALL UNLESS NOT ENOUGH_DISK_SPACE OR NOT UPDATE_AVAILABLE
+
+LLM-generated Boolean Logic: SOFTWARE_INSTALLATION IMPLIES (NOT ENOUGH_DISK_SPACE OR UPDATE_AVAILABLE)
+
+-> Here it added a NOT for Enough Disk Space. Why? (Or more like it didnt remove the not?)
+
+------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 2 ---
+Natural Language: "The application will not launch unless the operating system is updated and the user is logged in."
+Ground Truth Boolean Logic: APPLICATION_LAUNCH UNLESS NOT OPERATING_SYSTEM_UPDATED OR NOT USER_LOGGED_IN
+
+LLM-generated Boolean Logic: LAUNCH_APP IMPLIES (OS_UPDATED AND USER_LOGGED_IN)
+
+-> But it gave correct for this and the format is so similar to the previous one. So why is this correct? (IDKKKK)
+
+------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 8 ---
+Natural Language: "The system will not reboot unless all critical processes have completed and a reboot is requested."
+Ground Truth Boolean Logic: SYSTEM_REBOOT UNLESS CRITICAL_PROCESSES_RUNNING OR NOT REBOOT_REQUESTED
+
+LLM-generated Boolean Logic: SYSTEM_REBOOT IMPLIES (NOT SYSTEM_REBOOT OR ALL_CRITICAL_PROCESSES_COMPLETED)
+
+-> Same as the first case. Btw in between we had many correct cases so unless is way better than except. (Pls don't use except
+   whoever gives me the natural language specifications. Problem Solved.)
+
+-------------------------------------------------------------------------------------------------------------------------------
+
