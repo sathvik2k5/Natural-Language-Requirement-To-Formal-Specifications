@@ -1,0 +1,720 @@
+Hello Mate
+
+--- Requirement 1 ---
+Natural Language: "The system will install updates except if there is not enough disk space or the update is not available."
+Ground Truth Boolean Logic: SOFTWARE_INSTALL IMPLIES (NOUGH_DISK_SPACE AND UPDATE_AVAILABLE)
+
+DEBUG: Asking LLM to deconstruct the requirement.
+the system will install updates
+there is not enough disk space
+the update is not available
+1 : SYSTEM_UPDATES_INSTALLED
+1 : DISK_SPACE_AVAILABLE
+1 : UPDATE_AVAILABLE
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (NOT SYSTEM_UPDATES_INSTALLED) OR (NOT DISK_SPACE_AVAILABLE) OR (NOT UPDATE_AVAILABLE)
+~NOUGH_DISK_SPACE | ~SOFTWARE_INSTALL | ~UPDATE_AVAILABLE
+Implies(SOFTWARE_INSTALL, NOUGH_DISK_SPACE & UPDATE_AVAILABLE)
+🎉 SUCCESS! Logic is correct after 1 attempts.
+
+--- Requirement 2 ---
+Natural Language: "The application will launch except if the operating system is outdated or the user is not logged in."
+Ground Truth Boolean Logic: APPLICATION_LAUNCH IMPLIES (OPERATING_SYSTEM_UPDATED AND USER_LOGGED_IN)
+
+DEBUG: Asking LLM to deconstruct the requirement.
+the application will launch
+the operating system is outdated
+the user is not logged in
+1 : APPLICATION_LAUNCHES
+1 : OPERATING_SYSTEM_UP_TO_DATE
+1 : USER_LOGGED_IN
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (¬OPERATING_SYSTEM_UP_TO_DATE ∨ ¬USER_LOGGED_IN) IMPLIES APPLICATION_LAUNCHES
+meow (Canonical SymPy object creation failed).
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 2: LLM Correction: (¬OPERATING_SYSTEM_UP_TO_DATE ∧ ¬USER_LOGGED_IN) → APPLICATION_LAUNCHES
+meow (Canonical SymPy object creation failed).
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 3: LLM Correction: (¬OPERATING_SYSTEM_UP_TO_DATE ∨ ¬USER_LOGGED_IN) → APPLICATION_LAUNCHES
+meow (Canonical SymPy object creation failed).
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 4: LLM Correction: (¬OPERATING_SYSTEM_UP_TO_DATE ∧ ¬USER_LOGGED_IN) → ¬APPLICATION_LAUNCHES
+meow (Canonical SymPy object creation failed).
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 5: LLM Correction: (¬OPERATING_SYSTEM_UP_TO_DATE ∨ ¬USER_LOGGED_IN) → APPLICATION_LAUNCHES
+meow (Canonical SymPy object creation failed).
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 6: LLM Correction: (¬OPERATING_SYSTEM_UP_TO_DATE ∧ ¬USER_LOGGED_IN) → ¬APPLICATION_LAUNCHES
+meow (Canonical SymPy object creation failed).
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 7: LLM Correction: (¬OPERATING_SYSTEM_UP_TO_DATE ∨ ¬USER_LOGGED_IN) → APPLICATION_LAUNCHES
+meow (Canonical SymPy object creation failed).
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 8: LLM Correction: (¬OPERATING_SYSTEM_UP_TO_DATE ∧ ¬USER_LOGGED_IN) → ¬APPLICATION_LAUNCHES
+meow (Canonical SymPy object creation failed).
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 9: LLM Correction: (¬OPERATING_SYSTEM_UP_TO_DATE ∨ ¬USER_LOGGED_IN) → APPLICATION_LAUNCHES
+meow (Canonical SymPy object creation failed).
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 10: LLM Correction: (¬OPERATING_SYSTEM_UP_TO_DATE ∧ ¬USER_LOGGED_IN) → ¬APPLICATION_LAUNCHES
+meow (Canonical SymPy object creation failed).
+None
+None
+  -> INCORRECT. Reprompting...
+❌ FAILURE. Max attempts (10) reached.
+
+--- Requirement 3 ---
+Natural Language: "The feature will be enabled except when the user is not authenticated or the feature is not available."
+Ground Truth Boolean Logic: FEATURE_ENABLED IMPLIES (USER_AUTHENTICATED AND FEATURE_AVAILABLE)
+
+DEBUG: Asking LLM to deconstruct the requirement.
+the feature will be enabled
+the user is not authenticated
+the feature is not available
+1 : FEATURE_ENABLED
+1 : USER_AUTHENTICATED
+1 : FEATURE_AVAILABLE
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: NOT FEATURE_ENABLED IMPLIES (NOT USER_AUTHENTICATED OR NOT FEATURE_AVAILABLE)
+Implies(~FEATURE_ENABLED, ~FEATURE_AVAILABLE | ~USER_AUTHENTICATED)
+Implies(FEATURE_ENABLED, FEATURE_AVAILABLE & USER_AUTHENTICATED)
+🎉 SUCCESS! Logic is correct after 1 attempts.
+
+--- Requirement 4 ---
+Natural Language: "The service will start automatically except if manual mode is selected or the service is not configured."
+Ground Truth Boolean Logic: SERVICE_START IMPLIES (AUTO_MODE_SELECTED AND SERVICE_CONFIGURED)
+
+DEBUG: Asking LLM to deconstruct the requirement.
+manual mode is selected
+the service is not configured
+1 : MANUAL_MODE_SELECTED
+1 : SERVICE_CONFIGURED
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (NOT ('MANUAL_MODE_SELECTED' OR 'SERVICE_CONFIGURED')) IMPLIES 'SERVICE_ACTIVATION'
+Implies(~(AUTO_MODE_SELECTED | SERVICE_CONFIGURED), SERVICE_START)
+Implies(SERVICE_START, AUTO_MODE_SELECTED & SERVICE_CONFIGURED)
+🎉 SUCCESS! Logic is correct after 1 attempts.
+
+--- Requirement 5 ---
+Natural Language: "The device will enter sleep mode except before 5 minutes of inactivity or when the device is not idle."
+Ground Truth Boolean Logic: SLEEP_MODE IMPLIES (INACTIVITY_5MIN AND DEVICE_IDLE)
+
+DEBUG: Asking LLM to deconstruct the requirement.
+device will enter sleep mode
+before 5 minutes of inactivity
+device is not idle
+1 : DEVICE_IN_SLEEP_MODE
+1 : INACTIVITY_BEFORE_5_MINUTES
+1 : DEVICE_IS_IDLE
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (¬ DEVICE_IS_IDLE) OR (INACTIVITY_BEFORE_5_MINUTES IMPLIES DEVICE_IN_SLEEP_MODE)
+meow (Canonical SymPy object creation failed).
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 2: LLM Correction: (¬ DEVICE_IS_IDLE) OR (NOT INACTIVITY_BEFORE_5_MINUTES IMPLIES DEVICE_IN_SLEEP_MODE)
+meow (Canonical SymPy object creation failed).
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 3: LLM Correction: (¬ DEVICE_IS_IDLE) OR (INACTIVITY_BEFORE_5_MINUTES IMPLIES ¬ DEVICE_IN_SLEEP_MODE)
+meow (Canonical SymPy object creation failed).
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 4: LLM Correction: (¬ DEVICE_IS_IDLE) OR ((¬ INACTIVITY_BEFORE_5_MINUTES) IMPLIES DEVICE_IN_SLEEP_MODE)
+meow (Canonical SymPy object creation failed).
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 5: LLM Correction: (¬ DEVICE_IS_IDLE) OR (INACTIVITY_BEFORE_5_MINUTES IMPLIES ¬ DEVICE_IN_SLEEP_MODE)
+meow (Canonical SymPy object creation failed).
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 6: LLM Correction: (¬ INACTIVITY_BEFORE_5_MINUTES ∨ DEVICE_IS_IDLE) ∧ DEVICE_IN_SLEEP_MODE
+meow (Canonical SymPy object creation failed).
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 7: LLM Correction: (¬ (INACTIVITY_BEFORE_5_MINUTES ∧ ¬DEVICE_IS_IDLE)) IMPLIES DEVICE_IN_SLEEP_MODE
+meow (Canonical SymPy object creation failed).
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 8: LLM Correction: (¬(INACTIVITY_BEFORE_5_MINUTES ∨ DEVICE_IS_IDLE)) IMPLIES DEVICE_IN_SLEEP_MODE
+meow (Canonical SymPy object creation failed).
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 9: LLM Correction: (DEVICE_IS_IDLE ∧ ¬INACTIVITY_BEFORE_5_MINUTES) IMPLIES DEVICE_IN_SLEEP_MODE
+meow (Canonical SymPy object creation failed).
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 10: LLM Correction: (¬(INACTIVITY_BEFORE_5_MINUTES ∨ DEVICE_IS_IDLE)) IMPLIES DEVICE_IN_SLEEP_MODE
+meow (Canonical SymPy object creation failed).
+None
+None
+  -> INCORRECT. Reprompting...
+❌ FAILURE. Max attempts (10) reached.
+
+--- Requirement 6 ---
+Natural Language: "Notifications will appear except when do not disturb mode is active or when the phone is switched off."
+Ground Truth Boolean Logic: NOTIFICATIONS IMPLIES (DND_MODE_DISABLED AND PHONE_ON)
+
+DEBUG: Asking LLM to deconstruct the requirement.
+Notifications will appear
+do not disturb mode is active
+the phone is switched off
+1 : NOTIFICATIONS_APPEAR
+1 : DO_NOT_DISTURB_MODE_ACTIVE
+1 : PHONE_SWITCHED_OFF
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (NOTIFICATIONS_APPEAR IMPLIES (NOT DO_NOT_DISTURB_MODE_ACTIVE) AND NOT PHONE_SWITCHED_OFF)
+~PHONE_ON & (Implies(NOTIFICATIONS, ~DND_MODE_DISABLED))
+Implies(NOTIFICATIONS, DND_MODE_DISABLED & PHONE_ON)
+🎉 SUCCESS! Logic is correct after 1 attempts.
+
+--- Requirement 7 ---
+Natural Language: "The backup will proceed except if the storage device is not connected or backup is not enabled."
+Ground Truth Boolean Logic: BACKUP_PROCEED IMPLIES (STORAGE_CONNECTED AND BACKUP_ENABLED)
+
+DEBUG: Asking LLM to deconstruct the requirement.
+"The backup will proceed
+the storage device is not connected
+backup is not enabled"
+1 : BACKUP_PROCEEDS
+1 : STORAGE_DEVICE_CONNECTED
+1 : BACKUP_ENABLED
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (NOT BACKUP_PROCEEDS) OR (NOT STORAGE_DEVICE_CONNECTED) OR (NOT BACKUP_ENABLED)
+~BACKUP_ENABLED | ~BACKUP_PROCEED | ~STORAGE_CONNECTED
+Implies(BACKUP_PROCEED, BACKUP_ENABLED & STORAGE_CONNECTED)
+🎉 SUCCESS! Logic is correct after 1 attempts.
+
+--- Requirement 8 ---
+Natural Language: "The system will reboot except if critical processes are running or reboot is not requested."
+Ground Truth Boolean Logic: SYSTEM_REBOOT IMPLIES (PROCESSES_COMPLETED AND REBOOT_REQUESTED)
+
+DEBUG: Asking LLM to deconstruct the requirement.
+the system will reboot
+critical processes are running
+reboot is not requested
+1 : SYSTEM_REBOOTS
+1 : CRITICAL_PROCESSES_RUNNING
+1 : REBOOT_REQUESTED
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (NOT SYSTEM_REBOOTS) OR (NOT REBOOT_REQUESTED) IMPLIES SYSTEM_REBOOTS
+Variable Count Mismatch or Empty: LLM=2, GT=3.
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 2: LLM Correction: (SYSTEM_REBOOTS IMPLIES (NOT CRITICAL_PROCESSES_RUNNING) AND NOT REBOOT_REQUESTED)
+~REBOOT_REQUESTED & (Implies(SYSTEM_REBOOT, ~PROCESSES_COMPLETED))
+Implies(SYSTEM_REBOOT, PROCESSES_COMPLETED & REBOOT_REQUESTED)
+🎉 SUCCESS! Logic is correct after 2 attempts.
+
+--- Requirement 9 ---
+Natural Language: "The settings will be saved except when the form is not validated or the user has not confirmed."
+Ground Truth Boolean Logic: SETTINGS_SAVED IMPLIES (FORM_VALIDATED AND USER_CONFIRMED)
+
+DEBUG: Asking LLM to deconstruct the requirement.
+the settings will be saved
+the form is not validated
+the user has not confirmed
+1 : SETTINGS_SAVED
+1 : FORM_VALIDATED
+1 : USER_CONFIRMED
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (SETTINGS_SAVED IMPLIES (NOT FORM_VALIDATED OR USER_CONFIRMED))
+Implies(SETTINGS_SAVED, USER_CONFIRMED | ~FORM_VALIDATED)
+Implies(SETTINGS_SAVED, FORM_VALIDATED & USER_CONFIRMED)
+🎉 SUCCESS! Logic is correct after 1 attempts.
+
+--- Requirement 10 ---
+Natural Language: "The connection will be established except without network availability."
+Ground Truth Boolean Logic: CONNECTION_ESTABLISHED IMPLIES (NETWORK_AVAILABLE AND CONNECTION_REQUESTED)
+
+DEBUG: Asking LLM to deconstruct the requirement.
+"The connection will be established
+network availability exists"
+1 : CONNECTION_ESTABLISHED
+1 : NETWORK_AVAILABILITY_EXISTS
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (NOT CONNECTION_ESTABLISHED) OR (NOT NETWORK_AVAILABILITY_EXISTS)
+Variable Count Mismatch or Empty: LLM=2, GT=3.
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 2: LLM Correction: (CONNECTION_ESTABLISHED IMPLIES NETWORK_AVAILABILITY_EXISTS)
+Variable Count Mismatch or Empty: LLM=2, GT=3.
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 3: LLM Correction: (CONNECTION_ESTABLISHED AND NOT NETWORK_AVAILABILITY_EXISTS)
+Variable Count Mismatch or Empty: LLM=2, GT=3.
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 4: LLM Correction: (CONNECTION_ESTABLISHED IMPLIES NETWORK_AVAILABILITY_EXISTS)
+Variable Count Mismatch or Empty: LLM=2, GT=3.
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 5: LLM Correction: (CONNECTION_ESTABLISHED AND NOT NETWORK_AVAILABILITY_EXISTS)
+Variable Count Mismatch or Empty: LLM=2, GT=3.
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 6: LLM Correction: (CONNECTION_ESTABLISHED IMPLIES NETWORK_AVAILABILITY_EXISTS)
+Variable Count Mismatch or Empty: LLM=2, GT=3.
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 7: LLM Correction: (CONNECTION_ESTABLISHED AND NOT NETWORK_AVAILABILITY_EXISTS)
+Variable Count Mismatch or Empty: LLM=2, GT=3.
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 8: LLM Correction: (CONNECTION_ESTABLISHED IMPLIES NETWORK_AVAILABILITY_EXISTS)
+Variable Count Mismatch or Empty: LLM=2, GT=3.
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 9: LLM Correction: (CONNECTION_ESTABLISHED AND NOT NETWORK_AVAILABILITY_EXISTS)
+Variable Count Mismatch or Empty: LLM=2, GT=3.
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 10: LLM Correction: (CONNECTION_ESTABLISHED IMPLIES NETWORK_AVAILABILITY_EXISTS)
+Variable Count Mismatch or Empty: LLM=2, GT=3.
+None
+None
+  -> INCORRECT. Reprompting...
+❌ FAILURE. Max attempts (10) reached.
+
+--- Requirement 11 ---
+Natural Language: "The system will not install updates unless there is enough disk space and the update is available."
+Ground Truth Boolean Logic: SOFTWARE_INSTALL IMPLIES ENOUGH_DISK_SPACE AND UPDATE_AVAILABLE
+
+DEBUG: Asking LLM to deconstruct the requirement.
+the system will not install updates
+there is enough disk space
+the update is available
+1 : SYSTEM_UPDATES_INSTALLED
+1 : DISK_SPACE_AVAILABLE
+1 : UPDATE_AVAILABLE
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: NOT SYSTEM_UPDATES_INSTALLED IMPLIES (NOT DISK_SPACE_AVAILABLE OR NOT UPDATE_AVAILABLE)
+Implies(~SOFTWARE_INSTALL, ~ENOUGH_DISK_SPACE | ~UPDATE_AVAILABLE)
+UPDATE_AVAILABLE & (Implies(SOFTWARE_INSTALL, ENOUGH_DISK_SPACE))
+🎉 SUCCESS! Logic is correct after 1 attempts.
+
+--- Requirement 12 ---
+Natural Language: "The application will not launch unless the operating system is updated and the user is logged in."
+Ground Truth Boolean Logic: APPLICATION_LAUNCH IMPLIES OPERATING_SYSTEM_UPDATED AND USER_LOGGED_IN
+
+DEBUG: Asking LLM to deconstruct the requirement.
+the operating system is updated
+the user is logged in
+the application will not launch
+1 : SYSTEM_UPDATED
+1 : USER_LOGGED_IN
+1 : APPLICATION_LAUNCHES
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (NOT APPLICATION_LAUNCHES) IMPLIES (SYSTEM_UPDATED AND USER_LOGGED_IN)
+Implies(~APPLICATION_LAUNCH, OPERATING_SYSTEM_UPDATED & USER_LOGGED_IN)
+USER_LOGGED_IN & (Implies(APPLICATION_LAUNCH, OPERATING_SYSTEM_UPDATED))
+🎉 SUCCESS! Logic is correct after 1 attempts.
+
+--- Requirement 13 ---
+Natural Language: "The feature will not be enabled unless the user is authenticated and the feature is available."
+Ground Truth Boolean Logic: FEATURE_ENABLED IMPLIES USER_AUTHENTICATED AND FEATURE_AVAILABLE
+
+DEBUG: Asking LLM to deconstruct the requirement.
+user is authenticated
+feature is available
+1 : USER_AUTHENTICATED
+1 : FEATURE_AVAILABLE
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (USER_AUTHENTICATED AND FEATURE_AVAILABLE) IMPLIES NOT FEATURE_ENABLED
+Implies(FEATURE_AVAILABLE & USER_AUTHENTICATED, ~FEATURE_ENABLED)
+FEATURE_AVAILABLE & (Implies(FEATURE_ENABLED, USER_AUTHENTICATED))
+🎉 SUCCESS! Logic is correct after 1 attempts.
+
+--- Requirement 14 ---
+Natural Language: "The service will not start automatically unless auto mode is selected and the service is configured."
+Ground Truth Boolean Logic: SERVICE_START IMPLIES AUTO_MODE_SELECTED AND SERVICE_CONFIGURED
+
+DEBUG: Asking LLM to deconstruct the requirement.
+auto mode is selected
+the service is configured
+the service will not start automatically
+1 : AUTO_MODE_SELECTED
+1 : SERVICE_CONFIGURED
+1 : SERVICE_STARTS_AUTOMATICALLY
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (NOT ('SERVICE_STARTS_AUTOMATICALLY' IMPLIES 'AUTO_MODE_SELECTED')) AND ('SERVICE_STARTS_AUTOMICALLY' IMPLIES 'SERVICE_CONFIGURED')
+Variable Count Mismatch or Empty: LLM=4, GT=3.
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 2: LLM Correction: '(NOT ('SERVICE_STARTS_AUTOMATICALLY') IMPLIES ('AUTO_MODE_SELECTED' AND 'SERVICE_CONFIGURED'))'
+Implies(~SERVICE_START, AUTO_MODE_SELECTED & SERVICE_CONFIGURED)
+SERVICE_CONFIGURED & (Implies(SERVICE_START, AUTO_MODE_SELECTED))
+🎉 SUCCESS! Logic is correct after 2 attempts.
+
+--- Requirement 15 ---
+Natural Language: "The device will not enter sleep mode unless there have been 5 minutes of inactivity and the device is idle."
+Ground Truth Boolean Logic: SLEEP_MODE IMPLIES INACTIVITY_5MIN AND DEVICE_IDLE
+
+DEBUG: Asking LLM to deconstruct the requirement.
+device will not enter sleep mode
+there have been 5 minutes of inactivity
+device is idle
+1 : DEVICE_ENTERS_SLEEP_MODE
+1 : INACTIVITY_5_MINUTES
+1 : DEVICE_IS_IDLE
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: NOT DEVICE_ENTERS_SLEEP_MODE IMPLIES (INACTIVITY_5_MINUTES AND DEVICE_IS_IDLE)
+Implies(~SLEEP_MODE, DEVICE_IDLE & INACTIVITY_5_MINUTES)
+DEVICE_IDLE & (Implies(SLEEP_MODE, INACTIVITY_5MIN))
+🎉 SUCCESS! Logic is correct after 1 attempts.
+
+--- Requirement 16 ---
+Natural Language: "Notifications will not appear unless do not disturb mode is disabled and the phone is switched on."
+Ground Truth Boolean Logic: NOTIFICATIONS IMPLIES DND_MODE_DISABLED AND PHONE_ON
+
+DEBUG: Asking LLM to deconstruct the requirement.
+do not disturb mode is disabled
+the phone is switched on
+1 : DO_NOT_DISTURB_MODE_ENABLED
+1 : PHONE_SWITCHED_ON
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (NOT DO_NOT_DISTURB_MODE_ENABLED) AND PHONE_SWITCHED_ON IMPLIES NOT NOTIFICATIONS_APPEAR
+~DND_MODE_DISABLED & (Implies(PHONE_ON, ~NOTIFICATIONS))
+PHONE_ON & (Implies(NOTIFICATIONS, DND_MODE_DISABLED))
+🎉 SUCCESS! Logic is correct after 1 attempts.
+
+--- Requirement 17 ---
+Natural Language: "The backup will not proceed unless the storage device is connected and backup is enabled."
+Ground Truth Boolean Logic: BACKUP_PROCEED IMPLIES STORAGE_CONNECTED AND BACKUP_ENABLED
+
+DEBUG: Asking LLM to deconstruct the requirement.
+storage device is connected
+backup is enabled
+1 : STORAGE_DEVICE_CONNECTED
+1 : BACKUP_ENABLED
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (NOT BACKUP_ENABLED) IMPLIES ((NOT STORAGE_DEVICE_CONNECTED) OR (NOT BACKUP_ENABLED))
+Variable Count Mismatch or Empty: LLM=2, GT=3.
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 2: LLM Correction: ((NOT BACKUP_ENABLED) IMPLIES (NOT STORAGE_DEVICE_CONNECTED)) AND (BACKUP_ENABLED)
+Variable Count Mismatch or Empty: LLM=2, GT=3.
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 3: LLM Correction: ((NOT BACKUP_ENABLED) OR (STORAGE_DEVICE_CONNECTED)) IMPLIES BACKUP_ENABLED
+Variable Count Mismatch or Empty: LLM=2, GT=3.
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 4: LLM Correction: ((STORAGE_DEVICE_CONNECTED) AND (BACKUP_ENABLED)) IMPLIES BACKUP_ENABLED
+Variable Count Mismatch or Empty: LLM=2, GT=3.
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 5: LLM Correction: ((NOT STORAGE_DEVICE_CONNECTED) OR (NOT BACKUP_ENABLED)) IMPLIES ((STORAGE_DEVICE_CONNECTED) AND BACKUP_ENABLED)
+Variable Count Mismatch or Empty: LLM=2, GT=3.
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 6: LLM Correction: ((NOT BACKUP_ENABLED) IMPLIES (NOT STORAGE_DEVICE_CONNECTED)) AND (STORAGE_DEVICE_CONNECTED) AND BACKUP_ENABLED
+Variable Count Mismatch or Empty: LLM=2, GT=3.
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 7: LLM Correction: ((NOT BACKUP_ENABLED) OR (NOT STORAGE_DEVICE_CONNECTED)) AND STORAGE_DEVICE_CONNECTED AND BACKUP_ENABLED
+Variable Count Mismatch or Empty: LLM=2, GT=3.
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 8: LLM Correction: ((NOT BACKUP_ENABLED) IMPLIES (NOT STORAGE_DEVICE_CONNECTED)) AND STORAGE_DEVICE_CONNECTED AND BACKUP_ENABLED
+Variable Count Mismatch or Empty: LLM=2, GT=3.
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 9: LLM Correction: ((NOT BACKUP_ENABLED) OR (NOT STORAGE_DEVICE_CONNECTED)) AND STORAGE_DEVICE_CONNECTED AND BACKUP_ENABLED
+Variable Count Mismatch or Empty: LLM=2, GT=3.
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 10: LLM Correction: ((NOT BACKUP_ENABLED) OR (NOT STORAGE_DEVICE_CONNECTED)) IMPLIES (STORAGE_DEVICE_CONNECTED AND BACKUP_ENABLED)
+Variable Count Mismatch or Empty: LLM=2, GT=3.
+None
+None
+  -> INCORRECT. Reprompting...
+❌ FAILURE. Max attempts (10) reached.
+
+--- Requirement 18 ---
+Natural Language: "The system will not reboot unless all critical processes have completed and a reboot is requested."
+Ground Truth Boolean Logic: SYSTEM_REBOOT IMPLIES CRITICAL_PROCESSES_COMPLETED AND REBOOT_REQUESTED
+
+DEBUG: Asking LLM to deconstruct the requirement.
+all critical processes have completed
+a reboot is requested
+the system will not reboot
+1 : CRITICAL_PROCESSES_COMPLETED
+1 : REBOOT_REQUESTED
+1 : SYSTEM_REBOOTS
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: NOT SYSTEM_REBOOTS IMPLIES (NOT CRITICAL_PROCESSES_COMPLETED OR NOT REBOOT_REQUESTED)
+Implies(~SYSTEM_REBOOT, ~CRITICAL_PROCESSES_COMPLETED | ~REBOOT_REQUESTED)
+REBOOT_REQUESTED & (Implies(SYSTEM_REBOOT, CRITICAL_PROCESSES_COMPLETED))
+🎉 SUCCESS! Logic is correct after 1 attempts.
+
+--- Requirement 19 ---
+Natural Language: "The settings will not be saved unless the form is validated and the user has confirmed."
+Ground Truth Boolean Logic: SETTINGS_SAVED IMPLIES FORM_VALIDATED AND USER_CONFIRMED
+
+DEBUG: Asking LLM to deconstruct the requirement.
+"The settings will not be saved
+the form is not validated
+the user has not confirmed"
+1 : SETTINGS_SAVED
+1 : FORM_VALIDATED
+1 : USER_CONFIRMED
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: NOT SETTINGS_SAVED IMPLIES (FORM_VALIDATED AND USER_CONFIRMED)
+Implies(~SETTINGS_SAVED, FORM_VALIDATED & USER_CONFIRMED)
+USER_CONFIRMED & (Implies(SETTINGS_SAVED, FORM_VALIDATED))
+🎉 SUCCESS! Logic is correct after 1 attempts.
+
+--- Requirement 20 ---
+Natural Language: "The connection will not be established unless the network is available and a connection is requested."
+Ground Truth Boolean Logic: CONNECTION_ESTABLISHED IMPLIES NETWORK_AVAILABLE AND CONNECTION_REQUESTED
+
+DEBUG: Asking LLM to deconstruct the requirement.
+the connection will not be established
+the network is available
+a connection is requested
+1 : CONNECTION_ESTABLISHED
+1 : NETWORK_AVAILABLE
+1 : CONNECTION_REQUESTED
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (NOT CONNECTION_ESTABLISHED) IMPLIES ((NOT CONNECTION_ESTABLISHED) AND (NETWORK_AVAILABLE) AND (CONNECTION_REQUESTED))
+Implies(~CONNECTION_ESTABLISHED, CONNECTION_REQUESTED & NETWORK_AVAILABLE & ~CONNECTION_ESTABLISHED)
+CONNECTION_REQUESTED & (Implies(CONNECTION_ESTABLISHED, NETWORK_AVAILABLE))
+🎉 SUCCESS! Logic is correct after 1 attempts.
+
+--- Requirement 21 ---
+Natural Language: "The system will install updates but only if there is enough disk space and the update is available."
+Ground Truth Boolean Logic: SOFTWARE_INSTALL IMPLIES (ENOUGH_DISK_SPACE AND UPDATE_AVAILABLE)
+
+DEBUG: Asking LLM to deconstruct the requirement.
+the system will install updates
+there is enough disk space
+the update is available
+1 : SYSTEM_UPDATES_INSTALLED
+1 : DISK_SPACE_AVAILABLE
+1 : UPDATE_AVAILABLE
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (SYS_UPDATE_INSTALLED IMPLIES (DISK_SPACE_AVAILABLE AND UPDATE_AVAILABLE))
+Implies(SOFTWARE_INSTALL, ENOUGH_DISK_SPACE & UPDATE_AVAILABLE)
+Implies(SOFTWARE_INSTALL, ENOUGH_DISK_SPACE & UPDATE_AVAILABLE)
+🎉 SUCCESS! Logic is correct after 1 attempts.
+
+--- Requirement 22 ---
+Natural Language: "The application will launch but not if the operating system is outdated or the user is not logged in."
+Ground Truth Boolean Logic: APPLICATION_LAUNCH IMPLIES (OPERATING_SYSTEM_UPDATED AND USER_LOGGED_IN)
+
+DEBUG: Asking LLM to deconstruct the requirement.
+the application will launch
+the operating system is outdated
+the user is not logged in
+1 : APPLICATION_LAUNCHES
+1 : OPERATING_SYSTEM_UP_TO_DATE
+1 : USER_LOGGED_IN
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (NOT APPLICATION_LAUNCHES) IMPLIES ((NOT OPERATING_SYSTEM_UP_TO_DATE) OR (NOT USER_LOGGED_IN))
+Implies(~APPLICATION_LAUNCH, ~OPERATING_SYSTEM_UPDATED | ~USER_LOGGED_IN)
+Implies(APPLICATION_LAUNCH, OPERATING_SYSTEM_UPDATED & USER_LOGGED_IN)
+🎉 SUCCESS! Logic is correct after 1 attempts.
+
+--- Requirement 23 ---
+Natural Language: "The feature will be enabled but only when the user is authenticated and the feature is available."
+Ground Truth Boolean Logic: FEATURE_ENABLED IMPLIES (USER_AUTHENTICATED AND FEATURE_AVAILABLE)
+
+DEBUG: Asking LLM to deconstruct the requirement.
+"The feature will be enabled
+the user is authenticated
+the feature is available"
+1 : FEATURE_ENABLED
+1 : USER_AUTHENTICATED
+1 : FEATURE_AVAILABLE
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (FEATURE_ENABLED IMPLIES (USER_AUTHENTICATED AND FEATURE_AVAILABLE))
+Implies(FEATURE_ENABLED, FEATURE_AVAILABLE & USER_AUTHENTICATED)
+Implies(FEATURE_ENABLED, FEATURE_AVAILABLE & USER_AUTHENTICATED)
+🎉 SUCCESS! Logic is correct after 1 attempts.
+
+--- Requirement 24 ---
+Natural Language: "The service will start automatically but not if manual mode is selected or the service is not configured."
+Ground Truth Boolean Logic: SERVICE_START IMPLIES (AUTO_MODE_SELECTED AND SERVICE_CONFIGURED)
+
+DEBUG: Asking LLM to deconstruct the requirement.
+"The service will start automatically
+manual mode is selected
+the service is not configured"
+1 : SERVICE_STARTS_AUTOMATICALLY
+1 : MANUAL_MODE_SELECTED
+1 : SERVICE_CONFIGURED
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (SERVICE_STARTS_AUTOMATICALLY) AND (NOT ('MANUAL_MODE_SELECTED' OR 'SERVICE_CONFIGURED'))
+SERVICE_START & ~(AUTO_MODE_SELECTED | SERVICE_CONFIGURED)
+Implies(SERVICE_START, AUTO_MODE_SELECTED & SERVICE_CONFIGURED)
+🎉 SUCCESS! Logic is correct after 1 attempts.
+
+--- Requirement 25 ---
+Natural Language: "The device will enter sleep mode but only after 5 minutes of inactivity and when the device is idle."
+Ground Truth Boolean Logic: SLEEP_MODE IMPLIES (INACTIVITY_5MIN AND DEVICE_IDLE)
+
+DEBUG: Asking LLM to deconstruct the requirement.
+device will enter sleep mode
+5 minutes of inactivity occurs
+device is idle
+1 : DEVICE_IN_SLEEP_MODE
+1 : INACTIVITY_OCCURS_5MINUTES
+1 : DEVICE_IS_IDLE
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (D DEVICE_IN_SLEEP_MODE) IMPLIES ((INACTIVITY_OCCURS_5MINUTES) AND (DEVICE_IS_IDLE))
+Variable Count Mismatch or Empty: LLM=3, GT=2.
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 2: LLM Correction: (D DEVICE_IS_IDLE) AND (INACTIVITY_OCCURS_5MINUTES) IMPLIES (DEVICE_IN_SLEEP_MODE)
+Variable Count Mismatch or Empty: LLM=3, GT=2.
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 3: LLM Correction: (DEVICE_IS_IDLE) AND (INACTIVITY_OCCURS_5MINUTES) IMPLIES DEVICE_IN_SLEEP_MODE
+DEVICE_IDLE & (Implies(INACTIVITY_OCCURS_5MINUTES, SLEEP_MODE))
+Implies(SLEEP_MODE, DEVICE_IDLE & INACTIVITY_5MIN)
+🎉 SUCCESS! Logic is correct after 3 attempts.
+
+--- Requirement 26 ---
+Natural Language: "Notifications will appear but not when do not disturb mode is active or when the phone is switched off."
+Ground Truth Boolean Logic: NOTIFICATIONS IMPLIES (DND_MODE_DISABLED AND PHONE_ON)
+
+DEBUG: Asking LLM to deconstruct the requirement.
+Notifications will appear
+a notification will appear
+do not disturb mode is active
+the phone is switched off.
+1 : NOTIFICATIONS_APPEAR
+1 : NOTIFICATION_APPEARS
+1 : DO_NOT_DISTURB_MODE_ACTIVE
+1 : PHONE_SWITCHED_OFF
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (NOTIFICATIONS_APPEAR) AND (NOT (DO_NOT_DISTURB_MODE_ACTIVE OR PHONE_SWITCHED_OFF))
+NOTIFICATIONS & ~(DND_MODE_DISABLED | PHONE_ON)
+Implies(NOTIFICATIONS, DND_MODE_DISABLED & PHONE_ON)
+🎉 SUCCESS! Logic is correct after 1 attempts.
+
+--- Requirement 27 ---
+Natural Language: "The backup will proceed but only if the storage device is connected and backup is enabled."
+Ground Truth Boolean Logic: BACKUP_PROCEED IMPLIES (STORAGE_CONNECTED AND BACKUP_ENABLED)
+
+DEBUG: Asking LLM to deconstruct the requirement.
+"The backup will proceed
+the storage device is connected
+backup is enabled"
+1 : BACKUP_PROCEEDS
+1 : STORAGE_DEVICE_CONNECTED
+1 : BACKUP_ENABLED
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (BACKUP_PROCEEDS IMPLIES (STORAGE_DEVICE_CONNECTED AND BACKUP_ENABLED))
+Implies(BACKUP_PROCEED, BACKUP_ENABLED & STORAGE_CONNECTED)
+Implies(BACKUP_PROCEED, BACKUP_ENABLED & STORAGE_CONNECTED)
+🎉 SUCCESS! Logic is correct after 1 attempts.
+
+--- Requirement 28 ---
+Natural Language: "The system will reboot but not if critical processes are running or reboot is not requested."
+Ground Truth Boolean Logic: SYSTEM_REBOOT IMPLIES (PROCESSES_COMPLETED AND REBOOT_REQUESTED)
+
+DEBUG: Asking LLM to deconstruct the requirement.
+the system will reboot
+critical processes are running
+reboot is not requested
+1 : SYSTEM_REBOOTS
+1 : CRITICAL_PROCESSES_RUNNING
+1 : REBOOT_REQUESTED
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (NOT SYSTEM_REBOOTS) AND (NOT REBOOT_REQUESTED) IMPLIES NOT SYSTEM_REBOOTS
+Variable Count Mismatch or Empty: LLM=2, GT=3.
+None
+None
+  -> INCORRECT. Reprompting...
+Attempt 2: LLM Correction: (SYSTEM_REBOOTS IMPLIES (NOT CRITICAL_PROCESSES_RUNNING OR REBOOT_REQUESTED))
+Implies(SYSTEM_REBOOT, REBOOT_REQUESTED | ~PROCESSES_COMPLETED)
+Implies(SYSTEM_REBOOT, PROCESSES_COMPLETED & REBOOT_REQUESTED)
+🎉 SUCCESS! Logic is correct after 2 attempts.
+
+--- Requirement 29 ---
+Natural Language: "The settings will be saved but only when the form is validated and the user has confirmed."
+Ground Truth Boolean Logic: SETTINGS_SAVED IMPLIES (FORM_VALIDATED AND USER_CONFIRMED)
+
+DEBUG: Asking LLM to deconstruct the requirement.
+"The settings will be saved
+the form is validated
+the user has confirmed"
+1 : SETTINGS_SAVED
+1 : FORM_VALIDATED
+1 : USER_CONFIRMED
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (SETTINGS_SAVED IMPLIES (FORM_VALIDATED AND USER_CONFIRMED))
+Implies(SETTINGS_SAVED, FORM_VALIDATED & USER_CONFIRMED)
+Implies(SETTINGS_SAVED, FORM_VALIDATED & USER_CONFIRMED)
+🎉 SUCCESS! Logic is correct after 1 attempts.
+
+--- Requirement 30 ---
+Natural Language: "The connection will be established but not without network availability."
+Ground Truth Boolean Logic: CONNECTION_ESTABLISHED IMPLIES (NETWORK_AVAILABLE)
+
+DEBUG: Asking LLM to deconstruct the requirement.
+"The connection will be established
+network availability exists"
+1 : CONNECTION_ESTABLISHED
+1 : NETWORK_AVAILABILITY_EXISTS
+Starting LLM-SAT Feedback Loop...
+Attempt 1: Initial LLM Output: (CONNECTION_ESTABLISHED IMPLIES NETWORK_AVAILABILITY_EXISTS)
+Implies(CONNECTION_ESTABLISHED, NETWORK_AVAILABLE)
+Implies(CONNECTION_ESTABLISHED, NETWORK_AVAILABLE)
+🎉 SUCCESS! Logic is correct after 1 attempts.
+
+All requirements processed. Total requirements: 30, Total attempts: 71. Passed Requirements: 26
+
+Passed ratio: 0.8666666666666667.
+
+Average attempts per requirement: 2.3666666666666667

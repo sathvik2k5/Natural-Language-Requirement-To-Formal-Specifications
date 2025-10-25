@@ -1,0 +1,1436 @@
+--- Requirement 1 ---
+Natural Language: "The system will install updates, except if there is not enough disk space or the update is not available."
+Ground Truth Boolean Logic: SOFTWARE_INSTALL IF ENOUGH_DISK_SPACE AND UPDATE_AVAILABLE
+
+DEBUG: Asking LLM to deconstruct the requirement.
+the system will install updates
+there is not enough disk space
+the update is not available
+1 : SYSTEM_UPDATES_INSTALLED
+1 : DISK_SPACE_AVAILABLE
+1 : UPDATE_AVAILABLE
+LLM-generated Boolean Logic: (NOT SYSTEM_UPDATES_INSTALLED) IMPLIES ((NOT DISK_SPACE_AVAILABLE) OR (NOT UPDATE_AVAILABLE))
+Found one. :)
+Is it here yet?
+Is it here yet?
+No issues detected.
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+1.0
+Final Boolean Logic: (NOT SYSTEM_UPDATES_INSTALLED) IMPLIES ((NOT DISK_SPACE_AVAILABLE) OR (NOT UPDATE_AVAILABLE))
+CONSISTENT
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+1.0
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: SYSTEM_UPDATES_INSTALLED IMPLIES (DISK_SPACE_AVAILABLE AND UPDATE_AVAILABLE)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT SYSTEM_UPDATES_INSTALLED OR (NOT DISK_SPACE_AVAILABLE AND UPDATE_AVAILABLE)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT SYSTEM_UPDATES_INSTALLED IMPLIES (DISK_SPACE_AVAILABLE OR UPDATE_AVAILABLE)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT SYSTEM_UPDATES_INSTALLED IMPLIES (DISK_SPACE_AVAILABLE OR UPDATE_AVAILABLE) IMPLIES SYSTEM_UPDATES_INSTALLED
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (SYSTEM_UPDATES_INSTALLED IMPLIES (NOT DISK_SPACE_AVAILABLE OR NOT UPDATE_AVAILABLE))
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: NOT (SYSTEM_UPDATES_INSTALLED IMPLIES (NOT DISK_SPACE_AVAILABLE OR NOT UPDATE_AVAILABLE))
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 2 ---
+Natural Language: "The application will launch, except if the operating system is outdated or the user is not logged in."
+Ground Truth Boolean Logic: APPLICATION_LAUNCH IF OPERATING_SYSTEM_UPDATED AND USER_LOGGED_IN
+
+DEBUG: Asking LLM to deconstruct the requirement.
+the application will launch
+the operating system is outdated
+the user is not logged in
+1 : APPLICATION_LAUNCHES
+1 : OPERATING_SYSTEM_UP_TO_DATE
+1 : USER_LOGGED_IN
+LLM-generated Boolean Logic: (NOT APPLICATION_LAUNCHES) IMPLIES ((NOT OPERATING_SYSTEM_UP_TO_DATE) OR (NOT USER_LOGGED_IN))
+Found one. :)
+Is it here yet?
+Is it here yet?
+No issues detected.
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+1.0
+Final Boolean Logic: (NOT APPLICATION_LAUNCHES) IMPLIES ((NOT OPERATING_SYSTEM_UP_TO_DATE) OR (NOT USER_LOGGED_IN))
+CONSISTENT
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+1.0
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOT APPLICATION_LAUNCHES) IMPLIES ((OPERATING_SYSTEM_UP_TO_DATE) AND (USER_LOGGED_IN))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (APPLICATION_LAUNCHES IMPLIES ((OPERATING_SYSTEM_UP_TO_DATE) AND (USER_LOGGED_IN)))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT ((OPERATING_SYSTEM_UP_TO_DATE OR USER_LOGGED_IN) IMPLIES NOT APPLICATION_LAUNCHES)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (OPERATING_SYSTEM_UP_TO_DATE IMPLIES APPLICATION_LAUNCHES) AND NOT (USER_LOGGED_IN IMPLIES APPLICATION_LAUNCHES)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (OPERATING_SYSTEM_UP_TO_DATE AND USER_LOGGED_IN) IMPLIES NOT APPLICATION_LAUNCHES
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: NOT (OPERATING_SYSTEM_UP_TO_DATE AND USER_LOGGED_IN) IMPLIES NOT APPLICATION_LAUNCHES
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 3 ---
+Natural Language: "The feature will be enabled, except when the user is not authenticated or the feature is not available."
+Ground Truth Boolean Logic: FEATURE_ENABLED IF USER_AUTHENTICATED AND FEATURE_AVAILABLE
+
+DEBUG: Asking LLM to deconstruct the requirement.
+the feature will be enabled
+the user is not authenticated
+the feature is not available
+1 : FEATURE_ENABLED
+1 : USER_AUTHENTICATED
+1 : FEATURE_AVAILABLE
+LLM-generated Boolean Logic: NOT FEATURE_ENABLED IMPLIES (NOT USER_AUTHENTICATED OR NOT FEATURE_AVAILABLE)
+Found one. :)
+Is it here yet?
+Is it here yet?
+No issues detected.
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+1.0
+Final Boolean Logic: NOT FEATURE_ENABLED IMPLIES (NOT USER_AUTHENTICATED OR NOT FEATURE_AVAILABLE)
+I'm ready to help!
+
+Please provide the requirement you'd like me to check for consistency and correctness. I'll then respond with either "CONSISTENT" if the Boolean logic correctly represents the requirement or the corrected Boolean logic expression if it's inconsistent.
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+1.0
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (FEATURE_ENABLED IMPLIES (USER_AUTHENTICATED OR FEATURE_AVAILABLE))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (USER_AUTHENTICATED OR FEATURE_AVAILABLE) IMPLIES NOT FEATURE_ENABLED
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (USER_AUTHENTICATED AND FEATURE_AVAILABLE) IMPLIES NOT FEATURE_ENABLED
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (USER_AUTHENTICATED AND FEATURE_AVAILABLE) OR NOT FEATURE_ENABLED
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (USER_AUTHENTICATED AND FEATURE_AVAILABLE) IMPLIES NOT FEATURE_ENABLED
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: NOT (USER_AUTHENTICATED AND FEATURE_AVAILABLE) IMPLIES NOT FEATURE_ENABLED
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 4 ---
+Natural Language: "The service will start automatically, except if manual mode is selected or the service is not configured."
+Ground Truth Boolean Logic: SERVICE_START IF AUTO_MODE_SELECTED AND SERVICE_CONFIGURED
+
+DEBUG: Asking LLM to deconstruct the requirement.
+"The service will start automatically
+manual mode is selected
+the service is not configured"
+1 : SERVICE_STARTS_AUTOMATICALLY
+1 : MANUAL_MODE_SELECTED
+1 : SERVICE_CONFIGURED
+LLM-generated Boolean Logic: (NOT SERVICE_STARTS_AUTOMATICALLY) OR (MANUAL_MODE_SELECTED AND NOT SERVICE_CONFIGURED)
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issues detected:
+1. [connective_mismatch] NL suggests 'or' between exceptions, but node uses AND: [['NOT', ['SERVICE_STARTS_AUTOMATICALLY']], 'OR', [['MANUAL_MODE_SELECTED'], 'AND', ['NOT', ['SERVICE_CONFIGURED']]]]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults(['NOT', ParseResults(['SERVICE_STARTS_AUTOMATICALLY'], {})], {}), 'OR', ParseResults([ParseResults(['MANUAL_MODE_SELECTED'], {}), 'AND', ParseResults(['NOT', ParseResults(['SERVICE_CONFIGURED'], {})], {})], {})], {})
+    vars: ['MANUAL_MODE_SELECTED', 'SERVICE_CONFIGURED', 'SERVICE_STARTS_AUTOMATICALLY']
+
+2. [connective_mismatch] NL suggests 'or' between exceptions, but node uses AND: [['MANUAL_MODE_SELECTED'], 'AND', ['NOT', ['SERVICE_CONFIGURED']]]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults(['MANUAL_MODE_SELECTED'], {}), 'AND', ParseResults(['NOT', ParseResults(['SERVICE_CONFIGURED'], {})], {})], {})
+    vars: ['MANUAL_MODE_SELECTED', 'SERVICE_CONFIGURED']
+
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 2
+0.954
+New Boolean Logic: (SERVICE_STARTS_AUTOMATICALLY) IMPLIES ((NOT MANUAL_MODE_SELECTED) AND (SERVICE_CONFIGURED))
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issues detected:
+1. [connective_mismatch] NL suggests 'or' between exceptions, but node uses AND: [['SERVICE_STARTS_AUTOMATICALLY'], 'IMPLIES', [['NOT', ['MANUAL_MODE_SELECTED']], 'AND', ['SERVICE_CONFIGURED']]]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults(['SERVICE_STARTS_AUTOMATICALLY'], {}), 'IMPLIES', ParseResults([ParseResults(['NOT', ParseResults(['MANUAL_MODE_SELECTED'], {})], {}), 'AND', ParseResults(['SERVICE_CONFIGURED'], {})], {})], {})
+    vars: ['MANUAL_MODE_SELECTED', 'SERVICE_CONFIGURED', 'SERVICE_STARTS_AUTOMATICALLY']
+
+2. [connective_mismatch] NL suggests 'or' between exceptions, but node uses AND: [['NOT', ['MANUAL_MODE_SELECTED']], 'AND', ['SERVICE_CONFIGURED']]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults(['NOT', ParseResults(['MANUAL_MODE_SELECTED'], {})], {}), 'AND', ParseResults(['SERVICE_CONFIGURED'], {})], {})
+    vars: ['MANUAL_MODE_SELECTED', 'SERVICE_CONFIGURED']
+
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 2
+0.954
+New Boolean Logic: (SERVICE_STARTS_AUTOMATICALLY) IMPLIES ((NOT MANUAL_MODE_SELECTED) OR (NOT SERVICE_CONFIGURED))
+Found one. :)
+Is it here yet?
+Is it here yet?
+No issues detected.
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 2
+0.954
+Final Boolean Logic: (SERVICE_STARTS_AUTOMATICALLY) IMPLIES ((NOT MANUAL_MODE_SELECTED) OR (NOT SERVICE_CONFIGURED))
+CONSISTENT
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 2
+0.954
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOT (SERVICE_STARTS_AUTOMATICALLY IMPLIES (MANUAL_MODE_SELECTED OR SERVICE_CONFIGURED)))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOT (SERVICE_STARTS_AUTOMATICALLY) IMPLIES (MANUAL_MODE_SELECTED OR NOT SERVICE_CONFIGURED))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (SERVICE_STARTS_AUTOMATICALLY IMPLIES (NOT MANUAL_MODE_SELECTED) AND (SERVICE_CONFIGURED))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOT SERVICE_STARTS_AUTOMATICALLY) IMPLIES (MANUAL_MODE_SELECTED OR NOT SERVICE_CONFIGURED)
+Here are the issues with the provided Boolean logic expression:
+New Boolean Logic: (SERVICE_STARTS_AUTOMATICALLY IMPLIES (NOT MANUAL_MODE_SELECTED) AND (SERVICE_CONFIGURED))
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: (SERVICE_STARTS_AUTOMATICALLY IMPLIES (NOT MANUAL_MODE_SELECTED) AND (SERVICE_CONFIGURED))
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 5 ---
+Natural Language: "The device will enter sleep mode, except before 5 minutes of inactivity or when the device is not idle."
+Ground Truth Boolean Logic: SLEEP_MODE IF INACTIVITY_5MIN AND DEVICE_IDLE
+
+DEBUG: Asking LLM to deconstruct the requirement.
+device will enter sleep mode
+before 5 minutes of inactivity
+device is not idle
+1 : DEVICE_IN_SLEEP_MODE
+1 : INACTIVITY_BEFORE_5_MINUTES
+1 : DEVICE_IS_IDLE
+LLM-generated Boolean Logic: (¬(INACTIVITY_BEFORE_5_MINUTES OR DEVICE_IS_IDLE)) IMPLIES DEVICE_IN_SLEEP_MODE
+Error parsing expression: Expected 'IMPLIES' term, found '¬'  (at char 1), (line:1, col:2)
+No issues detected.
+Issue counts:
+1.0
+Final Boolean Logic: (¬(INACTIVITY_BEFORE_5_MINUTES OR DEVICE_IS_IDLE)) IMPLIES DEVICE_IN_SLEEP_MODE
+CONSISTENT
+Issue counts:
+1.0
+Here are the issues with the given Boolean logic expression:
+Error parsing expression: Expected end of text, found 'IMPLIES'  (at char 21), (line:1, col:22)
+New Boolean Logic: DEVICE_IN_SLEEP_MODE IMPLIES (¬(INACTIVITY_BEFORE_5_MINUTES OR DEVICE_IS_IDLE))
+Based on the given natural language requirement and the provided Boolean logic expression, I have identified the following issues:
+Error parsing expression: Expected end of text, found 'IMPLIES'  (at char 21), (line:1, col:22)
+New Boolean Logic: DEVICE_IN_SLEEP_MODE IMPLIES (INACTIVITY_BEFORE_5_MINUTES OR ¬DEVICE_IS_IDLE)
+Here are the issues with the given Boolean logic expression:
+Error parsing expression: Expected end of text, found '('  (at char 4), (line:1, col:5)
+New Boolean Logic: NOT (INACTIVITY_BEFORE_5_MINUTES OR DEVICE_IS_IDLE) IMPLIES DEVICE_IN_SLEEP_MODE
+Here are the issues with the given Boolean logic expression:
+Error parsing expression: Expected end of text, found 'IMPLIES'  (at char 21), (line:1, col:22)
+New Boolean Logic: DEVICE_IN_SLEEP_MODE IMPLIES (NOT INACTIVITY_BEFORE_5_MINUTES AND NOT DEVICE_IS_IDLE)
+Here are the issues with the provided Boolean logic expression:
+Error parsing expression: Expected end of text, found 'IMPLIES'  (at char 21), (line:1, col:22)
+New Boolean Logic: DEVICE_IN_SLEEP_MODE IMPLIES (NOT INACTIVITY_BEFORE_5_MINUTES OR NOT DEVICE_IS_IDLE)
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: DEVICE_IN_SLEEP_MODE IMPLIES (NOT INACTIVITY_BEFORE_5_MINUTES OR NOT DEVICE_IS_IDLE)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 6 ---
+Natural Language: "Notifications will appear, except when do not disturb mode is active or when the phone is switched off."
+Ground Truth Boolean Logic: NOTIFICATIONS IF DND_MODE_DISABLED AND PHONE_ON
+
+DEBUG: Asking LLM to deconstruct the requirement.
+notifications will appear
+do not disturb mode is active
+the phone is switched off
+1 : NOTIFICATIONS_APPEAR
+1 : DO_NOT_DISTURB_MODE_ACTIVE
+1 : PHONE_SWITCHED_OFF
+LLM-generated Boolean Logic: (NOTIFICATIONS_APPEAR IMPLIES (NOT DO_NOT_DISTURB_MODE_ACTIVE) AND (NOT PHONE_SWITCHED_OFF))
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issues detected:
+1. [connective_mismatch] NL suggests 'or' between exceptions, but node uses AND: [['NOTIFICATIONS_APPEAR'], 'IMPLIES', [['NOT', ['DO_NOT_DISTURB_MODE_ACTIVE']], 'AND', ['NOT', ['PHONE_SWITCHED_OFF']]]]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults(['NOTIFICATIONS_APPEAR'], {}), 'IMPLIES', ParseResults([ParseResults(['NOT', ParseResults(['DO_NOT_DISTURB_MODE_ACTIVE'], {})], {}), 'AND', ParseResults(['NOT', ParseResults(['PHONE_SWITCHED_OFF'], {})], {})], {})], {})
+    vars: ['DO_NOT_DISTURB_MODE_ACTIVE', 'NOTIFICATIONS_APPEAR', 'PHONE_SWITCHED_OFF']
+
+2. [connective_mismatch] NL suggests 'or' between exceptions, but node uses AND: [['NOT', ['DO_NOT_DISTURB_MODE_ACTIVE']], 'AND', ['NOT', ['PHONE_SWITCHED_OFF']]]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults(['NOT', ParseResults(['DO_NOT_DISTURB_MODE_ACTIVE'], {})], {}), 'AND', ParseResults(['NOT', ParseResults(['PHONE_SWITCHED_OFF'], {})], {})], {})
+    vars: ['DO_NOT_DISTURB_MODE_ACTIVE', 'PHONE_SWITCHED_OFF']
+
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 2
+0.954
+New Boolean Logic: (NOTIFICATIONS_APPEAR IMPLIES (NOT DO_NOT_DISTURB_MODE_ACTIVE) AND NOT PHONE_SWITCHED_OFF) OR (NOTIFICATIONS_APPEAR IMPLIES (NOT PHONE_SWITCHED_OFF) AND NOT DO_NOT_DISTURB_MODE_ACTIVE)
+Found one. :)
+Is it here yet?
+Is it here yet?
+Is it here yet?
+Is it here yet?
+Is it here yet?
+Issues detected:
+1. [connective_mismatch] NL suggests 'or' between exceptions, but node uses AND: [[['NOTIFICATIONS_APPEAR'], 'IMPLIES', [['NOT', ['DO_NOT_DISTURB_MODE_ACTIVE']], 'AND', ['NOT', ['PHONE_SWITCHED_OFF']]]], 'OR', [['NOTIFICATIONS_APPEAR'], 'IMPLIES', [['NOT', ['PHONE_SWITCHED_OFF']], 'AND', ['NOT', ['DO_NOT_DISTURB_MODE_ACTIVE']]]]]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults([ParseResults(['NOTIFICATIONS_APPEAR'], {}), 'IMPLIES', ParseResults([ParseResults(['NOT', ParseResults(['DO_NOT_DISTURB_MODE_ACTIVE'], {})], {}), 'AND', ParseResults(['NOT', ParseResults(['PHONE_SWITCHED_OFF'], {})], {})], {})], {}), 'OR', ParseResults([ParseResults(['NOTIFICATIONS_APPEAR'], {}), 'IMPLIES', ParseResults([ParseResults(['NOT', ParseResults(['PHONE_SWITCHE...
+    vars: ['DO_NOT_DISTURB_MODE_ACTIVE', 'NOTIFICATIONS_APPEAR', 'PHONE_SWITCHED_OFF']
+
+2. [connective_mismatch] NL suggests 'or' between exceptions, but node uses AND: [['NOTIFICATIONS_APPEAR'], 'IMPLIES', [['NOT', ['DO_NOT_DISTURB_MODE_ACTIVE']], 'AND', ['NOT', ['PHONE_SWITCHED_OFF']]]]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults(['NOTIFICATIONS_APPEAR'], {}), 'IMPLIES', ParseResults([ParseResults(['NOT', ParseResults(['DO_NOT_DISTURB_MODE_ACTIVE'], {})], {}), 'AND', ParseResults(['NOT', ParseResults(['PHONE_SWITCHED_OFF'], {})], {})], {})], {})
+    vars: ['DO_NOT_DISTURB_MODE_ACTIVE', 'NOTIFICATIONS_APPEAR', 'PHONE_SWITCHED_OFF']
+
+3. [connective_mismatch] NL suggests 'or' between exceptions, but node uses AND: [['NOT', ['DO_NOT_DISTURB_MODE_ACTIVE']], 'AND', ['NOT', ['PHONE_SWITCHED_OFF']]]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults(['NOT', ParseResults(['DO_NOT_DISTURB_MODE_ACTIVE'], {})], {}), 'AND', ParseResults(['NOT', ParseResults(['PHONE_SWITCHED_OFF'], {})], {})], {})
+    vars: ['DO_NOT_DISTURB_MODE_ACTIVE', 'PHONE_SWITCHED_OFF']
+
+4. [connective_mismatch] NL suggests 'or' between exceptions, but node uses AND: [['NOTIFICATIONS_APPEAR'], 'IMPLIES', [['NOT', ['PHONE_SWITCHED_OFF']], 'AND', ['NOT', ['DO_NOT_DISTURB_MODE_ACTIVE']]]]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults(['NOTIFICATIONS_APPEAR'], {}), 'IMPLIES', ParseResults([ParseResults(['NOT', ParseResults(['PHONE_SWITCHED_OFF'], {})], {}), 'AND', ParseResults(['NOT', ParseResults(['DO_NOT_DISTURB_MODE_ACTIVE'], {})], {})], {})], {})
+    vars: ['DO_NOT_DISTURB_MODE_ACTIVE', 'NOTIFICATIONS_APPEAR', 'PHONE_SWITCHED_OFF']
+
+5. [connective_mismatch] NL suggests 'or' between exceptions, but node uses AND: [['NOT', ['PHONE_SWITCHED_OFF']], 'AND', ['NOT', ['DO_NOT_DISTURB_MODE_ACTIVE']]]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults(['NOT', ParseResults(['PHONE_SWITCHED_OFF'], {})], {}), 'AND', ParseResults(['NOT', ParseResults(['DO_NOT_DISTURB_MODE_ACTIVE'], {})], {})], {})
+    vars: ['DO_NOT_DISTURB_MODE_ACTIVE', 'PHONE_SWITCHED_OFF']
+
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 2
+0.954
+Error parsing expression: Expected 'IMPLIES' term, found 'Logic'  (at char 9), (line:1, col:10)
+New Boolean Logic: (Boolean Logic: "(NOTIFICATIONS_APPEAR IMPLIES (NOT DO_NOT_DISTURB_MODE_ACTIVE) OR NOT PHONE_SWITCHED_OFF) AND (NOTIFICATIONS_APPEAR IMPLIES (NOT PHONE_SWITCHED_OFF) OR NOT DO_NOT_DISTURB_MODE_ACTIVE)")"
+Found one. :)
+No issues detected.
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 2
+0.954
+Final Boolean Logic: (Boolean Logic: "(NOTIFICATIONS_APPEAR IMPLIES (NOT DO_NOT_DISTURB_MODE_ACTIVE) OR NOT PHONE_SWITCHED_OFF) AND (NOTIFICATIONS_APPEAR IMPLIES (NOT PHONE_SWITCHED_OFF) OR NOT DO_NOT_DISTURB_MODE_ACTIVE)")"
+CONSISTENT
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 2
+0.954
+Here are the issues with the Boolean logic expression:
+New Boolean Logic: (NOTIFICATIONS_APPEAR IMPLIES (NOT DO_NOT_DISTURB_MODE_ACTIVE) AND (NOT PHONE_SWITCHED_OFF))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOTIFICATIONS_APPEAR AND (NOT NOT DO_NOT_DISTURB_MODE_ACTIVE) AND (NOT PHONE_SWITCHED_OFF)) OR (DO_NOT_DISTURB_MODE_ACTIVE AND PHONE_SWITCHED_OFF)
+Here are the issues with the Boolean logic expression:
+New Boolean Logic: NOTIFICATIONS_APPEAR IMPLIES (NOT DO_NOT_DISTURB_MODE_ACTIVE OR PHONE_SWITCHED_OFF)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOTIFICATIONS_APPEAR AND (NOT DO_NOT_DISTURB_MODE_ACTIVE OR PHONE_SWITCHED_OFF)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOTIFICATIONS_APPEAR IMPLIES (NOT DO_NOT_DISTURB_MODE_ACTIVE AND NOT PHONE_SWITCHED_OFF)
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: NOTIFICATIONS_APPEAR IMPLIES (NOT DO_NOT_DISTURB_MODE_ACTIVE AND NOT PHONE_SWITCHED_OFF)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 7 ---
+Natural Language: "The backup will proceed, except if the storage device is not connected or backup is not enabled."
+Ground Truth Boolean Logic: BACKUP_PROCEED IF STORAGE_CONNECTED AND BACKUP_ENABLED
+
+DEBUG: Asking LLM to deconstruct the requirement.
+"The backup will proceed
+the storage device is not connected
+backup is not enabled"
+1 : BACKUP_PROCEEDS
+1 : STORAGE_DEVICE_CONNECTED
+1 : BACKUP_ENABLED
+LLM-generated Boolean Logic: (NOT BACKUP_PROCEEDS) OR (NOT STORAGE_DEVICE_CONNECTED AND NOT BACKUP_ENABLED)
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issues detected:
+1. [connective_mismatch] NL suggests 'or' between exceptions, but node uses AND: [['NOT', ['BACKUP_PROCEEDS']], 'OR', [['NOT', ['STORAGE_DEVICE_CONNECTED']], 'AND', ['NOT', ['BACKUP_ENABLED']]]]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults(['NOT', ParseResults(['BACKUP_PROCEEDS'], {})], {}), 'OR', ParseResults([ParseResults(['NOT', ParseResults(['STORAGE_DEVICE_CONNECTED'], {})], {}), 'AND', ParseResults(['NOT', ParseResults(['BACKUP_ENABLED'], {})], {})], {})], {})
+    vars: ['BACKUP_ENABLED', 'BACKUP_PROCEEDS', 'STORAGE_DEVICE_CONNECTED']
+
+2. [connective_mismatch] NL suggests 'or' between exceptions, but node uses AND: [['NOT', ['STORAGE_DEVICE_CONNECTED']], 'AND', ['NOT', ['BACKUP_ENABLED']]]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults(['NOT', ParseResults(['STORAGE_DEVICE_CONNECTED'], {})], {}), 'AND', ParseResults(['NOT', ParseResults(['BACKUP_ENABLED'], {})], {})], {})
+    vars: ['BACKUP_ENABLED', 'STORAGE_DEVICE_CONNECTED']
+
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 2
+0.957
+New Boolean Logic: (BACKUP_PROCEEDS IMPLIES (STORAGE_DEVICE_CONNECTED OR BACKUP_ENABLED))
+Found one. :)
+Is it here yet?
+Is it here yet?
+No issues detected.
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 2
+0.957
+Final Boolean Logic: (BACKUP_PROCEEDS IMPLIES (STORAGE_DEVICE_CONNECTED OR BACKUP_ENABLED))
+(BACKUP_PROCEEDS IMPLIES (STORAGE_DEVICE_CONNECTED OR BACKUP_ENABLED))
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 2
+0.957
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (BACKUP_PROCEEDS IMPLIES (NOT STORAGE_DEVICE_CONNECTED OR NOT BACKUP_ENABLED))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (BACKUP_PROCEEDS IMPLIES (STORAGE_DEVICE_CONNECTED AND BACKUP_ENABLED))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (BACKUP_PROCEEDS IMPLIES (NOT (STORAGE_DEVICE_CONNECTED OR BACKUP_ENABLED)))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (BACKUP_PROCEEDS IMPLIES (STORAGE_DEVICE_CONNECTED AND NOT BACKUP_ENABLED))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (BACKUP_PROCEEDS IMPLIES (NOT STORAGE_DEVICE_CONNECTED OR NOT BACKUP_ENABLED))
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: NOT (BACKUP_PROCEEDS IMPLIES (NOT STORAGE_DEVICE_CONNECTED OR NOT BACKUP_ENABLED))
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 8 ---
+Natural Language: "The system will reboot, except if critical processes are running or reboot is not requested."
+Ground Truth Boolean Logic: SYSTEM_REBOOT IF PROCESSES_COMPLETED AND REBOOT_REQUESTED
+
+DEBUG: Asking LLM to deconstruct the requirement.
+the system will reboot
+critical processes are running
+reboot is not requested
+1 : SYSTEM_REBOOTS
+1 : CRITICAL_PROCESSES_RUNNING
+1 : REBOOT_REQUESTED
+LLM-generated Boolean Logic: (NOT SYSTEM_REBOOTS) IMPLIES ((NOT REBOOT_REQUESTED) OR CRITICAL_PROCESSES_RUNNING)
+Found one. :)
+Is it here yet?
+Is it here yet?
+No issues detected.
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+1.0
+Final Boolean Logic: (NOT SYSTEM_REBOOTS) IMPLIES ((NOT REBOOT_REQUESTED) OR CRITICAL_PROCESSES_RUNNING)
+Boolean Logic Expression:
+
+(NOT SYSTEM_REBOOTS) IMPLIES ((NOT REBOOT_REQUESTED) OR CRITICAL_PROCESSES_RUNNING)
+
+Consistency Check:
+The requirement states that the system will reboot, except if critical processes are running or reboot is not requested. This means that if the system does not reboot and critical processes are running, then reboot should not be requested.
+
+Boolean Logic Expression:
+
+(NOT SYSTEM_REBOOTS) IMPLIES ((NOT REBOOT_REQUESTED) OR CRITICAL_PROCESSES_RUNNING)
+
+Consistency Result:
+CONSISTENT
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+1.0
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (CRITICAL_PROCESSES_RUNNING OR NOT REBOOT_REQUESTED) IMPLIES NOT SYSTEM_REBOOTS
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (SYSTEM_REBOOTS IMPLIES (CRITICAL_PROCESSES_RUNNING OR NOT REBOOT_REQUESTED))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (REBOOT_REQUESTED IMPLIES NOT (SYSTEM_REBOOTS AND CRITICAL_PROCESSES_RUNNING))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (SYSTEM_REBOOTS IMPLIES NOT (REBOOT_REQUESTED OR CRITICAL_PROCESSES_RUNNING))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (SYSTEM_REBOOTS IMPLIES (NOT REBOOT_REQUESTED AND NOT CRITICAL_PROCESSES_RUNNING))
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: NOT (SYSTEM_REBOOTS IMPLIES (NOT REBOOT_REQUESTED AND NOT CRITICAL_PROCESSES_RUNNING))
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 9 ---
+Natural Language: "The settings will be saved, except when the form is not validated or the user has not confirmed."
+Ground Truth Boolean Logic: SETTINGS_SAVED IF FORM_VALIDATED AND USER_CONFIRMED
+
+DEBUG: Asking LLM to deconstruct the requirement.
+the settings will be saved
+the form is not validated
+the user has not confirmed
+1 : SETTINGS_SAVED
+1 : FORM_VALIDATED
+1 : USER_CONFIRMED
+LLM-generated Boolean Logic: (SETTINGS_SAVED IMPLIES (NOT FORM_VALIDATED OR USER_CONFIRMED))
+Found one. :)
+Is it here yet?
+Is it here yet?
+No issues detected.
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+1.0
+Final Boolean Logic: (SETTINGS_SAVED IMPLIES (NOT FORM_VALIDATED OR USER_CONFIRMED))
+CONSISTENT
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+1.0
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOT SETTINGS_SAVED IMPLIES (FORM_VALIDATED AND NOT USER_CONFIRMED))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (SETTINGS_SAVED IMPLIES (FORM_VALIDATED OR NOT USER_CONFIRMED))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (FORM_VALIDATED OR NOT USER_CONFIRMED) IMPLIES SETTINGS_SAVED
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (USER_CONFIRMED AND FORM_VALIDATED) IMPLIES SETTINGS_SAVED
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (FORM_VALIDATED OR NOT USER_CONFIRMED) IMPLIES SETTINGS_SAVED
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: NOT (FORM_VALIDATED OR NOT USER_CONFIRMED) IMPLIES SETTINGS_SAVED
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 10 ---
+Natural Language: "The connection will be established, except without network availability."
+Ground Truth Boolean Logic: CONNECTION_ESTABLISHED IF NETWORK_AVAILABLE AND CONNECTION_REQUESTED
+
+DEBUG: Asking LLM to deconstruct the requirement.
+"The connection will be established
+no network availability"
+1 : CONNECTION_ESTABLISHED
+1 : NETWORK_AVAILABILITY
+LLM-generated Boolean Logic: NOT CONNECTION_ESTABLISHED IMPLIES NOT NETWORK_AVAILABILITY
+No issues detected.
+Issue counts:
+1.0
+Final Boolean Logic: NOT CONNECTION_ESTABLISHED IMPLIES NOT NETWORK_AVAILABILITY
+NOT CONNECTION_ESTABLISHED IMPLIES NOT NETWORK_AVAILABILITY
+Issue counts:
+1.0
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT CONNECTION_ESTABLISHED OR NETWORK_AVAILABILITY
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT CONNECTION_ESTABLISHED IMPLIES NOT NETWORK_AVAILABILITY
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT CONNECTION_ESTABLISHED OR NETWORK_AVAILABILITY
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT CONNECTION_ESTABLISHED IMPLIES NOT NETWORK_AVAILABILITY
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT CONNECTION_ESTABLISHED OR NETWORK_AVAILABILITY
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: NOT CONNECTION_ESTABLISHED OR NETWORK_AVAILABILITY
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 11 ---
+Natural Language: "The system will not install updates unless there is enough disk space and the update is available."
+Ground Truth Boolean Logic: SOFTWARE_INSTALL UNLESS NOT ENOUGH_DISK_SPACE OR NOT UPDATE_AVAILABLE
+
+DEBUG: Asking LLM to deconstruct the requirement.
+the system will not install updates
+there is enough disk space
+the update is available
+1 : SYSTEM_UPDATES_INSTALLED
+1 : DISK_SPACE_AVAILABLE
+1 : UPDATE_AVAILABLE
+LLM-generated Boolean Logic: (NOT SYSTEM_UPDATES_INSTALLED) IMPLIES (DISK_SPACE_AVAILABLE AND UPDATE_AVAILABLE)
+Found one. :)
+Is it here yet?
+Is it here yet?
+No issues detected.
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+1.0
+Final Boolean Logic: (NOT SYSTEM_UPDATES_INSTALLED) IMPLIES (DISK_SPACE_AVAILABLE AND UPDATE_AVAILABLE)
+CONSISTENT
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+1.0
+Here are the issues with the given Boolean logic expression:
+Error parsing expression: Expected 'IMPLIES' term, found 'BOOLEAN'  (at char 11), (line:1, col:12)
+New Boolean Logic: (CORRECTED BOOLEAN LOGIC)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT SYSTEM_UPDATES_INSTALLED IMPLIES (DISK_SPACE_AVAILABLE AND UPDATE_AVAILABLE)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT SYSTEM_UPDATES_INSTALLED IMPLIES (DISK_SPACE_AVAILABLE AND UPDATE_AVAILABLE) IMPLIES (DISK_SPACE_AVAILABLE AND UPDATE_AVAILABLE)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT SYSTEM_UPDATES_INSTALLED IMPLIES (DISK_SPACE_AVAILABLE AND UPDATE_AVAILABLE)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT SYSTEM_UPDATES_INSTALLED IMPLIES (DISK_SPACE_AVAILABLE AND UPDATE_AVAILABLE) IMPLIES (DISK_SPACE_AVAILABLE AND UPDATE_AVAILABLE)
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: NOT SYSTEM_UPDATES_INSTALLED IMPLIES (DISK_SPACE_AVAILABLE AND UPDATE_AVAILABLE) IMPLIES (DISK_SPACE_AVAILABLE AND UPDATE_AVAILABLE)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 12 ---
+Natural Language: "The application will not launch unless the operating system is updated and the user is logged in."
+Ground Truth Boolean Logic: APPLICATION_LAUNCH UNLESS NOT OPERATING_SYSTEM_UPDATED OR NOT USER_LOGGED_IN
+
+DEBUG: Asking LLM to deconstruct the requirement.
+the operating system is updated
+the user is logged in
+the application will not launch
+1 : SYSTEM_UPDATED
+1 : USER_LOGGED_IN
+1 : APPLICATION_LAUNCHES
+LLM-generated Boolean Logic: (NOT APPLICATION_LAUNCHES) IMPLIES (SYSTEM_UPDATED AND USER_LOGGED_IN)
+Found one. :)
+Is it here yet?
+Is it here yet?
+No issues detected.
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+1.0
+Final Boolean Logic: (NOT APPLICATION_LAUNCHES) IMPLIES (SYSTEM_UPDATED AND USER_LOGGED_IN)
+CONSISTENT
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+1.0
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOT APPLICATION_LAUNCHES) IMPLIES (SYSTEM_UPDATED AND USER_LOGGED_IN)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOT APPLICATION_LAUNCHES) IMPLIES (SYSTEM_UPDATED AND USER_LOGGED_IN)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOT APPLICATION_LAUNCHES) IMPLIES (SYSTEM_UPDATED AND USER_LOGGED_IN)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOT APPLICATION_LAUNCHES) IMPLIES (SYSTEM_UPDATED AND USER_LOGGED_IN)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOT APPLICATION_LAUNCHES) IMPLIES (SYSTEM_UPDATED AND USER_LOGGED_IN)
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: (NOT APPLICATION_LAUNCHES) IMPLIES (SYSTEM_UPDATED AND USER_LOGGED_IN)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 13 ---
+Natural Language: "The feature will not be enabled unless the user is authenticated and the feature is available."
+Ground Truth Boolean Logic: FEATURE_ENABLED UNLESS NOT USER_AUTHENTICATED OR NOT FEATURE_AVAILABLE
+
+DEBUG: Asking LLM to deconstruct the requirement.
+user is authenticated
+feature is available
+1 : USER_AUTHENTICATED
+1 : FEATURE_AVAILABLE
+LLM-generated Boolean Logic: (USER_AUTHENTICATED AND FEATURE_AVAILABLE) IMPLIES NOT FEATURE_ENABLED
+Found one. :)
+Is it here yet?
+Is it here yet?
+No issues detected.
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+1.0
+Final Boolean Logic: (USER_AUTHENTICATED AND FEATURE_AVAILABLE) IMPLIES NOT FEATURE_ENABLED
+CONSISTENT
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+1.0
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (USER_AUTHENTICATED AND FEATURE_AVAILABLE) IMPLIES NOT FEATURE_ENABLED
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (USER_AUTHENTICATED AND FEATURE_AVAILABLE) IMPLIES FEATURE_ENABLED
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (FEATURE_ENABLED IMPLIES (USER_AUTHENTICATED AND FEATURE_AVAILABLE))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (USER_AUTHENTICATED AND FEATURE_AVAILABLE) IMPLIES FEATURE_ENABLED
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (FEATURE_ENABLED IMPLIES (USER_AUTHENTICATED AND FEATURE_AVAILABLE))
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: NOT (FEATURE_ENABLED IMPLIES (USER_AUTHENTICATED AND FEATURE_AVAILABLE))
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 14 ---
+Natural Language: "The service will not start automatically unless auto mode is selected and the service is configured."
+Ground Truth Boolean Logic: SERVICE_START UNLESS NOT AUTO_MODE_SELECTED OR NOT SERVICE_CONFIGURED
+
+DEBUG: Asking LLM to deconstruct the requirement.
+auto mode is selected
+the service is configured
+the service will not start automatically
+1 : AUTO_MODE_SELECTED
+1 : SERVICE_CONFIGURED
+1 : SERVICE_STARTS_AUTOMATICALLY
+LLM-generated Boolean Logic: (NOT ('SERVICE_STARTS_AUTOMATICALLY' IMPLIES 'AUTO_MODE_SELECTED')) AND ('SERVICE_STARTS_AUTOMICALLY' IMPLIES 'SERVICE_CONFIGURED')
+Error parsing expression: Expected 'IMPLIES' term, found '('  (at char 5), (line:1, col:6)
+Found one. :)
+No issues detected.
+Found one. :)
+Issue counts:
+1.0
+Final Boolean Logic: (NOT ('SERVICE_STARTS_AUTOMATICALLY' IMPLIES 'AUTO_MODE_SELECTED')) AND ('SERVICE_STARTS_AUTOMICALLY' IMPLIES 'SERVICE_CONFIGURED')
+CONSISTENT
+Found one. :)
+Issue counts:
+1.0
+Here are the issues with the given Boolean logic expression:
+Error parsing expression: Expected 'IMPLIES' term, found 'Boolean'  (at char 11), (line:1, col:12)
+New Boolean Logic: (Corrected Boolean Logic)
+Here are the issues with the given Boolean logic expression:
+Error parsing expression: Expected 'IMPLIES' term, found "'"  (at char 5), (line:1, col:6)
+New Boolean Logic: (NOT 'SERVICE_STARTS_AUTOMATICALLY') IMPLIES ('AUTO_MODE_SELECTED' AND 'SERVICE_CONFIGURED')
+Here are the issues with the given Boolean logic expression:
+Error parsing expression: Expected 'IMPLIES' term, found "'"  (at char 1), (line:1, col:2)
+New Boolean Logic: ('SERVICE_STARTS_AUTOMATICALLY' IMPLIES ('AUTO_MODE_SELECTED' AND 'SERVICE_CONFIGURED'))
+Based on the given natural language requirement and the provided Boolean logic expression, I have identified the following issues:
+Error parsing expression: Expected 'IMPLIES' term, found "'"  (at char 1), (line:1, col:2)
+New Boolean Logic: ('AUTO_MODE_SELECTED' AND 'SERVICE_CONFIGURED') IMPLIES ('SERVICE_STARTS_AUTOMATICALLY')
+Based on the provided natural language requirement and the given Boolean logic expression, I have identified the following issues:
+Error parsing expression: Expected 'IMPLIES' term, found "'"  (at char 1), (line:1, col:2)
+New Boolean Logic: ('SERVICE_STARTS_AUTOMATICALLY' IMPLIES ('AUTO_MODE_SELECTED' AND 'SERVICE_CONFIGURED'))
+Based on the provided natural language requirement and the given Boolean logic expression, I've identified some potential issues:
+Final Boolean Logic: ('SERVICE_STARTS_AUTOMATICALLY' IMPLIES ('AUTO_MODE_SELECTED' AND 'SERVICE_CONFIGURED'))
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 15 ---
+Natural Language: "The device will not enter sleep mode unless there have been 5 minutes of inactivity and the device is idle."
+Ground Truth Boolean Logic: SLEEP_MODE UNLESS INACTIVITY_LESS_THAN_5MIN OR NOT DEVICE_IDLE
+
+DEBUG: Asking LLM to deconstruct the requirement.
+device will not enter sleep mode
+there have been 5 minutes of inactivity
+device is idle
+1 : DEVICE_ENTERS_SLEEP_MODE
+1 : INACTIVITY_DURATION_5MINUTES
+1 : DEVICE_IS_IDLE
+LLM-generated Boolean Logic: NOT DEVICE_ENTERS_SLEEP_MODE IMPLIES (INACTIVITY_DURATION_5MINUTES AND DEVICE_IS_IDLE)
+Error parsing expression: Expected end of text, found 'IMPLIES'  (at char 29), (line:1, col:30)
+Found one. :)
+No issues detected.
+Found one. :)
+Issue counts:
+1.0
+Final Boolean Logic: NOT DEVICE_ENTERS_SLEEP_MODE IMPLIES (INACTIVITY_DURATION_5MINUTES AND DEVICE_IS_IDLE)
+CONSISTENT
+Found one. :)
+Issue counts:
+1.0
+Based on the provided natural language requirement and the given Boolean logic expression, I have identified the following issues:
+Error parsing expression: Expected end of text, found 'IMPLIES'  (at char 25), (line:1, col:26)
+New Boolean Logic: DEVICE_ENTERS_SLEEP_MODE IMPLIES (INACTIVITY_DURATION_5MINUTES AND DEVICE_IS_IDLE)
+Based on the provided natural language requirement and the given Boolean logic expression, I have identified the following issues:
+Error parsing expression: Expected end of text, found 'IMPLIES'  (at char 29), (line:1, col:30)
+New Boolean Logic: NOT DEVICE_ENTERS_SLEEP_MODE IMPLIES (INACTIVITY_DURATION_5MINUTES AND DEVICE_IS_IDLE)
+Based on the provided natural language requirement and the given Boolean logic expression, I've identified some potential issues:
+Error parsing expression: Expected end of text, found 'IMPLIES'  (at char 25), (line:1, col:26)
+New Boolean Logic: DEVICE_ENTERS_SLEEP_MODE IMPLIES (INACTIVITY_DURATION_5MINUTES AND DEVICE_IS_IDLE)
+Based on the given natural language requirement and the provided Boolean logic expression, I have identified the following issues:
+Error parsing expression: Expected end of text, found 'IMPLIES'  (at char 29), (line:1, col:30)
+New Boolean Logic: NOT DEVICE_ENTERS_SLEEP_MODE IMPLIES (INACTIVITY_DURATION_5MINUTES AND DEVICE_IS_IDLE)
+Here are the issues with the given Boolean logic expression:
+Error parsing expression: Expected end of text, found 'IMPLIES'  (at char 25), (line:1, col:26)
+New Boolean Logic: DEVICE_ENTERS_SLEEP_MODE IMPLIES (INACTIVITY_DURATION_5MINUTES AND DEVICE_IS_IDLE)
+Based on the provided natural language requirement and the given Boolean logic expression, I have identified the following issues:
+Final Boolean Logic: DEVICE_ENTERS_SLEEP_MODE IMPLIES (INACTIVITY_DURATION_5MINUTES AND DEVICE_IS_IDLE)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 16 ---
+Natural Language: "Notifications will not appear unless do not disturb mode is disabled and the phone is switched on."
+Ground Truth Boolean Logic: NOTIFICATIONS UNLESS DND_MODE_ENABLED OR PHONE_OFF
+
+DEBUG: Asking LLM to deconstruct the requirement.
+do not disturb mode is disabled
+the phone is switched on
+1 : DO_NOT_DISTURB_MODE_ENABLED
+1 : PHONE_SWITCHED_ON
+LLM-generated Boolean Logic: (NOT DO_NOT_DISTURB_MODE_ENABLED) AND PHONE_SWITCHED_ON IMPLIES NOT NOTIFICATIONS_APPEAR
+Found one. :)
+Is it here yet?
+Is it here yet?
+No issues detected.
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+1.0
+Final Boolean Logic: (NOT DO_NOT_DISTURB_MODE_ENABLED) AND PHONE_SWITCHED_ON IMPLIES NOT NOTIFICATIONS_APPEAR
+CONSISTENT
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+1.0
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOTIFICATIONS_APPEAR IMPLIES (NOT DO_NOT_DISTURB_MODE_ENABLED) AND PHONE_SWITCHED_ON
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOTIFICATIONS_APPEAR IMPLIES ((PHONE_SWITCHED_ON) AND (NOT DO_NOT_DISTURB_MODE_ENABLED))
+Here are the issues with the Boolean logic expression:
+New Boolean Logic: NOTIFICATIONS_APPEAR IMPLIES (DO_NOT_DISTURB_MODE_ENABLED OR NOT PHONE_SWITCHED_ON)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOTIFICATIONS_APPEAR IMPLIES (NOT DO_NOT_DISTURB_MODE_ENABLED AND PHONE_SWITCHED_ON)
+Based on the given natural language requirement and the provided Boolean logic expression, I have identified the following issues:
+New Boolean Logic: NOTIFICATIONS_APPEAR IMPLIES (PHONE_SWITCHED_ON AND NOT DO_NOT_DISTURB_MODE_ENABLED)
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: NOTIFICATIONS_APPEAR IMPLIES (PHONE_SWITCHED_ON AND NOT DO_NOT_DISTURB_MODE_ENABLED)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 17 ---
+Natural Language: "The backup will not proceed unless the storage device is connected and backup is enabled."
+Ground Truth Boolean Logic: BACKUP_PROCEED UNLESS NOT STORAGE_CONNECTED OR NOT BACKUP_ENABLED
+
+DEBUG: Asking LLM to deconstruct the requirement.
+storage device is connected
+backup is enabled
+1 : STORAGE_DEVICE_CONNECTED
+1 : BACKUP_ENABLED
+LLM-generated Boolean Logic: (NOT ('BACKUP_ENABLED' IMPLIES 'STORAGE_DEVICE_CONNECTED'))
+Error parsing expression: Expected 'IMPLIES' term, found '('  (at char 5), (line:1, col:6)
+Found one. :)
+No issues detected.
+Found one. :)
+Issue counts:
+1.0
+Final Boolean Logic: (NOT ('BACKUP_ENABLED' IMPLIES 'STORAGE_DEVICE_CONNECTED'))
+CONSISTENT
+Found one. :)
+Issue counts:
+1.0
+Here are the issues with the given Boolean logic expression:
+Error parsing expression: Expected 'IMPLIES' term, found 'BOOLEAN'  (at char 11), (line:1, col:12)
+New Boolean Logic: (CORRECTED BOOLEAN LOGIC)
+Based on the given natural language requirement, I've identified some potential issues with the Boolean logic expression provided by LLM:
+New Boolean Logic: NOT(BACKUP_ENABLED IMPLIES STORAGE_DEVICE_CONNECTED)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT(STORAGE_DEVICE_CONNECTED IMPLIES NOT(BACKUP_ENABLED))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT(BACKUP_ENABLED IMPLIES NOT(STORAGE_DEVICE_CONNECTED))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT(BACKUP_ENABLED IMPLIES STORAGE_DEVICE_CONNECTED)
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: NOT(BACKUP_ENABLED IMPLIES STORAGE_DEVICE_CONNECTED)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 18 ---
+Natural Language: "The system will not reboot unless all critical processes have completed and a reboot is requested."
+Ground Truth Boolean Logic: SYSTEM_REBOOT UNLESS CRITICAL_PROCESSES_RUNNING OR NOT REBOOT_REQUESTED
+
+DEBUG: Asking LLM to deconstruct the requirement.
+all critical processes have completed
+a reboot is requested
+the system will not reboot
+1 : CRITICAL_PROCESSES_COMPLETED
+1 : REBOOT_REQUESTED
+1 : SYSTEM_REBOOTS
+LLM-generated Boolean Logic: NOT SYSTEM_REBOOTS IMPLIES (NOT CRITICAL_PROCESSES_COMPLETED OR NOT REBOOT_REQUESTED)
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issues detected:
+1. [connective_mismatch] NL suggests 'and' between exceptions, but node uses OR: [['NOT', ['SYSTEM_REBOOTS']], 'IMPLIES', [['NOT', ['CRITICAL_PROCESSES_COMPLETED']], 'OR', ['NOT', ['REBOOT_REQUESTED']]]]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults(['NOT', ParseResults(['SYSTEM_REBOOTS'], {})], {}), 'IMPLIES', ParseResults([ParseResults(['NOT', ParseResults(['CRITICAL_PROCESSES_COMPLETED'], {})], {}), 'OR', ParseResults(['NOT', ParseResults(['REBOOT_REQUESTED'], {})], {})], {})], {})
+    vars: ['CRITICAL_PROCESSES_COMPLETED', 'REBOOT_REQUESTED', 'SYSTEM_REBOOTS']
+
+2. [connective_mismatch] NL suggests 'and' between exceptions, but node uses OR: [['NOT', ['CRITICAL_PROCESSES_COMPLETED']], 'OR', ['NOT', ['REBOOT_REQUESTED']]]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults(['NOT', ParseResults(['CRITICAL_PROCESSES_COMPLETED'], {})], {}), 'OR', ParseResults(['NOT', ParseResults(['REBOOT_REQUESTED'], {})], {})], {})
+    vars: ['CRITICAL_PROCESSES_COMPLETED', 'REBOOT_REQUESTED']
+
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 2
+0.957
+New Boolean Logic: NOT SYSTEM_REBOOTS IMPLIES (CRITICAL_PROCESSES_COMPLETED AND REBOOT_REQUESTED)
+Found one. :)
+Is it here yet?
+Is it here yet?
+No issues detected.
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 2
+0.957
+Final Boolean Logic: NOT SYSTEM_REBOOTS IMPLIES (CRITICAL_PROCESSES_COMPLETED AND REBOOT_REQUESTED)
+NOT SYSTEM_REBOOTS IMPLIES (CRITICAL_PROCESSES_COMPLETED AND REBOOT_REQUESTED)
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 2
+0.957
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT SYSTEM_REBOOTS IMPLIES (CRITICAL_PROCESSES_COMPLETED AND REBOOT_REQUESTED) IMPLIES CRITICAL_PROCESSES_COMPLETED AND REBOOT_REQUESTED
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT SYSTEM_REBOOTS IMPLIES (CRITICAL_PROCESSES_COMPLETED AND REBOOT_REQUESTED)
+Here are the issues with the provided Boolean logic expression:
+New Boolean Logic: NOT SYSTEM_REBOOTS IMPLIES (CRITICAL_PROCESSES_COMPLETED AND REBOOT_REQUESTED) IMPLIES CRITICAL_PROCESSES_COMPLETED AND REBOOT_REQUESTED
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT SYSTEM_REBOOTS IMPLIES (CRITICAL_PROCESSES_COMPLETED AND REBOOT_REQUESTED)
+Here are the issues with the provided Boolean logic expression:
+New Boolean Logic: NOT SYSTEM_REBOOTS IMPLIES (CRITICAL_PROCESSES_COMPLETED AND REBOOT_REQUESTED) IMPLIES CRITICAL_PROCESSES_COMPLETED AND REBOOT_REQUESTED
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: NOT SYSTEM_REBOOTS IMPLIES (CRITICAL_PROCESSES_COMPLETED AND REBOOT_REQUESTED) IMPLIES CRITICAL_PROCESSES_COMPLETED AND REBOOT_REQUESTED
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 19 ---
+Natural Language: "The settings will not be saved unless the form is validated and the user has confirmed."
+Ground Truth Boolean Logic: SETTINGS_SAVED UNLESS NOT FORM_VALIDATED OR NOT USER_CONFIRMED
+
+DEBUG: Asking LLM to deconstruct the requirement.
+"The settings will not be saved
+the form is not validated
+the user has not confirmed"
+1 : SETTINGS_SAVED
+1 : FORM_VALIDATED
+1 : USER_CONFIRMED
+LLM-generated Boolean Logic: NOT SETTINGS_SAVED IMPLIES (FORM_VALIDATED AND USER_CONFIRMED)
+Found one. :)
+Is it here yet?
+Is it here yet?
+No issues detected.
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+1.0
+Final Boolean Logic: NOT SETTINGS_SAVED IMPLIES (FORM_VALIDATED AND USER_CONFIRMED)
+I'm ready to help! Please provide the requirement, and I'll check its consistency with the given Boolean logic rules.
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+1.0
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (SETTINGS_SAVED IMPLIES (FORM_VALIDATED AND USER_CONFIRMED))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (SETTINGS_SAVED IMPLIES (FORM_VALIDATED AND USER_CONFIRMED)) IMPLIES (FORM_VALIDATED AND USER_CONFIRMED)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (SETTINGS_SAVED IMPLIES (FORM_VALIDATED AND USER_CONFIRMED))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (SETTINGS_SAVED IMPLIES (FORM_VALIDATED AND USER_CONFIRMED)) IMPLIES (FORM_VALIDATED AND USER_CONFIRMED)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOT (SETTINGS_SAVED IMPLIES (FORM_VALIDATED AND USER_CONFIRMED))
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: NOT (SETTINGS_SAVED IMPLIES (FORM_VALIDATED AND USER_CONFIRMED))
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 20 ---
+Natural Language: "The connection will not be established unless the network is available and a connection is requested."
+Ground Truth Boolean Logic: CONNECTION_ESTABLISHED UNLESS NOT NETWORK_AVAILABLE OR NOT CONNECTION_REQUESTED
+
+DEBUG: Asking LLM to deconstruct the requirement.
+the network is available
+a connection is requested
+the connection will not be established
+1 : NETWORK_AVAILABLE
+1 : CONNECTION_REQUESTED
+1 : CONNECTION_ESTABLISHED
+LLM-generated Boolean Logic: (NOT CONNECTION_ESTABLISHED) IMPLIES ((NOT NETWORK_AVAILABLE) OR (NOT CONNECTION_REQUESTED))
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issues detected:
+1. [connective_mismatch] NL suggests 'and' between exceptions, but node uses OR: [['NOT', ['CONNECTION_ESTABLISHED']], 'IMPLIES', [['NOT', ['NETWORK_AVAILABLE']], 'OR', ['NOT', ['CONNECTION_REQUESTED']]]]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults(['NOT', ParseResults(['CONNECTION_ESTABLISHED'], {})], {}), 'IMPLIES', ParseResults([ParseResults(['NOT', ParseResults(['NETWORK_AVAILABLE'], {})], {}), 'OR', ParseResults(['NOT', ParseResults(['CONNECTION_REQUESTED'], {})], {})], {})], {})
+    vars: ['CONNECTION_ESTABLISHED', 'CONNECTION_REQUESTED', 'NETWORK_AVAILABLE']
+
+2. [connective_mismatch] NL suggests 'and' between exceptions, but node uses OR: [['NOT', ['NETWORK_AVAILABLE']], 'OR', ['NOT', ['CONNECTION_REQUESTED']]]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults(['NOT', ParseResults(['NETWORK_AVAILABLE'], {})], {}), 'OR', ParseResults(['NOT', ParseResults(['CONNECTION_REQUESTED'], {})], {})], {})
+    vars: ['CONNECTION_REQUESTED', 'NETWORK_AVAILABLE']
+
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 2
+0.957
+New Boolean Logic: (NOT CONNECTION_ESTABLISHED) IMPLIES ((NOT NETWORK_AVAILABLE) AND (NOT CONNECTION_REQUESTED))
+Found one. :)
+Is it here yet?
+Is it here yet?
+No issues detected.
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 2
+0.957
+Final Boolean Logic: (NOT CONNECTION_ESTABLISHED) IMPLIES ((NOT NETWORK_AVAILABLE) AND (NOT CONNECTION_REQUESTED))
+CONSISTENT
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 2
+0.957
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NETWORK_AVAILABLE AND CONNECTION_REQUESTED) IMPLIES CONNECTION_ESTABLISHED
+Here are the issues with the Boolean logic expression:
+New Boolean Logic: (NOT CONNECTION_ESTABLISHED) IMPLIES (NOT NETWORK_AVAILABLE OR NOT CONNECTION_REQUESTED)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOT CONNECTION_ESTABLISHED) IMPLIES (NETWORK_AVAILABLE AND CONNECTION_REQUESTED)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOT CONNECTION_ESTABLISHED) IMPLIES (NETWORK_AVAILABLE AND CONNECTION_REQUESTED)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (CONNECTION_ESTABLISHED IMPLIES (NETWORK_AVAILABLE AND CONNECTION_REQUESTED))
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: (CONNECTION_ESTABLISHED IMPLIES (NETWORK_AVAILABLE AND CONNECTION_REQUESTED))
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 21 ---
+Natural Language: "The system will install updates, but only if there is enough disk space and the update is available."
+Ground Truth Boolean Logic: SOFTWARE_INSTALL IF ENOUGH_DISK_SPACE AND UPDATE_AVAILABLE
+
+DEBUG: Asking LLM to deconstruct the requirement.
+the system will install updates
+there is enough disk space
+the update is available
+1 : SYSTEM_UPDATES_INSTALLED
+1 : DISK_SPACE_AVAILABLE
+1 : UPDATE_AVAILABLE
+LLM-generated Boolean Logic: (SYSTEM_UPDATES_INSTALLED IMPLIES (DISK_SPACE_AVAILABLE AND UPDATE_AVAILABLE))
+No issues detected.
+Issue counts:
+1.0
+Final Boolean Logic: (SYSTEM_UPDATES_INSTALLED IMPLIES (DISK_SPACE_AVAILABLE AND UPDATE_AVAILABLE))
+CONSISTENT
+Issue counts:
+1.0
+Based on the given natural language requirement, I found the following issues with the Boolean logic expression provided by LLM:
+New Boolean Logic: (DISK_SPACE_AVAILABLE AND UPDATE_AVAILABLE) IMPLIES SYSTEM_UPDATES_INSTALLED
+Here are the issues with the Boolean logic expression:
+New Boolean Logic: (NOT UPDATE_AVAILABLE OR DISK_SPACE_AVAILABLE) IMPLIES NOT SYSTEM_UPDATES_INSTALLED
+Here are the issues with the given Boolean logic expression:
+Error parsing expression: Expected 'IMPLIES' term, found 'UPDATE'  (at char 8), (line:1, col:9)
+New Boolean Logic: (CREATE UPDATE_AVAILABLE IMPLIES (DISK_SPACE_AVAILABLE IMPLIES NOT SYSTEM_UPDATES_INSTALLED))
+Here are the issues with the given Boolean logic expression:
+Error parsing expression: Expected 'IMPLIES' term, found '('  (at char 8), (line:1, col:9)
+New Boolean Logic: (CREATE (NOT SYSTEM_UPDATES_INSTALLED) IMPLIES (DISK_SPACE_AVAILABLE AND UPDATE_AVAILABLE))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (CREATE IMPLIES (DISK_SPACE_AVAILABLE AND UPDATE_AVAILABLE)) AND SYSTEM_UPDATES_INSTALLED
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: (CREATE IMPLIES (DISK_SPACE_AVAILABLE AND UPDATE_AVAILABLE)) AND SYSTEM_UPDATES_INSTALLED
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 22 ---
+Natural Language: "The application will launch, but not if the operating system is outdated or the user is not logged in."
+Ground Truth Boolean Logic: APPLICATION_LAUNCH IF OPERATING_SYSTEM_UPDATED AND USER_LOGGED_IN
+
+DEBUG: Asking LLM to deconstruct the requirement.
+the application will launch
+the operating system is outdated
+the user is not logged in
+1 : APPLICATION_LAUNCHES
+1 : OPERATING_SYSTEM_UP_TO_DATE
+1 : USER_LOGGED_IN
+LLM-generated Boolean Logic: (NOT APPLICATION_LAUNCHES) IMPLIES ((NOT OPERATING_SYSTEM_UP_TO_DATE) OR (NOT USER_LOGGED_IN))
+Found one. :)
+Is it here yet?
+Is it here yet?
+No issues detected.
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+1.0
+Final Boolean Logic: (NOT APPLICATION_LAUNCHES) IMPLIES ((NOT OPERATING_SYSTEM_UP_TO_DATE) OR (NOT USER_LOGGED_IN))
+CONSISTENT
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+1.0
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOT APPLICATION_LAUNCHES) IMPLIES ((OPERATING_SYSTEM_UP_TO_DATE) AND (USER_LOGGED_IN))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOT APPLICATION_LAUNCHES) IMPLIES ((NOT (OPERATING_SYSTEM_UP_TO_DATE)) OR (NOT (USER_LOGGED_IN)))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOT APPLICATION_LAUNCHES) IMPLIES ((OPERATING_SYSTEM_UP_TO_DATE) AND (USER_LOGGED_IN))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOT APPLICATION_LAUNCHES) IMPLIES ((NOT (OPERATING_SYSTEM_UP_TO_DATE)) OR (NOT USER_LOGGED_IN))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOT APPLICATION_LAUNCHES) IMPLIES ((OPERATING_SYSTEM_UP_TO_DATE) AND (USER_LOGGED_IN))
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: (NOT APPLICATION_LAUNCHES) IMPLIES ((OPERATING_SYSTEM_UP_TO_DATE) AND (USER_LOGGED_IN))
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 23 ---
+Natural Language: "The feature will be enabled, but only when the user is authenticated and the feature is available."
+Ground Truth Boolean Logic: FEATURE_ENABLED IF USER_AUTHENTICATED AND FEATURE_AVAILABLE
+
+DEBUG: Asking LLM to deconstruct the requirement.
+"The feature will be enabled
+the user is authenticated
+the feature is available"
+1 : FEATURE_ENABLED
+1 : USER_AUTHENTICATED
+1 : FEATURE_AVAILABLE
+LLM-generated Boolean Logic: (FEATURE_ENABLED IMPLIES (USER_AUTHENTICATED AND FEATURE_AVAILABLE))
+No issues detected.
+Issue counts:
+1.0
+Final Boolean Logic: (FEATURE_ENABLED IMPLIES (USER_AUTHENTICATED AND FEATURE_AVAILABLE))
+CONSISTENT
+Issue counts:
+1.0
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (FEATURE_ENABLED IMPLIES (USER_AUTHENTICATED AND FEATURE_AVAILABLE)) AND (USER_AUTHENTICATED AND FEATURE_AVAILABLE IMPLIES FEATURE_ENABLED)
+Here are the issues with the given Boolean logic expression:
+Error parsing expression: Expected end of text, found ')'  (at char 139), (line:1, col:140)
+New Boolean Logic: (FEATURE_ENABLED IMPLIES (USER_AUTHENTICATED AND FEATURE_AVAILABLE)) AND (USER_AUTHENTICATED AND FEATURE_AVAILABLE) IMPLIES FEATURE_ENABLED)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (FEATURE_ENABLED IMPLIES (USER_AUTHENTICATED AND FEATURE_AVAILABLE))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (FEATURE_ENABLED IMPLIES (USER_AUTHENTICATED AND FEATURE_AVAILABLE)) AND (USER_AUTHENTICATED AND FEATURE_AVAILABLE IMPLIES FEATURE_ENABLED)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (FEATURE_ENABLED IMPLIES (USER_AUTHENTICATED AND FEATURE_AVAILABLE)) AND (USER_AUTHENTICATED AND FEATURE_AVAILABLE IMPLIES FEATURE_ENABLED)
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: (FEATURE_ENABLED IMPLIES (USER_AUTHENTICATED AND FEATURE_AVAILABLE)) AND (USER_AUTHENTICATED AND FEATURE_AVAILABLE IMPLIES FEATURE_ENABLED)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 24 ---
+Natural Language: "The service will start automatically, but not if manual mode is selected or the service is not configured."
+Ground Truth Boolean Logic: SERVICE_START IF AUTO_MODE_SELECTED AND SERVICE_CONFIGURED
+
+DEBUG: Asking LLM to deconstruct the requirement.
+"The service will start automatically
+manual mode is selected
+the service is not configured"
+1 : SERVICE_STARTS_AUTOMATICALLY
+1 : MANUAL_MODE_SELECTED
+1 : SERVICE_CONFIGURED
+LLM-generated Boolean Logic: (NOT SERVICE_STARTS_AUTOMATICALLY) OR (MANUAL_MODE_SELECTED AND NOT SERVICE_CONFIGURED)
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issues detected:
+1. [connective_mismatch] NL suggests 'or' between exceptions, but node uses AND: [['NOT', ['SERVICE_STARTS_AUTOMATICALLY']], 'OR', [['MANUAL_MODE_SELECTED'], 'AND', ['NOT', ['SERVICE_CONFIGURED']]]]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults(['NOT', ParseResults(['SERVICE_STARTS_AUTOMATICALLY'], {})], {}), 'OR', ParseResults([ParseResults(['MANUAL_MODE_SELECTED'], {}), 'AND', ParseResults(['NOT', ParseResults(['SERVICE_CONFIGURED'], {})], {})], {})], {})
+    vars: ['MANUAL_MODE_SELECTED', 'SERVICE_CONFIGURED', 'SERVICE_STARTS_AUTOMATICALLY']
+
+2. [connective_mismatch] NL suggests 'or' between exceptions, but node uses AND: [['MANUAL_MODE_SELECTED'], 'AND', ['NOT', ['SERVICE_CONFIGURED']]]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults(['MANUAL_MODE_SELECTED'], {}), 'AND', ParseResults(['NOT', ParseResults(['SERVICE_CONFIGURED'], {})], {})], {})
+    vars: ['MANUAL_MODE_SELECTED', 'SERVICE_CONFIGURED']
+
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 2
+0.954
+New Boolean Logic: (SERVICE_STARTS_AUTOMATICALLY IMPLIES (NOT MANUAL_MODE_SELECTED) AND SERVICE_CONFIGURED)
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issues detected:
+1. [connective_mismatch] NL suggests 'or' between exceptions, but node uses AND: [['SERVICE_STARTS_AUTOMATICALLY'], 'IMPLIES', [['NOT', ['MANUAL_MODE_SELECTED']], 'AND', ['SERVICE_CONFIGURED']]]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults(['SERVICE_STARTS_AUTOMATICALLY'], {}), 'IMPLIES', ParseResults([ParseResults(['NOT', ParseResults(['MANUAL_MODE_SELECTED'], {})], {}), 'AND', ParseResults(['SERVICE_CONFIGURED'], {})], {})], {})
+    vars: ['MANUAL_MODE_SELECTED', 'SERVICE_CONFIGURED', 'SERVICE_STARTS_AUTOMATICALLY']
+
+2. [connective_mismatch] NL suggests 'or' between exceptions, but node uses AND: [['NOT', ['MANUAL_MODE_SELECTED']], 'AND', ['SERVICE_CONFIGURED']]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults(['NOT', ParseResults(['MANUAL_MODE_SELECTED'], {})], {}), 'AND', ParseResults(['SERVICE_CONFIGURED'], {})], {})
+    vars: ['MANUAL_MODE_SELECTED', 'SERVICE_CONFIGURED']
+
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 2
+0.954
+New Boolean Logic: (SERVICE_STARTS_AUTOMATICALLY IMPLIES (NOT MANUAL_MODE_SELECTED) OR SERVICE_CONFIGURED)
+Found one. :)
+Is it here yet?
+Is it here yet?
+No issues detected.
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 2
+0.954
+Final Boolean Logic: (SERVICE_STARTS_AUTOMATICALLY IMPLIES (NOT MANUAL_MODE_SELECTED) OR SERVICE_CONFIGURED)
+CONSISTENT
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 2
+0.954
+Here are the issues with the given Boolean logic expression:
+Error parsing expression: Expected end of text, found ')'  (at char 88), (line:1, col:89)
+New Boolean Logic: (NOT (SERVICE_STARTS_AUTOMATICALLY IMPLIES MANUAL_MODE_SELECTED)) AND SERVICE_CONFIGURED)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOT (SERVICE_STARTS_AUTOMATICALLY IMPLIES (MANUAL_MODE_SELECTED OR NOT SERVICE_CONFIGURED)))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOT (SERVICE_STARTS_AUTOMATICALLY) IMPLIES ((MANUAL_MODE_SELECTED) OR (NOT SERVICE_CONFIGURED)))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (SERVICE_STARTS_AUTOMATICALLY) IMPLIES ((MANUAL_MODE_SELECTED) OR (NOT SERVICE_CONFIGURED))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOT (SERVICE_STARTS_AUTOMATICALLY) IMPLIES ((MANUAL_MODE_SELECTED) OR (NOT SERVICE_CONFIGURED)))
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: (NOT (SERVICE_STARTS_AUTOMATICALLY) IMPLIES ((MANUAL_MODE_SELECTED) OR (NOT SERVICE_CONFIGURED)))
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 25 ---
+Natural Language: "The device will enter sleep mode, but only after 5 minutes of inactivity and when the device is idle."
+Ground Truth Boolean Logic: SLEEP_MODE IF INACTIVITY_5MIN AND DEVICE_IDLE
+
+DEBUG: Asking LLM to deconstruct the requirement.
+device will enter sleep mode
+5 minutes of inactivity occurs
+device is idle
+1 : DEVICE_IN_SLEEP_MODE
+1 : INACTIVITY_OCCURS_5MINS
+1 : DEVICE_IS_IDLE
+LLM-generated Boolean Logic: (D DEVICE_IN_SLEEP_MODE) IMPLIES ((INACTIVITY_OCCURS_5MINS) AND (DEVICE_IS_IDLE))
+Error parsing expression: Expected 'IMPLIES' term, found 'DEVICE'  (at char 3), (line:1, col:4)
+No issues detected.
+Issue counts:
+1.0
+Final Boolean Logic: (D DEVICE_IN_SLEEP_MODE) IMPLIES ((INACTIVITY_OCCURS_5MINS) AND (DEVICE_IS_IDLE))
+CONSISTENT
+Issue counts:
+1.0
+Here are the issues with the given Boolean logic expression:
+Error parsing expression: Expected end of text, found '('  (at char 4), (line:1, col:5)
+New Boolean Logic: NOT ((INACTIVITY_OCCURS_5MINS) AND (DEVICE_IS_IDLE)) IMPLIES DEVICE_IN_SLEEP_MODE
+Here are the issues with the given Boolean logic expression:
+Error parsing expression: Expected end of text, found 'IMPLIES'  (at char 21), (line:1, col:22)
+New Boolean Logic: DEVICE_IN_SLEEP_MODE IMPLIES (INACTIVITY_OCCURS_5MINS AND DEVICE_IS_IDLE)
+Here are the issues with the given Boolean logic expression:
+Error parsing expression: Expected 'IMPLIES' term, found '5MINS'  (at char 19), (line:1, col:20)
+New Boolean Logic: (INACTIVITY_OCCURS_5MINS AND DEVICE_IS_IDLE) IMPLIES DEVICE_IN_SLEEP_MODE
+Here are the issues with the given Boolean logic expression:
+Error parsing expression: Expected end of text, found '5MINS'  (at char 37), (line:1, col:38)
+New Boolean Logic: DEVICE_IS_IDLE AND INACTIVITY_OCCURS_5MINS IMPLIES DEVICE_IN_SLEEP_MODE
+Here are the issues with the given Boolean logic expression:
+Error parsing expression: Expected end of text, found 'IMPLIES'  (at char 21), (line:1, col:22)
+New Boolean Logic: DEVICE_IN_SLEEP_MODE IMPLIES (DEVICE_IS_IDLE AND INACTIVITY_OCCURS_5MINS)
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: DEVICE_IN_SLEEP_MODE IMPLIES (DEVICE_IS_IDLE AND INACTIVITY_OCCURS_5MINS)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 26 ---
+Natural Language: "Notifications will appear, but not when do not disturb mode is active or when the phone is switched off."
+Ground Truth Boolean Logic: NOTIFICATIONS IF DND_MODE_DISABLED AND PHONE_ON
+
+DEBUG: Asking LLM to deconstruct the requirement.
+notifications will appear
+do not disturb mode is active
+the phone is switched off
+1 : NOTIFICATIONS_APPEAR
+1 : DO_NOT_DISTURB_MODE_ACTIVE
+1 : PHONE_SWITCHED_OFF
+LLM-generated Boolean Logic: (NOTIFICATIONS_APPEAR) AND (NOT ('DO_NOT_DISTURB_MODE_ACTIVE' OR 'PHONE_SWITCHED_OFF'))
+Error parsing expression: Expected end of text, found 'AND'  (at char 23), (line:1, col:24)
+Found one. :)
+No issues detected.
+Found one. :)
+Issue counts:
+1.0
+Final Boolean Logic: (NOTIFICATIONS_APPEAR) AND (NOT ('DO_NOT_DISTURB_MODE_ACTIVE' OR 'PHONE_SWITCHED_OFF'))
+CONSISTENT
+Found one. :)
+Issue counts:
+1.0
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (CNOTIFICATIONS_APPEAR) AND (NOT DO_NOT_DISTURB_MODE_ACTIVE OR NOT PHONE_SWITCHED_OFF)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (CNOTIFICATIONS_APPEAR) AND (NOT DO_NOT_DISTURB_MODE_ACTIVE) AND (NOT PHONE_SWITCHED_OFF)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOTIFICATIONS_APPEAR) AND (NOT (DO_NOT_DISTURB_MODE_ACTIVE OR PHONE_SWITCHED_OFF))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (CNOTIFICATIONS_APPEAR) AND (DO_NOT_DISTURB_MODE_ACTIVE OR PHONE_SWITCHED_OFF)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: NOTIFICATIONS_APPEAR IMPLIES (NOT DO_NOT_DISTURB_MODE_ACTIVE) AND (NOT PHONE_SWITCHED_OFF)
+Based on the given natural language requirement and the provided Boolean logic expression, I have identified the following issues:
+Final Boolean Logic: NOTIFICATIONS_APPEAR IMPLIES (NOT DO_NOT_DISTURB_MODE_ACTIVE) AND (NOT PHONE_SWITCHED_OFF)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 27 ---
+Natural Language: "The backup will proceed, but only if the storage device is connected and backup is enabled."
+Ground Truth Boolean Logic: BACKUP_PROCEED IF STORAGE_CONNECTED AND BACKUP_ENABLED
+
+DEBUG: Asking LLM to deconstruct the requirement.
+the backup will proceed
+the storage device is connected
+backup is enabled
+1 : BACKUP_PROCEEDS
+1 : STORAGE_DEVICE_CONNECTED
+1 : BACKUP_ENABLED
+LLM-generated Boolean Logic: (BACKUP_PROCEEDS IMPLIES (STORAGE_DEVICE_CONNECTED AND BACKUP_ENABLED))
+No issues detected.
+Issue counts:
+1.0
+Final Boolean Logic: (BACKUP_PROCEEDS IMPLIES (STORAGE_DEVICE_CONNECTED AND BACKUP_ENABLED))
+CONSISTENT
+Issue counts:
+1.0
+Based on the given natural language requirement, I found the following issues with the Boolean logic expression provided by LLM:
+New Boolean Logic: (BACKUP_ENABLED AND STORAGE_DEVICE_CONNECTED) IMPLIES BACKUP_PROCEEDS
+Based on the given natural language requirement, I found the following issues with the Boolean logic expression provided by LLM:
+New Boolean Logic: (BACKUP_PROCEEDS IMPLIES (BACKUP_ENABLED AND STORAGE_DEVICE_CONNECTED))
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (BACKUP_PROCEEDS IMPLIES (STORAGE_DEVICE_CONNECTED AND BACKUP_ENABLED))
+Based on the provided natural language requirement, I found the following issues with the Boolean logic expression:
+New Boolean Logic: (BACKUP_ENABLED AND STORAGE_DEVICE_CONNECTED) IMPLIES BACKUP_PROCEEDS
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (BACKUP_PROCEEDS IMPLIES (BACKUP_ENABLED AND STORAGE_DEVICE_CONNECTED))
+Based on the provided natural language requirement, I have identified the following issues with the Boolean logic expression:
+Final Boolean Logic: (BACKUP_PROCEEDS IMPLIES (BACKUP_ENABLED AND STORAGE_DEVICE_CONNECTED))
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 28 ---
+Natural Language: "The system will reboot, but not if critical processes are running or reboot is not requested."
+Ground Truth Boolean Logic: SYSTEM_REBOOT IF PROCESSES_COMPLETED AND REBOOT_REQUESTED
+
+DEBUG: Asking LLM to deconstruct the requirement.
+the system will reboot
+critical processes are running
+reboot is not requested
+1 : SYSTEM_REBOOTS
+1 : CRITICAL_PROCESSES_RUNNING
+1 : REBOOT_REQUESTED
+LLM-generated Boolean Logic: (NOT SYSTEM_REBOOTS) AND (NOT (CRITICAL_PROCESSES_RUNNING OR REBOOT_REQUESTED))
+Found one. :)
+Is it here yet?
+Is it here yet?
+Is it here yet?
+Issues detected:
+1. [connective_mismatch] NL suggests 'or' between exceptions, but node uses AND: [['NOT', ['SYSTEM_REBOOTS']], 'AND', ['NOT', [['CRITICAL_PROCESSES_RUNNING'], 'OR', ['REBOOT_REQUESTED']]]]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults(['NOT', ParseResults(['SYSTEM_REBOOTS'], {})], {}), 'AND', ParseResults(['NOT', ParseResults([ParseResults(['CRITICAL_PROCESSES_RUNNING'], {}), 'OR', ParseResults(['REBOOT_REQUESTED'], {})], {})], {})], {})
+    vars: ['CRITICAL_PROCESSES_RUNNING', 'REBOOT_REQUESTED', 'SYSTEM_REBOOTS']
+
+Found one. :)
+Is it here yet?
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 1
+0.977
+New Boolean Logic: (NOT SYSTEM_REBOOTS) AND (CRITICAL_PROCESSES_RUNNING OR NOT REBOOT_REQUESTED)
+Found one. :)
+Is it here yet?
+Is it here yet?
+Issues detected:
+1. [connective_mismatch] NL suggests 'or' between exceptions, but node uses AND: [['NOT', ['SYSTEM_REBOOTS']], 'AND', [['CRITICAL_PROCESSES_RUNNING'], 'OR', ['NOT', ['REBOOT_REQUESTED']]]]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults(['NOT', ParseResults(['SYSTEM_REBOOTS'], {})], {}), 'AND', ParseResults([ParseResults(['CRITICAL_PROCESSES_RUNNING'], {}), 'OR', ParseResults(['NOT', ParseResults(['REBOOT_REQUESTED'], {})], {})], {})], {})
+    vars: ['CRITICAL_PROCESSES_RUNNING', 'REBOOT_REQUESTED', 'SYSTEM_REBOOTS']
+
+Found one. :)
+Is it here yet?
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 1
+0.977
+New Boolean Logic: (NOT SYSTEM_REBOOTS) AND (NOT (CRITICAL_PROCESSES_RUNNING OR NOT REBOOT_REQUESTED))
+Found one. :)
+Is it here yet?
+Is it here yet?
+Is it here yet?
+Issues detected:
+1. [connective_mismatch] NL suggests 'or' between exceptions, but node uses AND: [['NOT', ['SYSTEM_REBOOTS']], 'AND', ['NOT', [['CRITICAL_PROCESSES_RUNNING'], 'OR', ['NOT', ['REBOOT_REQUESTED']]]]]
+    node_type: ParseResults  node_repr: ParseResults([ParseResults(['NOT', ParseResults(['SYSTEM_REBOOTS'], {})], {}), 'AND', ParseResults(['NOT', ParseResults([ParseResults(['CRITICAL_PROCESSES_RUNNING'], {}), 'OR', ParseResults(['NOT', ParseResults(['REBOOT_REQUESTED'], {})], {})], {})], {})], {})
+    vars: ['CRITICAL_PROCESSES_RUNNING', 'REBOOT_REQUESTED', 'SYSTEM_REBOOTS']
+
+Found one. :)
+Is it here yet?
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 1
+0.977
+Error parsing expression: Expected end of text, found 'Logic'  (at char 8), (line:1, col:9)
+New Boolean Logic: Boolean Logic: "(SYSTEM_REBOOTS IMPLIES (NOT CRITICAL_PROCESSES_RUNNING OR REBOOT_REQUESTED))"
+Found one. :)
+No issues detected.
+Found one. :)
+Is it here yet?
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 1
+0.977
+Final Boolean Logic: Boolean Logic: "(SYSTEM_REBOOTS IMPLIES (NOT CRITICAL_PROCESSES_RUNNING OR REBOOT_REQUESTED))"
+SYSTEM_REBOOTS IMPLIES (NOT CRITICAL_PROCESSES_RUNNING OR REBOOT_REQUESTED)
+Found one. :)
+Is it here yet?
+Is it here yet?
+Is it here yet?
+Issue counts:
+connective_mismatch: 1
+0.977
+Here are the issues with the given Boolean logic expression:
+Error parsing expression: Expected 'IMPLIES' term, found '"'  (at char 0), (line:1, col:1)
+New Boolean Logic: "(NOT SYSTEM_REBOOTS) OR (CRITICAL_PROCESSES_RUNNING AND REBOOT_REQUESTED)"
+Here are the issues with the given Boolean logic expression:
+Error parsing expression: Expected 'IMPLIES' term, found '"'  (at char 0), (line:1, col:1)
+New Boolean Logic: "(NOT SYSTEM_REBOOTS) AND (NOT (CRITICAL_PROCESSES_RUNNING OR REBOOT_REQUESTED))"
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (SYSTEM_REBOOTS IMPLIES (NOT CRITICAL_PROCESSES_RUNNING) AND REBOOT_REQUESTED)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOT SYSTEM_REBOOTS) OR (CRITICAL_PROCESSES_RUNNING AND REBOOT_REQUESTED)
+Here are the issues with the given Boolean logic expression:
+New Boolean Logic: (NOT SYSTEM_REBOOTS) AND (NOT (CRITICAL_PROCESSES_RUNNING IMPLIES REBOOT_REQUESTED))
+Here are the issues with the given Boolean logic expression:
+Final Boolean Logic: (NOT SYSTEM_REBOOTS) AND (NOT (CRITICAL_PROCESSES_RUNNING IMPLIES REBOOT_REQUESTED))
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--- Requirement 29 ---
+Natural Language: "The settings will be saved, but only when the form is validated and the user has confirmed."
+Ground Truth Boolean Logic: SETTINGS_SAVED IF FORM_VALIDATED AND USER_CONFIRMED
+
+DEBUG: Asking LLM to deconstruct the requirement.
+"The settings will be saved
+the form is validated
+the user has confirmed"
+1 : SETTINGS_SAVED
+1 : FORM_VALIDATED
+1 : USER_CONFIRMED
+LLM-generated Boolean Logic: (SETTINGS_SAVED IMPLIES (FORM_VALIDATED AND USER_CONFIRMED))
+No issues detected.
+Issue counts:
+1.0
+Final Boolean Logic: (SETTINGS_SAVED IMPLIES (FORM_VALIDATED AND USER_CONFIRMED))
+Please provide the requirement you'd like me to check for consistency and correctness. I'll then respond with either "CONSISTENT" or the corrected Boolean logic expression.
+Issue counts:
+1.0
+Here are the issues with the given Boolean logic expression:
